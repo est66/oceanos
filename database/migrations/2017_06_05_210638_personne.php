@@ -23,6 +23,13 @@ class Personne extends Migration
             $table->string('statut');
             $table->text('description');
             $table->timestamps();
+                        //CLES ETRANGERES
+            //CLE ETRANGERE UTILISATEUR
+            $table->string('utilisateur_email');
+            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');
+            //CLE ETRANGERE ENSEMBLE MEDIA
+            $table->date('ensemble_media_edition_date');
+            $table->foreign('ensemble_media_edition_date')->references('edition_date')->on('ensemble_media');
         });
     }
 

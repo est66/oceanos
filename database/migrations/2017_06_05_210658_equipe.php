@@ -18,6 +18,16 @@ class Equipe extends Migration
             $table->string('nom');
             $table->string('type');
             $table->timestamps();
+            //CLES ETRANGERES
+            //CLE ETRANGERE UTILISATEUR
+            $table->string('utilisateur_email');
+            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');
+            //CLE ETRANGERE EDITION
+            $table->date('edition_date');
+            $table->foreign('edition_date')->references('date')->on('edition');
+            //CLE ETRANGERE ENSEMBLE MEDIA
+            $table->date('ensemble_media_edition_date');
+            $table->foreign('ensemble_media_edition_date')->references('edition_date')->on('ensemble_media');            
         });
     }
 

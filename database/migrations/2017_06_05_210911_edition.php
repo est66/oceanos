@@ -20,6 +20,11 @@ class Edition extends Migration
             $table->text('static_phrase_sponsor');
             $table->string('static_parametre_design');
             $table->timestamps();
+            //CLES ETRANGERES
+            //CLE ETRANGERE UTILISATEUR
+            $table->string('utilisateur_email');
+            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');           
+            
         });
     }
 

@@ -18,6 +18,13 @@ class EnsembleMedia extends Migration
             $table->string('nom');
             $table->text('description');
             $table->timestamps();
+            //CLES ETRANGERES
+            //CLE ETRANGERE UTILISATEUR
+            $table->string('utilisateur_email');
+            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');
+            //CLE ETRANGERE EDITION
+            $table->date('edition_date');
+            $table->foreign('edition_date')->references('date')->on('edition');           
         });
     }
 
