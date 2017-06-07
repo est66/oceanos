@@ -11,6 +11,15 @@ class ACLSeeder extends Seeder
      */
     public function run()
     {
+        
+        
+        
+        
+        
+        
+        
+        
+        
         /*** CLEAN UP ***/
         DB::table('group_user')->truncate();
         DB::table('group_resource')->truncate();
