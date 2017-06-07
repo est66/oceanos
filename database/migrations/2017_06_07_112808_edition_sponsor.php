@@ -4,24 +4,25 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Album extends Migration {
-
+class EditionSponsor extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-        Schema::create('album', function (Blueprint $table) {
+    public function up()
+    {
+        Schema::create('edition_sponsor', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
-            $table->text('description');
-            $table->boolean('archive');
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
             $table->integer('edition_id');
             $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade'); 
+            //CLE ETRANGERE EQUIPE
+            $table->integer('sponsor_id');
+            $table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');
         });
     }
 
@@ -30,8 +31,8 @@ class Album extends Migration {
      *
      * @return void
      */
-    public function down() {
-        Schema::dropIfExists('album');
+    public function down()
+    {
+        Schema::dropIfExists('edition_sponsor');
     }
-
 }

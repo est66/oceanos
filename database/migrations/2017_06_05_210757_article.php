@@ -20,14 +20,14 @@ class Article extends Migration
             $table->string('soustitre');
             $table->string('type');
             $table->string('auteur');
-            $table->datime('date');
+            $table->datetime('date');
             $table->text('description');
             $table->boolean('visible');
             $table->boolean('archive');            
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->date('edition_id');
+            $table->integer('edition_id');
             $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');        
         });
     }

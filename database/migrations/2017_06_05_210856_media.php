@@ -25,22 +25,22 @@ class Media extends Migration
              //CLES ETRANGERES            
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             //CLE ETRANGERE EDITION
-            $table->date('equipe_id');            
+            $table->integer('equipe_id')->nullable();           
             $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade');
             //CLE ETRANGERE EDITION
-            $table->date('personne_id');
+            $table->integer('personne_id')->nullable();
             $table->foreign('personne_id')->references('id')->on('personne')->onDelete('cascade'); 
             //CLE ETRANGERE EDITION
-            $table->date('article_id');
+            $table->integer('article_id')->nullable();
             $table->foreign('article_id')->references('id')->on('article')->onDelete('cascade');  
             //CLE ETRANGERE EDITION
-            $table->date('sponsor_id');
+            $table->date('sponsor_id')->nullable();
             $table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');  
             //CLE ETRANGERE EDITION
-            $table->date('album_id');
+            $table->date('album_id')->nullable();
             $table->foreign('album_id')->references('id')->on('album')->onDelete('cascade');
             //CLE ETRANGERE EDITION
-            $table->date('information_id');
+            $table->date('information_id')->nullable();
             $table->foreign('information_id')->references('id')->on('information')->onDelete('cascade');              
         });
     }

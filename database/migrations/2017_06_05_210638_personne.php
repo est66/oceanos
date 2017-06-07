@@ -19,7 +19,7 @@ class Personne extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->date('dateDeNaissance');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('filiere');
             $table->string('statut');
             $table->text('description');

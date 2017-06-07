@@ -22,10 +22,10 @@ class Equipe extends Migration
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->date('edition_id');
+            $table->integer('edition_id');
             $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');  
             //CLE ETRANGERE EQUIPE
-            $table->date('equipe_id');
+            $table->integer('equipe_id');
             $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade');   
         });
     }
