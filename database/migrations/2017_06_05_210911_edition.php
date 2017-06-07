@@ -1,30 +1,28 @@
-    <?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Edition extends Migration
-{
+class Edition extends Migration {
+
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         Schema::create('edition', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('date')->unique();
-            $table->string('nom');
-            $table->text('static_phrase_sponsor');
-            $table->string('static_parametre_design');
+            $table->datetime('date');
+            $table->string('description');
+            $table->string('resultats');
+            $table->string('enjeu');
+            $table->string('nbBateau');
+            $table->string('lieu');
+            $table->boolean('archive');
             $table->timestamps();
             //CLES ETRANGERES
-            //CLE ETRANGERE UTILISATEUR
-            $table->string('utilisateur_email');
-            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');           
-            
         });
     }
 
@@ -33,8 +31,8 @@ class Edition extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('edition');
     }
+
 }

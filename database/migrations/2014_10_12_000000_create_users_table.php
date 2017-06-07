@@ -14,6 +14,8 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            $table->rememberToken();
+            //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');            
             $table->string('email')->unique();
             $table->string('password');            

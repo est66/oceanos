@@ -14,19 +14,34 @@ class Media extends Migration
     public function up()
     {
         Schema::create('media', function (Blueprint $table) {
+            //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('url');
-            $table->string('type');
             $table->string('titre');
+            $table->string('url');            
             $table->text('description');
+            $table->string('type');
+            $table->boolean('archive');
             $table->timestamps();
-             //CLES ETRANGERES
-            //CLE ETRANGERE UTILISATEUR
-            $table->string('utilisateur_email');
-            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');
-            //CLE ETRANGERE ENSEMBLE MEDIA
-            $table->date('ensemble_media_edition_date');
-            $table->foreign('ensemble_media_edition_date')->references('edition_date')->on('ensemble_media');
+             //CLES ETRANGERES            
+            //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
+            //CLE ETRANGERE EDITION
+            $table->date('equipe_id');            
+            $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade');
+            //CLE ETRANGERE EDITION
+            $table->date('personne_id');
+            $table->foreign('personne_id')->references('id')->on('personne')->onDelete('cascade'); 
+            //CLE ETRANGERE EDITION
+            $table->date('article_id');
+            $table->foreign('article_id')->references('id')->on('article')->onDelete('cascade');  
+            //CLE ETRANGERE EDITION
+            $table->date('sponsor_id');
+            $table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');  
+            //CLE ETRANGERE EDITION
+            $table->date('album_id');
+            $table->foreign('album_id')->references('id')->on('album')->onDelete('cascade');
+            //CLE ETRANGERE EDITION
+            $table->date('information_id');
+            $table->foreign('information_id')->references('id')->on('information')->onDelete('cascade');              
         });
     }
 

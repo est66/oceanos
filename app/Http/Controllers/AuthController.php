@@ -28,21 +28,6 @@ class AuthController extends Controller
         return redirect()->action('AuthController@login');
     }
 
-    public function oAuth() {
-        header('location: ' . config('services.oAuth.loginUrl'));
-        die();
-    }
-
-    public function oAuthGoogle() {
-        $code = Request::input("code");
-
-
-
-        $user = User::firstOrCreate(['email' => 'test', 'password', 'oauth']);
-        Auth::login($user);
-        return redirect(Session::get('oldUrl', 'news'));
-
-    }
 
 
 }

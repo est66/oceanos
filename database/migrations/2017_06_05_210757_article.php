@@ -14,21 +14,21 @@ class Article extends Migration
     public function up()
     {
         Schema::create('article', function (Blueprint $table) {
+            //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('nom');
+            $table->string('titre');
+            $table->string('soustitre');
             $table->string('type');
+            $table->string('auteur');
+            $table->datime('date');
             $table->text('description');
+            $table->boolean('visible');
+            $table->boolean('archive');            
             $table->timestamps();
             //CLES ETRANGERES
-            //CLE ETRANGERE UTILISATEUR
-            $table->string('utilisateur_email');
-            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');
             //CLE ETRANGERE EDITION
-            $table->date('edition_date');
-            $table->foreign('edition_date')->references('date')->on('edition');
-            //CLE ETRANGERE ENSEMBLE MEDIA
-            $table->date('ensemble_media_edition_date');
-            $table->foreign('ensemble_media_edition_date')->references('edition_date')->on('ensemble_media');           
+            $table->date('edition_id');
+            $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');        
         });
     }
 

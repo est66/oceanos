@@ -14,21 +14,14 @@ class Sponsor extends Migration
     public function up()
     {
         Schema::create('sponsor', function (Blueprint $table) {
+            //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('nom');
             $table->string('categorie');
             $table->text('description');
+            $table->boolean('archive');
             $table->timestamps();
-            //CLES ETRANGERES
-            //CLE ETRANGERE UTILISATEUR
-            $table->string('utilisateur_email');
-            $table->foreign('utilisateur_email')->references('utilisateur')->on('email');
-            //CLE ETRANGERE EDITION
-            $table->date('edition_date');
-            $table->foreign('edition_date')->references('date')->on('edition');
-            //CLE ETRANGERE ENSEMBLE MEDIA
-            $table->date('ensemble_media_edition_date');
-            $table->foreign('ensemble_media_edition_date')->references('edition_date')->on('ensemble_media');          
+            //CLES ETRANGERES    
         });
     }
 

@@ -1,0 +1,20 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Console",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Http\\Middleware",
+    "\\app\\Ws",
+    "\\app\\Ws\\Controllers",
+    "\\database",
+    "\\database\\migrations",
+    "\\resources",
+    "\\resources\\views",
+    "\\resources\\views\\auth",
+    "\\routes"
+  ],
+  "SelectedNode": "\\app\\News.php",
+  "PreviewInSolutionExplorer": false
+}
