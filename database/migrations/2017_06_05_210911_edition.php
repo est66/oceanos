@@ -20,7 +20,9 @@ class Edition extends Migration {
             $table->string('enjeu');
             $table->string('nbBateau');
             $table->string('lieu');
+            $table->boolean('test');            
             $table->boolean('archive');
+            $table->boolean('actif');
             $table->timestamps();
             //CLES ETRANGERES
         });

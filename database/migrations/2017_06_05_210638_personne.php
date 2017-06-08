@@ -22,6 +22,7 @@ class Personne extends Migration
             $table->string('email')->nullable();
             $table->string('filiere');
             $table->string('statut');
+            $table->string('phrase');
             $table->text('description');
             $table->timestamps();
              //CLES ETRANGERES

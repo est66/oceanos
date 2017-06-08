@@ -10,32 +10,31 @@
   | to using a Closure or controller method. Build something great!
   |
  */
+
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/hello', function ()    {
+        return 'hello';
+    });
+
+    Route::get('user/profile', function () {
+        // Uses Auth Middleware
+    });
+    
+    Route::get('/users', function () {
+    //ICI LE CODE ADMIN
+    echo "// Only authenticated users may enter...";
+    $users = DB::table('users')->get();
+    return $users->toJson();
+});});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//AUTHENTIFIACTION REQUISE
-Route::get('profile', function () {
-    //ICI LE CODE ADMIN
-    echo "// Only authenticated users may enter...";
-$users = DB::table('users')->get();
-return $users->toJson();
-//foreach ($users as $user) {
-//    echo $user;
-//}
-    Route::get('/logout', function () {
-        Auth::logout();
-        //Session::flush();
-        return 'Déconnecté !';
-    });
-})->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home');
 
 
-//ICI LE RESTE      
-
-Route::get('/', function () {
-    return 'welcome';
-});
 Route::get('/logout', function () {
-        return 'Non connecté';
-    });
+    return 'Non connecté';
+});

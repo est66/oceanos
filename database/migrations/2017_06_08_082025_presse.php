@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Sponsor extends Migration
+class Presse extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class Sponsor extends Migration
      */
     public function up()
     {
-        Schema::create('sponsor', function (Blueprint $table) {
+        Schema::create('presse', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
-            $table->increments('id');
+            $table->increments('id');           
             $table->string('nom');
-            $table->string('categorie');
-            $table->text('description');
-            $table->string('url');
             $table->boolean('archive');
             $table->timestamps();
-            //CLES ETRANGERES    
+            //CLES ETRANGERES
+
         });
     }
 
@@ -33,6 +31,6 @@ class Sponsor extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsor');
+        Schema::dropIfExists('presse');
     }
 }

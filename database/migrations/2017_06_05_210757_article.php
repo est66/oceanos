@@ -22,13 +22,17 @@ class Article extends Migration
             $table->string('auteur');
             $table->datetime('date');
             $table->text('description');
+            $table->string('url');
             $table->boolean('visible');
             $table->boolean('archive');            
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
             $table->integer('edition_id');
-            $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');        
+            $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');
+            //CLE ETRANGERE PRESSE
+            $table->integer('presse_id');
+            $table->foreign('presse_id')->references('id')->on('presse')->onDelete('cascade'); 
         });
     }
 

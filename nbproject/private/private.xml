@@ -3,18 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210716_sponsor.php</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2014_10_12_000000_create_users_table.php</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210658_equipe.php</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/seeds/ACLSeeder.php</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210840_ensemble_media.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210856_media.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Media.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_07_112920_parametre.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Parametre.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Album.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Personne.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Sponsor.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Information.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/User.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/seeds/ACLSeeder.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/routes/web.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/.env</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_07_112733_equipe_personne.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Article.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_07_111222_album.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_07_112808_edition_sponsor.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210716_sponsor.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Edition.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210658_equipe.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_07_112858_information.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210638_personne.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210911_edition.php</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/.env</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_02_095643_evenement.php</file>
-            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/seeds/DatabaseSeeder.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210757_article.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Equipe.php</file>
         </group>
     </open-files>
 </project-private>
