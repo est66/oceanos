@@ -12,7 +12,7 @@ class Album extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('album', function (Blueprint $table) {
+        Schema::create('albums', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
             $table->text('description');
@@ -22,7 +22,7 @@ class Album extends Migration {
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
             $table->integer('edition_id');
-            $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade'); 
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade'); 
         });
     }
 
@@ -32,7 +32,7 @@ class Album extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('album');
+        Schema::dropIfExists('albums');
     }
 
 }

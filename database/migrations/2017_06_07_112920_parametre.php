@@ -13,7 +13,7 @@ class Parametre extends Migration
      */
     public function up()
     {
-        Schema::create('parametre', function (Blueprint $table) {
+        Schema::create('parametres', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class Parametre extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parametre');
+        Schema::dropIfExists('parametres');
     }
 }

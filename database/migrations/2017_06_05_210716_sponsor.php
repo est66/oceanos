@@ -13,7 +13,7 @@ class Sponsor extends Migration
      */
     public function up()
     {
-        Schema::create('sponsor', function (Blueprint $table) {
+        Schema::create('sponsors', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('nom');
@@ -33,6 +33,6 @@ class Sponsor extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sponsor');
+        Schema::dropIfExists('sponsors');
     }
 }

@@ -13,7 +13,7 @@ class Information extends Migration
      */
     public function up()
     {
-        Schema::create('information', function (Blueprint $table) {
+        Schema::create('informations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');           
             $table->text('texte');
@@ -30,6 +30,6 @@ class Information extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('information');
+        Schema::dropIfExists('informations');
     }
 }

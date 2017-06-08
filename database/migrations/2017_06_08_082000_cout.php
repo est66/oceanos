@@ -13,7 +13,7 @@ class Cout extends Migration
      */
     public function up()
     {
-        Schema::create('cout', function (Blueprint $table) {
+        Schema::create('couts', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID  
             $table->increments('id');
              //     
@@ -25,13 +25,13 @@ class Cout extends Migration
             //CLES ETRANGERES
             //CLE ETRANGERE BUDGET
             $table->integer('budget_id');
-            $table->foreign('budget_id')->references('id')->on('budget')->onDelete('cascade'); 
+            $table->foreign('budget_id')->references('id')->on('budgets')->onDelete('cascade'); 
             //CLE ETRANGERE EQUIPE
             $table->integer('budget_equipe_id');
-            $table->foreign('budget_equipe_id')->references('equipe_id')->on('budget')->onDelete('cascade');
+            $table->foreign('budget_equipe_id')->references('equipe_id')->on('budgets')->onDelete('cascade');
             //CLE ETRANGERE DEVISE
             $table->integer('devise_id');
-            $table->foreign('devise_id')->references('id')->on('devise')->onDelete('cascade');
+            $table->foreign('devise_id')->references('id')->on('devises')->onDelete('cascade');
         });
     }
 
@@ -42,6 +42,6 @@ class Cout extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cout');
+        Schema::dropIfExists('couts');
     }
 }

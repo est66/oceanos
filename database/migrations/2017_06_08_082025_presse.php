@@ -13,7 +13,7 @@ class Presse extends Migration
      */
     public function up()
     {
-        Schema::create('presse', function (Blueprint $table) {
+        Schema::create('presses', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');           
             $table->string('nom');
@@ -31,6 +31,6 @@ class Presse extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presse');
+        Schema::dropIfExists('presses');
     }
 }

@@ -13,7 +13,7 @@ class Budget extends Migration
      */
     public function up()
     {
-        Schema::create('budget', function (Blueprint $table) {
+        Schema::create('budgets', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');           
             $table->string('nom');            
@@ -25,7 +25,7 @@ class Budget extends Migration
             //CLES ETRANGERES
             //CLE ETRANGERE EQUIPE
             $table->integer('equipe_id');
-            $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade'); 
+            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade'); 
             
         });
     }
@@ -37,6 +37,6 @@ class Budget extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('budget');
+        Schema::dropIfExists('budgets');
     }
 }

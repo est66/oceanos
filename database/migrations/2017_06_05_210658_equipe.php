@@ -13,7 +13,7 @@ class Equipe extends Migration
      */
     public function up()
     {
-        Schema::create('equipe', function (Blueprint $table) {
+        Schema::create('equipes', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('nom');
@@ -23,10 +23,10 @@ class Equipe extends Migration
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
             $table->integer('edition_id');
-            $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');  
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
             //CLE ETRANGERE EQUIPE
             $table->integer('equipe_id');
-            $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade');   
+            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');   
         });
     }
 
@@ -37,6 +37,6 @@ class Equipe extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipe');
+        Schema::dropIfExists('equipes');
     }
 }

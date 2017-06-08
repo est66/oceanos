@@ -13,7 +13,7 @@ class Article extends Migration
      */
     public function up()
     {
-        Schema::create('article', function (Blueprint $table) {
+        Schema::create('articles', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('titre');
@@ -29,10 +29,10 @@ class Article extends Migration
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
             $table->integer('edition_id');
-            $table->foreign('edition_id')->references('id')->on('edition')->onDelete('cascade');
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
             $table->integer('presse_id');
-            $table->foreign('presse_id')->references('id')->on('presse')->onDelete('cascade'); 
+            $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade'); 
         });
     }
 
@@ -43,6 +43,6 @@ class Article extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article');
+        Schema::dropIfExists('articles');
     }
 }

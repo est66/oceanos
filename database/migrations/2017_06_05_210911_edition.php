@@ -12,7 +12,7 @@ class Edition extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('edition', function (Blueprint $table) {
+        Schema::create('editions', function (Blueprint $table) {
             $table->increments('id');
             $table->datetime('date');
             $table->string('description');
@@ -34,7 +34,7 @@ class Edition extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('edition');
+        Schema::dropIfExists('editions');
     }
 
 }

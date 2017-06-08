@@ -12,15 +12,15 @@ class ACLSeeder extends Seeder {
     public function run() {
 
         DB::table('users')->truncate();
-        DB::table('personne')->truncate();
-        DB::table('equipe')->truncate();
-        DB::table('sponsor')->truncate();
-        DB::table('article')->truncate();
-        DB::table('media')->truncate();
-        DB::table('edition')->truncate();
-        DB::table('album')->truncate();
-        DB::table('information')->truncate();
-        DB::table('parametre')->truncate();
+        DB::table('personnes')->truncate();
+        DB::table('equipes')->truncate();
+        DB::table('sponsors')->truncate();
+        DB::table('articles')->truncate();
+        DB::table('medias')->truncate();
+        DB::table('editions')->truncate();
+        DB::table('albums')->truncate();
+        DB::table('informations')->truncate();
+        DB::table('parametres')->truncate();
 
 
         /*         * * USERS ** */
@@ -37,19 +37,14 @@ class ACLSeeder extends Seeder {
         $personne1 = new App\Personne(); 
         $personne1->nom ="Fred";
         $personne1->prenom ="Cici";
-        $personne1->nom ="Fred";
+        $personne1->dateDeNaissance ="2000-01-01";
+        $personne1->email ="Fred@heig.com";
+        $personne1->filiere ="Media";
+        $personne1->statut ="Communication";
+        $personne1->phrase ="Je suis le boss";
+        $personne1->description ="BlaBlaBLa";
+        $personne1->save();
 
-
-                    $table->increments('id');
-            $table->string('nom');
-            $table->string('prenom');
-            $table->date('dateDeNaissance');
-            $table->string('email')->nullable();
-            $table->string('filiere');
-            $table->string('statut');
-            $table->string('phrase');
-            $table->text('description');
-            $table->timestamps();
         
         
         /*         * * GROUPS ** */

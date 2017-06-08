@@ -13,7 +13,7 @@ class Media extends Migration
      */
     public function up()
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('titre');
@@ -27,25 +27,25 @@ class Media extends Migration
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             //CLE ETRANGERE EQUIPE
             $table->integer('equipe_id')->nullable();           
-            $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade');
+            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
             //CLE ETRANGERE PERSONNE
             $table->integer('personne_id')->nullable();
-            $table->foreign('personne_id')->references('id')->on('personne')->onDelete('cascade'); 
+            $table->foreign('personne_id')->references('id')->on('personnes')->onDelete('cascade'); 
             //CLE ETRANGERE ARTICLE
             $table->integer('article_id')->nullable();
-            $table->foreign('article_id')->references('id')->on('article')->onDelete('cascade');  
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');  
             //CLE ETRANGERE SPONSOR
             $table->date('sponsor_id')->nullable();
-            $table->foreign('sponsor_id')->references('id')->on('sponsor')->onDelete('cascade');  
+            $table->foreign('sponsor_id')->references('id')->on('sponsors')->onDelete('cascade');  
             //CLE ETRANGERE ALBUM
             $table->date('album_id')->nullable();
-            $table->foreign('album_id')->references('id')->on('album')->onDelete('cascade');
+            $table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
             //CLE ETRANGERE INFOMRATION
             $table->date('information_id')->nullable();
-            $table->foreign('information_id')->references('id')->on('information')->onDelete('cascade');
+            $table->foreign('information_id')->references('id')->on('informations')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
             $table->integer('presse_id');
-            $table->foreign('presse_id')->references('id')->on('presse')->onDelete('cascade'); 
+            $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade'); 
         });
     }
 
@@ -56,6 +56,6 @@ class Media extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('medias');
     }
 }

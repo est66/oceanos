@@ -13,7 +13,7 @@ class Personne extends Migration
      */
     public function up()
     {
-        Schema::create('personne', function (Blueprint $table) {
+        Schema::create('personnes', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('nom');
@@ -28,6 +28,7 @@ class Personne extends Migration
              //CLES ETRANGERES
         });
     }
+    
 
     /**
      * Reverse the migrations.
@@ -36,6 +37,6 @@ class Personne extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('personne');
+        Schema::dropIfExists('personnes');
     }
 }

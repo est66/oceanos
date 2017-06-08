@@ -18,10 +18,10 @@ class EquipePersonne extends Migration {
             //CLES ETRANGERES
             //CLE ETRANGERE EQUIPE
             $table->integer('equipe_id');
-            $table->foreign('equipe_id')->references('id')->on('equipe')->onDelete('cascade');
+            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
             //CLE ETRANGERE PERSONNE
             $table->integer('personne_id');
-            $table->foreign('personne_id')->references('id')->on('personne')->onDelete('cascade');
+            $table->foreign('personne_id')->references('id')->on('personnes')->onDelete('cascade');
         });
     }
 

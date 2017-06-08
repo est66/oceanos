@@ -13,7 +13,7 @@ class Devise extends Migration
      */
     public function up()
     {
-        Schema::create('devise', function (Blueprint $table) {
+        Schema::create('devises', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class Devise extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devise');
+        Schema::dropIfExists('devises');
     }
 }
