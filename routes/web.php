@@ -14,13 +14,12 @@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/logout', function () {
-    return 'Non connecté';
-});
+
 
 //AVEC DROIT ADMIN--
 Route::group(['middleware' => 'auth'], function () {  
-Route::get('/users', function () {
+
+    
 });
 //-->
 
