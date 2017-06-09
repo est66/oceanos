@@ -9,6 +9,8 @@ class Edition extends Model
     protected $guarded  = [
         'id', 'edition_id',
     ];
+    
+    //protected $dateFormat = 'Y-m-d';
 
     public static function isValid($parameters) {
         // validation here

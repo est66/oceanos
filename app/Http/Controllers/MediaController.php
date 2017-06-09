@@ -13,7 +13,7 @@ class MediaController extends Controller
      */
     public function index()
     {
-        //
+        //https://laravel.com/docs/4.2/requests
     }
 
     /**

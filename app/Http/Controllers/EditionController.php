@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//A RAJOUTER
+use Symfony\Component\HttpFoundation\Response;
 use App\Edition;
 
 class EditionController extends Controller {
@@ -14,7 +16,6 @@ class EditionController extends Controller {
      */
     public function index() {
         return Edition::all();
-        //$editions = DB::table('editions')->get();
     }
 
     /**
@@ -22,25 +23,13 @@ class EditionController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request) {
         $para = $request->all();
-//        if (!Edition::isValid($para)) {
-//            return response()->json('error', Response::HTTP_BAD_REQUEST);
-//        }
-        // création de l'édition
+        // Règles de validations //  VALIDATION  if (!Edition::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
         $edition = new Edition($para);
         $edition->save();
-        return "EDITION AJOUTE !!";
+        return response()->json($edition, Response::HTTP_CREATED);
     }
 
     /**
@@ -50,17 +39,7 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        //
+        return Edition::find($id);
     }
 
     /**
@@ -71,7 +50,9 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $para = $request->all();
+        Edition::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -81,7 +62,10 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        $edition = Edition::find($id);
+        $edition->delete();
+        return response()->json('OK', Response::HTTP_OK);
     }
 
+    //FONCTIONS SUPPLEMENTAIRES
 }
