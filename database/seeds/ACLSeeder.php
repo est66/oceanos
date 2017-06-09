@@ -59,6 +59,7 @@ class ACLSeeder extends Seeder {
         /*         * * EDITION ** */
         $edition1 = new App\Edition();
         $edition1->date = "2017-10-10 15:28:22";
+        $edition1->nom = "2017";
         $edition1->description = "Edition no 1";
         $edition1->resultats = "Nous sommes arrivés 1er";
         $edition1->enjeu = "gagner la course";

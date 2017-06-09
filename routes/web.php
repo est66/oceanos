@@ -19,27 +19,8 @@ Route::get('/logout', function () {
 });
 
 //AVEC DROIT ADMIN--
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {  
 Route::get('/users', function () {
-        //ICI LE CODE ADMIN
-        echo "// Only authenticated users may enter...";
-        $users = DB::table('users')->get();
-        return $users->toJson();
-    });
-    Route::get('/editions', function () {
-        //ICI LE CODE ADMIN
-        echo "// Only authenticated users may enter...";
-        $editions = DB::table('editions')->get();
-        return $editions->toJson();
-    });
-    Route::get('/editions', function () {
-        //ICI LE CODE ADMIN
-        $editions = DB::table('editions')->get();
-        foreach ($editions as $edition) {
-            echo $edition->date;
-        }
-    });
-    
 });
 //-->
 
@@ -53,16 +34,12 @@ Route::post('/editions/store', 'EditionController@store');
 
 
 Route::get('storage/images/sponsors/{filename}', function ($filename) {
-    //ICI LE CODE ADMIN
-    
-    redirect('storage/images/sponsors/'.$filename);
-    
+    //ICI LE CODE ADMIN    
+    redirect('storage/images/sponsors/'.$filename);   
 //    $localhost = $_SERVER['SERVER_NAME'];
 //    $localhost = "localhost/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/public/storage";
 //    
-//    $url =  "http://".$localhost."/images/sponsors/hes-so.png";
-    
-    
+//    $url =  "http://".$localhost."/images/sponsors/hes-so.png";   
 //http://somedomain.com/storage/image.jpg
 });
 
