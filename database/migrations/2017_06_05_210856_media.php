@@ -26,10 +26,10 @@ class Media extends Migration
              //CLES ETRANGERES            
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             //CLE ETRANGERE EQUIPE
-            $table->integer('equipe_id')->nullable();           
+            $table->integer('equipe_id')->nullable();      
             $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
             //CLE ETRANGERE PERSONNE
-            $table->integer('personne_id')->nullable();
+            $table->integer('personne_id')->nullable(); 
             $table->foreign('personne_id')->references('id')->on('personnes')->onDelete('cascade'); 
             //CLE ETRANGERE ARTICLE
             $table->integer('article_id')->nullable();
@@ -44,7 +44,7 @@ class Media extends Migration
             $table->date('information_id')->nullable();
             $table->foreign('information_id')->references('id')->on('informations')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
-            $table->integer('presse_id');
+            $table->integer('presse_id')->nullable();
             $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade'); 
         });
     }

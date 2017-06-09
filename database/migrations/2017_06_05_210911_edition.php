@@ -37,4 +37,5 @@ class Edition extends Migration {
         Schema::dropIfExists('editions');
     }
 
+    
 }

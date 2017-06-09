@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
-    protected $fillable = [
-        'titre', 'soustitre', 'type', 'auteur', 'date', 'description', 'visible', 'archive',
-    ];
+//    protected $fillable = [
+//        'titre', 'soustitre', 'type', 'auteur', 'date', 'description', 'visible', 'archive',
+//    ];
 
     public static function isValid($parameters) {
         // validation here
@@ -29,7 +29,9 @@ class Article extends Model {
                 ])->passes();
     }
 
-    public function article() {
+
+        public function edition()
+    {
         return $this->belongsTo('App\Edition');
     }
 

@@ -18,10 +18,10 @@ class EditionSponsor extends Migration
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->integer('edition_id');
+            $table->integer('edition_id')->unsigned();
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade'); 
             //CLE ETRANGERE EQUIPE
-            $table->integer('sponsor_id');
+            $table->integer('sponsor_id')->unsigned();
             $table->foreign('sponsor_id')->references('id')->on('sponsors')->onDelete('cascade');
         });
     }

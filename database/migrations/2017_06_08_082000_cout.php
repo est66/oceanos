@@ -24,13 +24,13 @@ class Cout extends Migration
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE BUDGET
-            $table->integer('budget_id');
+            $table->integer('budget_id')->unsigned();
             $table->foreign('budget_id')->references('id')->on('budgets')->onDelete('cascade'); 
             //CLE ETRANGERE EQUIPE
-            $table->integer('budget_equipe_id');
+            $table->integer('budget_equipe_id')->unsigned();
             $table->foreign('budget_equipe_id')->references('equipe_id')->on('budgets')->onDelete('cascade');
             //CLE ETRANGERE DEVISE
-            $table->integer('devise_id');
+            $table->integer('devise_id')->unsigned();
             $table->foreign('devise_id')->references('id')->on('devises')->onDelete('cascade');
         });
     }

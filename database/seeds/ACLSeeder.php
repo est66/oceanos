@@ -32,22 +32,75 @@ class ACLSeeder extends Seeder {
         $user2->email = 'john2@example.com';
         $user2->password = bcrypt('123456');
         $user2->save();
-        
-               /*         * * PERSONNES ** */
-        $personne1 = new App\Personne(); 
-        $personne1->nom ="Fred";
-        $personne1->prenom ="Cici";
-        $personne1->dateDeNaissance ="2000-01-01";
-        $personne1->email ="Fred@heig.com";
-        $personne1->filiere ="Media";
-        $personne1->statut ="Communication";
-        $personne1->phrase ="Je suis le boss";
-        $personne1->description ="BlaBlaBLa";
-        $personne1->save();
 
+        /*         * * PERSONNES ** */
+        $personne1 = new App\Personne();
+        $personne1->nom = "Esteem";
+        $personne1->prenom = "Okoro";
+        $personne1->dateDeNaissance = "1992-01-01";
+        $personne1->email = "esteem.okoro@heig-vd.com";
+        $personne1->filiere = "IT";
+        $personne1->statut = "Communication";
+        $personne1->phrase = "Je suis étudiant à l'HEIG-VD";
+        $personne1->description = "Description de la personne";
+        $personne1->save();
         
-        
-        /*         * * GROUPS ** */
+        $personne2 = new App\Personne();
+        $personne2->nom = "nom-".str_random(10);
+        $personne2->prenom = "prenom-".str_random(10);
+        $personne2->dateDeNaissance = "1990-01-01";
+        $personne2->email = str_random(10)."@heig.com";
+        $personne2->filiere = "Media";
+        $personne2->statut = "Communication";
+        $personne2->phrase = "Phrase d'accroche";
+        $personne2->description = "Description de la personne";
+        $personne2->save();
+
+        /*         * * EDITION ** */
+        $edition1 = new App\Edition();
+        $edition1->date = "2017-10-10 15:28:22";
+        $edition1->description = "Edition no 1";
+        $edition1->resultats = "Nous sommes arrivés 1er";
+        $edition1->enjeu = "gagner la course";
+        $edition1->nbBateau = "6";
+        $edition1->lieu = "Lausanne";
+        $edition1->test = true;
+        $edition1->archive = true;
+        $edition1->actif = true;
+        $edition1->save();
+        /*         * * ARTICLE ** */
+        $article1 = new App\Article();
+        $article1->titre = "Hydrocontest en sursi !";
+        $article1->soustitre = "Tous va mal";
+        $article1->type = "presse";
+        $article1->auteur = "gagner la course";
+        $article1->date = "2017-10-10 15:28:22";
+        $article1->description = "Description de l'article";
+        $article1->url = "url/url/.html";
+        $article1->visible = true;
+        $article1->archive = true;
+        $article1->edition_id = 2;
+        $article1->presse_id = 1;
+        $article1->save();
+
+        $article2 = new App\Article();
+        $article2->titre = str_random(10);
+        $article2->soustitre = str_random(10);
+        $article2->type = "presse";
+        $article2->auteur = str_random(10);
+        $article2->date = "2017-10-10 15:28:22";
+        $article2->description = "Description";
+        $article2->url = "url/url/.html";
+        $article2->visible = true;
+        $article2->archive = true;
+        $article2->edition_id = 2;
+        $article2->presse_id = 1;
+        $article2->save();
+                
+//        $article1->edition()->save($edition1);
+
+
+        /**         * GROUPS ** */
 //        $admin = new \App\Group();
 //        $admin->name = 'admin';
 //        $admin->save();

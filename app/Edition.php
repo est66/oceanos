@@ -29,4 +29,8 @@ class Edition extends Model
                 ])->passes();
     }
 
+        public function articles()
+    {
+        return $this->hasMany('App\Article');
+    }
 }

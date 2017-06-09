@@ -24,7 +24,7 @@ class Budget extends Migration
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EQUIPE
-            $table->integer('equipe_id');
+            $table->integer('equipe_id')->unsigned();
             $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade'); 
             
         });

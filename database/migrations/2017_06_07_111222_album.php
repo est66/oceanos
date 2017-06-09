@@ -21,7 +21,7 @@ class Album extends Migration {
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->integer('edition_id');
+            $table->integer('edition_id')->unsigned();
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade'); 
         });
     }
