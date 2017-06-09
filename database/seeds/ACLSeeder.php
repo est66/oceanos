@@ -21,7 +21,7 @@ class ACLSeeder extends Seeder {
         DB::table('albums')->truncate();
         DB::table('informations')->truncate();
         DB::table('parametres')->truncate();
-
+        DB::table('res_socials')->truncate();
 
         /*         * * USERS ** */
         $user1 = new App\User();
@@ -96,6 +96,12 @@ class ACLSeeder extends Seeder {
         $article2->edition_id = 2;
         $article2->presse_id = 1;
         $article2->save();
+        
+        
+        
+        
+        
+        
                 
 //        $article1->edition()->save($edition1);
 
