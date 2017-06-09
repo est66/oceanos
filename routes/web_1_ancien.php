@@ -52,6 +52,22 @@
 
 
  */
+
+
+
+
+
+Route::get('storage/images/sponsors/{filename}', function ($filename) {
+    //ICI LE CODE ADMIN    
+    redirect('storage/images/sponsors/'.$filename);   
+//    $localhost = $_SERVER['SERVER_NAME'];
+//    $localhost = "localhost/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/public/storage";
+//    
+//    $url =  "http://".$localhost."/images/sponsors/hes-so.png";   
+//http://somedomain.com/storage/image.jpg
+});
+
+
 Route::get('/', function () {
     return 'welcome';
 });
