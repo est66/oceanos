@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Edition;
 
-class EditionController extends Controller
-{
+class EditionController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        return Edition::all();
+        //$editions = DB::table('editions')->get();
     }
 
     /**
@@ -21,9 +22,8 @@ class EditionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        
     }
 
     /**
@@ -32,9 +32,15 @@ class EditionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $para = $request->all();
+//        if (!Edition::isValid($para)) {
+//            return response()->json('error', Response::HTTP_BAD_REQUEST);
+//        }
+        // création de l'édition
+        $edition = new Edition($para);
+        $edition->save();
+        return "EDITION AJOUTE !!";
     }
 
     /**
@@ -43,8 +49,7 @@ class EditionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -54,8 +59,7 @@ class EditionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -66,8 +70,7 @@ class EditionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -77,8 +80,8 @@ class EditionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
+
 }
