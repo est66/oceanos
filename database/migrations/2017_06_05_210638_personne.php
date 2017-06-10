@@ -18,12 +18,12 @@ class Personne extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
-            $table->date('dateDeNaissance');
+            $table->date('dateDeNaissance')->nullable();
             $table->string('email')->nullable();
-            $table->string('filiere');
+            $table->string('filiere')->nullable();
             $table->string('statut');
-            $table->string('phrase');
-            $table->text('description');
+            $table->longtext('phrase')->nullable();
+            $table->longtext('description');
             $table->timestamps();
              //CLES ETRANGERES
         });

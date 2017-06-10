@@ -14,10 +14,11 @@ class Edition extends Migration {
     public function up() {
         Schema::create('editions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
             $table->datetime('date');
-            $table->string('description');
-            $table->string('resultats');
-            $table->string('enjeu');
+            $table->longtext('description');
+            $table->longtext('resultats');
+            $table->text('enjeu');
             $table->string('nbBateau');
             $table->string('lieu');
             $table->boolean('test');            

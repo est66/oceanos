@@ -1,7 +1,9 @@
+**/.htaccess
 /node_modules
 /public/storage
 /vendor
 /.idea
+*.zip
 Homestead.json
 Homestead.yaml
 .env
