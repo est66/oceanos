@@ -75,4 +75,10 @@ class EditionController extends Controller {
         return $edition->articles;
     }
 
+    //EQUIPES PAR EDITION
+    public function equipesParEdition($nomEdition) {
+        $edition = Edition::where('nom', '=', '2017')->get()->first();
+        return $edition->equipes;
+    }
+
 }

@@ -14,4 +14,9 @@ class Equipe extends Model
     {
         return $this->belongsToMany('App\Personne');
     }
+    
+            public function edition()
+    {
+        return $this->belongsTo('App\Edition');
+    }
 }

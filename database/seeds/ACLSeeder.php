@@ -25,13 +25,9 @@ class ACLSeeder extends Seeder {
 
         /*         * * USERS ** */
         $user1 = new App\User();
-        $user1->email = 'john@example.com';
+        $user1->email = 'admin@oceanos.com';
         $user1->password = bcrypt('123456');
         $user1->save();
-        $user2 = new App\User();
-        $user2->email = 'john2@example.com';
-        $user2->password = bcrypt('123456');
-        $user2->save();
 
         /*         * * PERSONNES ** */
         $personne1 = new App\Personne();
@@ -44,12 +40,12 @@ class ACLSeeder extends Seeder {
         $personne1->phrase = "Je suis étudiant à l'HEIG-VD";
         $personne1->description = "Description de la personne";
         $personne1->save();
-        
+
         $personne2 = new App\Personne();
-        $personne2->nom = "nom-".str_random(10);
-        $personne2->prenom = "prenom-".str_random(10);
+        $personne2->nom = "nom-" . str_random(10);
+        $personne2->prenom = "prenom-" . str_random(10);
         $personne2->dateDeNaissance = "1990-01-01";
-        $personne2->email = str_random(10)."@heig.com";
+        $personne2->email = str_random(10) . "@heig.com";
         $personne2->filiere = "Media";
         $personne2->statut = "Communication";
         $personne2->phrase = "Phrase d'accroche";
@@ -97,13 +93,39 @@ class ACLSeeder extends Seeder {
         $article2->edition_id = 2;
         $article2->presse_id = 1;
         $article2->save();
-        
-        
-        
-        
-        
-        
-                
+
+
+        //EQUIPES
+        $equipe1 = new App\Equipe();
+        $equipe1->titre = str_random(10);
+        $equipe1->soustitre = str_random(10);
+        $equipe1->type = "presse";
+        $equipe1->auteur = str_random(10);
+        $equipe1->date = "2017-10-10 15:28:22";
+        $equipe1->description = "Description";
+        $equipe1->url = "url/url/.html";
+        $equipe1->visible = true;
+        $equipe1->archive = false;
+        $equipe1->edition_id = 2;
+        $equipe1->presse_id = 1;
+        $equipe1->save();
+
+
+        $table->string('nom');
+        $table->string('type');
+        $table->boolean('archive');
+        $table->timestamps();
+        //CLES ETRANGERES
+        //CLE ETRANGERE EDITION
+        $table->integer('edition_id');
+        $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
+        //CLE ETRANGERE EQUIPE
+        $table->integer('equipe_id');
+        $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
+
+
+
+
 //        $article1->edition()->save($edition1);
 
 

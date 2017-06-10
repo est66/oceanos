@@ -102,5 +102,7 @@ Route::resource('reseaux', 'ResSocialController');
 Route::resource('sponsors', 'SponsorController');
 
 //AUTRES FONCTIONS
-//ARTICLE PAR EDITION
+//ARTICLES PAR EDITION
 Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesParEdition');
+//EQUIPES PAR EDITION
+Route::get('editions/{nomEdition}/equipes/', 'EditionController@equipesParEdition');
