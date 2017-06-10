@@ -66,7 +66,7 @@ class ACLSeeder extends Seeder {
         $edition1->nbBateau = "6";
         $edition1->lieu = "Lausanne";
         $edition1->test = true;
-        $edition1->archive = true;
+        $edition1->archive = false;
         $edition1->actif = true;
         $edition1->save();
         /*         * * ARTICLE ** */
@@ -79,7 +79,7 @@ class ACLSeeder extends Seeder {
         $article1->description = "Description de l'article";
         $article1->url = "url/url/.html";
         $article1->visible = true;
-        $article1->archive = true;
+        $article1->archive = false;
         $article1->edition_id = 2;
         $article1->presse_id = 1;
         $article1->save();
@@ -93,7 +93,7 @@ class ACLSeeder extends Seeder {
         $article2->description = "Description";
         $article2->url = "url/url/.html";
         $article2->visible = true;
-        $article2->archive = true;
+        $article2->archive = false;
         $article2->edition_id = 2;
         $article2->presse_id = 1;
         $article2->save();

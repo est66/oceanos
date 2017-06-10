@@ -19,46 +19,37 @@ Route::get('/', 'HomeController@index')->name('home');
 //AVEC DROIT ADMIN--
 Route::group(['middleware' => 'auth'], function () {
 //ALBUMS
-Route::resource('albums', 'AlbumController');
+    Route::resource('albums', 'AlbumController');
 //ARTICLES
-Route::resource('articles', 'ArticleController');
+    Route::resource('articles', 'ArticleController');
 //BUDGETS
-Route::resource('budgets', 'BudgetController');
+    Route::resource('budgets', 'BudgetController');
 //COUTS
-Route::resource('couts', 'CoutController');
+    Route::resource('couts', 'CoutController');
 //DEVISES
-Route::resource('devises', 'DeviseController');
+    Route::resource('devises', 'DeviseController');
 //EDITIONS
-Route::resource('editions', 'EditionController');
+    Route::resource('editions', 'EditionController');
 //EQUIPES
-Route::resource('equipes', 'EquipeController');
+    Route::resource('equipes', 'EquipeController');
 //INFORMATIONS
-Route::resource('informations', 'InformationController');
+    Route::resource('informations', 'InformationController');
 //MEDIAS
-Route::resource('medias', 'MediaController');
+    Route::resource('medias', 'MediaController');
 //PARAMETRES
-Route::resource('parametres', 'ParametreController');
+    Route::resource('parametres', 'ParametreController');
 //PERSONNES
-Route::resource('personnes', 'PersonneController');
+    Route::resource('personnes', 'PersonneController');
 //PRESSES
-Route::resource('presses', 'PresseController');
+    Route::resource('presses', 'PresseController');
 //RESEAUX
-Route::resource('reseaux', 'ResSocialController');
+    Route::resource('reseaux', 'ResSocialController');
 //SPONSORS
-Route::resource('sponsors', 'SponsorController');    
+    Route::resource('sponsors', 'SponsorController');
 });
 //-->
-
 //SANS DROITS ADMINS--
-
-
-
-
 //-->
-
-
-
-
 ////EDITIONS--
 //Route::get('/editions', 'EditionController@index');
 ////A METTRE DANS AUTH
@@ -109,3 +100,7 @@ Route::resource('presses', 'PresseController');
 Route::resource('reseaux', 'ResSocialController');
 //SPONSORS
 Route::resource('sponsors', 'SponsorController');
+
+//AUTRES FONCTIONS
+//ARTICLE PAR EDITION
+Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesParEdition');
