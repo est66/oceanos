@@ -35,4 +35,16 @@ class Edition extends Model
     {
         return $this->hasMany('App\Article');
     }
+    
+            public function equipes()
+    {
+        return $this->hasMany('App\Equipe');
+    }
+    
+    
+        public function sponsors() 
+    {
+         return $this->belongsToMany('App\Sponsor')
+                 ->withTimestamps();
+    }
 }

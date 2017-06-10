@@ -4,11 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_05_210856_media.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Http/Controllers/AlbumController.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Http/Controllers/EditionController.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/public/.htaccess</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/seeds/DatabaseSeeder.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_08_082009_devise.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_07_112920_parametre.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Personne.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Album.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Http/Controllers/ArticleController.php</file>
+            <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/app/Http/Controllers/MediaController.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2014_10_12_000000_create_users_table.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/migrations/2017_06_08_082025_presse.php</file>
             <file>file:/C:/wamp64/www/PROJET_INTEGRATION/OCENOS_COMMUN/oceanos/database/seeds/ACLSeeder.php</file>

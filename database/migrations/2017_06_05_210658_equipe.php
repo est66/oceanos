@@ -25,9 +25,9 @@ class Equipe extends Migration
             $table->integer('edition_id');
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
             //CLE ETRANGERE EQUIPE
-            $table->integer('equipe_id');
+            $table->integer('equipe_id')->nullable();
             $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');   
-        });
+        });  
     }
 
     /**

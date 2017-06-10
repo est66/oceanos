@@ -14,6 +14,7 @@ class ACLSeeder extends Seeder {
         DB::table('users')->truncate();
         DB::table('personnes')->truncate();
         DB::table('equipes')->truncate();
+        DB::table('equipe_personne')->truncate();
         DB::table('sponsors')->truncate();
         DB::table('articles')->truncate();
         DB::table('medias')->truncate();
@@ -29,6 +30,25 @@ class ACLSeeder extends Seeder {
         $user1->password = bcrypt('123456');
         $user1->save();
 
+
+        //EQUIPES
+        $equipe1 = new App\Equipe();
+        $equipe1->nom = "Ingenieurs";
+        $equipe1->phrase = "Nous sommes les ingénieurs de Hydrocontest";
+        $equipe1->archive = false;
+        $equipe1->edition_id = 1;
+        $equipe1->equipe_id = 1;
+        $equipe1->save();
+        //EQUIPES
+        $equipe2 = new App\Equipe();
+        $equipe2->nom = "TEAM HYDROCONTEST";
+        $equipe2->phrase = "TOUS LES MEMBRES DE LA TEAM HYDROCONTEST";
+        $equipe2->archive = false;
+        $equipe2->edition_id = 1;
+        $equipe2->equipe_id = 1;
+        $equipe2->save();
+
+
         /*         * * PERSONNES ** */
         $personne1 = new App\Personne();
         $personne1->nom = "Esteem";
@@ -40,18 +60,22 @@ class ACLSeeder extends Seeder {
         $personne1->phrase = "Je suis étudiant à l'HEIG-VD";
         $personne1->description = "Description de la personne";
         $personne1->save();
-
+        //INSERTION DANS L'EQUIPE
+        $equipe1->personnes()->save($personne1);
+        //------------------------------------
         $personne2 = new App\Personne();
-        $personne2->nom = "nom-" . str_random(10);
-        $personne2->prenom = "prenom-" . str_random(10);
+        $personne2->nom = "Jonathan";
+        $personne2->prenom = "Aeschimann";
         $personne2->dateDeNaissance = "1990-01-01";
-        $personne2->email = str_random(10) . "@heig.com";
+        $personne2->email = "jonathan.aeschimann@heig-vd.com";
         $personne2->filiere = "Media";
         $personne2->statut = "Communication";
         $personne2->phrase = "Phrase d'accroche";
         $personne2->description = "Description de la personne";
         $personne2->save();
-
+        //INSERTION DANS L'EQUIPE
+        $equipe1->personnes()->save($personne2);  
+        //------------------------------------
         /*         * * EDITION ** */
         $edition1 = new App\Edition();
         $edition1->date = "2017-10-10 15:28:22";
@@ -94,34 +118,6 @@ class ACLSeeder extends Seeder {
         $article2->presse_id = 1;
         $article2->save();
 
-
-        //EQUIPES
-        $equipe1 = new App\Equipe();
-        $equipe1->titre = str_random(10);
-        $equipe1->soustitre = str_random(10);
-        $equipe1->type = "presse";
-        $equipe1->auteur = str_random(10);
-        $equipe1->date = "2017-10-10 15:28:22";
-        $equipe1->description = "Description";
-        $equipe1->url = "url/url/.html";
-        $equipe1->visible = true;
-        $equipe1->archive = false;
-        $equipe1->edition_id = 2;
-        $equipe1->presse_id = 1;
-        $equipe1->save();
-
-
-        $table->string('nom');
-        $table->string('type');
-        $table->boolean('archive');
-        $table->timestamps();
-        //CLES ETRANGERES
-        //CLE ETRANGERE EDITION
-        $table->integer('edition_id');
-        $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
-        //CLE ETRANGERE EQUIPE
-        $table->integer('equipe_id');
-        $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');
 
 
 

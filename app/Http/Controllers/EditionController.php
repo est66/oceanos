@@ -15,7 +15,7 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Edition::all();
+        return Edition::all()->where('archive', false);
     }
 
     /**
@@ -71,14 +71,20 @@ class EditionController extends Controller {
     //
     //ARTICLES PAR EDITION
     public function articlesParEdition($nomEdition) {
-        $edition = Edition::where('nom', '=', '2017')->get()->first();
-        return $edition->articles;
+        $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
+        return $edition->articles->where('archive', false);
     }
 
     //EQUIPES PAR EDITION
     public function equipesParEdition($nomEdition) {
-        $edition = Edition::where('nom', '=', '2017')->get()->first();
-        return $edition->equipes;
+        $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
+        return $edition->equipes->where('archive', false);
     }
 
+        //PERSONNES PAR EDITION
+    public function personnesParEquipe($nomEdition,$nomEquipe) {
+        $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
+        return $edition->equipes->where('nom','=', $nomEquipe)->personnes;
+    }
+    
 }
