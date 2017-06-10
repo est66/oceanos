@@ -16,8 +16,8 @@ class Edition extends Migration {
             $table->increments('id');
             $table->string('nom');
             $table->datetime('date');
-            $table->longtext('description');
-            $table->longtext('resultats');
+            $table->text('description');
+            $table->text('resultats');
             $table->text('enjeu');
             $table->string('nbBateau');
             $table->string('lieu');

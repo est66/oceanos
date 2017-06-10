@@ -17,12 +17,12 @@ class Article extends Migration
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('titre');
-            $table->string('soustitre');
+            $table->string('soustitre')->nullable();
             $table->string('type');
-            $table->string('auteur');
+            $table->string('auteur')->nullable();
             $table->datetime('date');
-            $table->text('description');
-            $table->string('url');
+            $table->text('description')->nullable();
+            $table->string('url')->nullable();
             $table->boolean('visible');
             $table->boolean('archive');            
             $table->timestamps();
