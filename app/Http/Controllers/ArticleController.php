@@ -65,7 +65,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Article::find($id)->update(['archive' => false]);      
+        Article::find($id)->update(['archive' => true]);      
         return response()->json('OK', Response::HTTP_OK);
     }
 

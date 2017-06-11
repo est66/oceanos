@@ -89,8 +89,11 @@ class ACLSeeder extends Seeder {
         $edition1->archive = false;
         $edition1->actif = true;
         $edition1->save();
-        /*         * * ARTICLE ** 3*/
-        $article1 = new App\Article();
+  
+        
+                /*         * * ARTICLEs ** */
+        
+                $article1 = new App\Article();
         $article1->titre = "Hydrocontest en sursi !";
         $article1->soustitre = "Tous va mal";
         $article1->type = "presse";
@@ -117,7 +120,91 @@ class ACLSeeder extends Seeder {
         $article2->edition_id = 1;
         $article2->presse_id = 1;
         $article2->save();
-
+        
+        $article3 = new App\Article();
+        $article3->titre = str_random(10);
+        $article3->soustitre = str_random(10);
+        $article3->type = "news";
+        $article3->auteur = str_random(10);
+        $article3->date = "2017-10-10 15:28:22";
+        $article3->description = "Description";
+        $article3->url = "url/url/.html";
+        $article3->visible = true;
+        $article3->archive = false;
+        $article3->edition_id = 1;
+        $article3->presse_id = 0;
+        $article3->save();
+        
+        
+         /*         * * SPONSORS ** */
+        $sponsor1 = new App\Sponsor();
+        $sponsor1->nom = "Yverdon Énergies";
+        $sponsor1->categorie= "Sponsor Platine";
+        $sponsor1->description= "le sponsor principal";
+        $sponsor1->url="blalbla";
+        $sponsor1->archive=false;
+        $sponsor1->save();
+        
+        $sponsor2 = new App\Sponsor();
+        $sponsor2->nom = "MB-Fins";
+        $sponsor2->categorie= "Sponsor Platine";
+        $sponsor2->description= "Aide indisponsable de leur part pour l'équipe";
+        $sponsor2->url="blalbla";
+        $sponsor2->archive=false;
+        $sponsor2->save();
+        
+        $sponsor3 = new App\Sponsor();
+        $sponsor3->nom = "HEIG-VD";
+        $sponsor3->categorie= "Sponsor Or";
+        $sponsor3->description= "Aide indisponsable de leur part pour l'équipe";
+        $sponsor3->url="blalbla";
+        $sponsor3->archive=false;
+        $sponsor3->save();
+        
+        
+        
+        /*         * * PRESSE ** */
+        
+        $Presse1 = new App\Presse();
+        $Presse1->nom = "20 Minutes";
+        $Presse1->archive=false;
+        $Presse1->save();
+        
+        $Presse2 = new App\Presse();
+        $Presse2->nom = "24 Heures";
+        $Presse2->archive=false;
+        $Presse2->save();
+        
+        $Presse3 = new App\Presse();
+        $Presse3->nom = "La Region";
+        $Presse3->archive=false;
+        $Presse3->save();
+        
+        
+        /*         * * Reseaux Sociaux ** */
+        
+        $ResSoc1 = new App\ResSocial();
+        $ResSoc1->nom = "Facebook";
+        $ResSoc1->url="facebook.com";
+        $ResSoc1->archive=false;
+        $ResSoc1->save();
+        
+        $ResSoc2 = new App\ResSocial();
+        $ResSoc2->nom = "Instagram";
+        $ResSoc2->url="instagram.com";
+        $ResSoc2->archive=false;
+        $ResSoc2->save();
+        
+        /*         * * Media ** */        
+        $Media1 = new App\Media();
+        $Media1->titre="test";
+        $Media1->url="\salut.jpg";            
+        $Media1->description="lol";
+        $Media1->type="image";
+        $Media1->position=1;
+        $Media1->archive=false;
+        $Media1->save();
+        
         $Media2 = new App\Media();
         $Media2->titre="test";
         $Media2->url="\salut.mov";            
@@ -125,14 +212,23 @@ class ACLSeeder extends Seeder {
         $Media2->type="video";
         $Media2->position=1;
         $Media2->archive=false;
-        $Media2->save();    
+        $Media2->save();
+
+        $Media3 = new App\Media();
+        $Media3->titre="test";
+        $Media3->url="\salut.mov";            
+        $Media3->description="lol";
+        $Media3->type="image";
+        $Media3->position=2;
+        $Media3->archive=false;
+        $Media3->save(); 
+        
+  
 
 
 
 //        $article1->edition()->save($edition1);
-
-
-        /**         * GROUPS ** */
+//       /**         * GROUPS ** */
 //        $admin = new \App\Group();
 //        $admin->name = 'admin';
 //        $admin->save();

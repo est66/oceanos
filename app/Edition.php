@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Edition extends Model
 {
     protected $guarded  = [
-        'id', 'edition_id',
+        'id',
     ];
     
     //protected $dateFormat = 'Y-m-d';

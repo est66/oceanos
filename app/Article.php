@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
-protected $guarded = ['id'];
+    protected $guarded  = [
+        'id', 'edition_id',
+    ];
+    
 
 //    public static function isValid($parameters) {
 //        // validation here

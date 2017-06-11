@@ -62,7 +62,7 @@ class AlbumController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Album::find($id)->update(['archive' => false]);
+        Album::find($id)->update(['archive' => true]);      
         return response()->json('OK', Response::HTTP_OK);
     }
 
