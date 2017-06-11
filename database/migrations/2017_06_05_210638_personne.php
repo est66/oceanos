@@ -18,7 +18,6 @@ class Personne extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
-            $table->string('team')->nullable();
             $table->string('email')->nullable();
             $table->string('statut');
             $table->string('phrase');

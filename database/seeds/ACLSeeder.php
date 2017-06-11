@@ -52,7 +52,6 @@ class ACLSeeder extends Seeder {
         $personne1 = new App\Personne();
         $personne1->nom = "Esteem";
         $personne1->prenom = "Okoro";
-        $personne1->team = "ing";
         $personne1->email = "esteem.okoro@heig-vd.com";
         $personne1->filiere = "IT";
         $personne1->statut = "Communication";
@@ -66,7 +65,6 @@ class ACLSeeder extends Seeder {
         $personne2 = new App\Personne();
         $personne2->nom = "Jonathan";
         $personne2->prenom = "Aeschimann";
-        $personne2->team = "ing";
         $personne2->email = "jonathan.aeschimann@heig-vd.com";
         $personne2->filiere = "Media";
         $personne2->statut = "Communication";
