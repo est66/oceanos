@@ -387,7 +387,7 @@ class ACLSeeder extends Seeder {
         $Album1->save(); 
         
         $Album2 = new App\Album();
-        $Album2->nom="Tests";           
+        $Album2->nom="Tests_medias";           
         $Album2->description="lol";
         $Album2->archive=false;
         $Album2->edition_id=2;
@@ -395,22 +395,25 @@ class ACLSeeder extends Seeder {
         
         /*         * * Information ** */   
         $info1 = new App\Information();
-        $info1->nom="PageAccueil_PhraseAccroche";           
+        $info1->nom="PageAccueil_PhraseAccroche";          
         $info1->texte="L'efficience avant tout";
         $info1->visible=true;
         $info1->archive=false;
+        $info1->save(); 
         
         $info2 = new App\Information();
         $info2->nom="EspaceSponsor";           
         $info2->texte="Soutenez nous en devenant notre partenaire. De multiples avantages vous est offerts en fonction des investissements que vous faites... ";
         $info2->visible=true;
         $info2->archive=false;
+        $info2->save(); 
         
         $info3 = new App\Information();
         $info3->nom="EspaceEtudiant";           
         $info3->texte="L'occasion pour oeuvrer dans un projet d'envergure!";
         $info3->visible=true;
         $info3->archive=false;
+        $info3->save(); 
         
         
         
