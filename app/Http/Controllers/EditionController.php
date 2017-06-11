@@ -83,5 +83,14 @@ class EditionController extends Controller {
         $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
         return $edition->equipes->where('archive', false);
     }
+    
+    
+        public function chargerEdition($nomEdition) {
+        return Edition::where('nom', '=', $nomEdition)->first()->with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->get();  
+    }
+    
+  
+    
+    
 
 }

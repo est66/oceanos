@@ -106,6 +106,8 @@ Route::get('{type}/media/{id}', 'MediaController@media');
 //ALBUM-MEDIAS-ENSEMBLE DES MEDIAS D'UN ALBUMS 
 // à faire
 
+//CHARGER EDTION
+Route::get('{nomEdition}', 'EditionController@chargerEdition');
 
 //UPLOAD MEDIA
 Route::post('media/store', function (Request $request){});
