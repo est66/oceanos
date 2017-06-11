@@ -195,33 +195,124 @@ class ACLSeeder extends Seeder {
         $ResSoc2->save();
         
         /*         * * Media ** */        
+        $media0 = new App\Media();
+        $media0->titre="test";
+        $media0->url="\salut.jpg";            
+        $media0->description="lol";
+        $media0->type="image";
+        $media0->archive=false;
+        $media0->save();
+        
         $Media1 = new App\Media();
         $Media1->titre="test";
-        $Media1->url="\salut.jpg";            
+        $Media1->url="\salut.mov";            
         $Media1->description="lol";
-        $Media1->type="image";
+        $Media1->type="video";
         $Media1->archive=false;
+        $Media1->album_id=1;
         $Media1->save();
-        
+
         $Media2 = new App\Media();
         $Media2->titre="test";
         $Media2->url="\salut.mov";            
         $Media2->description="lol";
-        $Media2->type="video";
+        $Media2->type="image";
         $Media2->archive=false;
         $Media2->album_id=1;
-        $Media2->save();
-
+        $Media2->save(); 
+        
+        
         $Media3 = new App\Media();
         $Media3->titre="test";
-        $Media3->url="\salut.mov";            
+        $Media3->url="\equipe.jpg";            
         $Media3->description="lol";
         $Media3->type="image";
+        $Media3->equipe_id=1;
         $Media3->archive=false;
-        $Media3->album_id=1;
-        $Media3->save(); 
+        $Media3->save();
         
-         /*         * * Album ** */   
+        $Media4 = new App\Media();
+        $Media4->titre="test";
+        $Media4->url="\personne1.jpg";            
+        $Media4->description="lol";
+        $Media4->type="image";
+        $Media4->personne_id=1;
+        $Media4->archive=false;
+        $Media4->save();
+        
+        $Media5 = new App\Media();
+        $Media5->titre="test";
+        $Media5->url="\personne2.jpg";            
+        $Media5->description="lol";
+        $Media5->type="image";
+        $Media5->personne_id=2;
+        $Media5->archive=false;
+        $Media5->save();
+        
+        $Media6 = new App\Media();
+        $Media6->titre="test";
+        $Media6->url="\atricle.jpg";            
+        $Media6->description="lol";
+        $Media6->type="image";
+        $Media6->article_id=1;
+        $Media6->archive=false;
+        $Media6->save();
+        
+        $Media7 = new App\Media();
+        $Media7->titre="test";
+        $Media7->url="\atricle2.jpg";            
+        $Media7->description="lol";
+        $Media7->type="image";
+        $Media7->article_id=2;
+        $Media7->archive=false;
+        $Media7->save();
+        
+        $Media8 = new App\Media();
+        $Media8->titre="test";
+        $Media8->url="\sponsor1.jpg";            
+        $Media8->description="lol";
+        $Media8->type="image";
+        $Media8->sponsor_id=1;
+        $Media8->archive=false;
+        $Media8->save();         
+        
+        $Media9 = new App\Media();
+        $Media9->titre="test";
+        $Media9->url="\sponsor2.jpg";            
+        $Media9->description="lol";
+        $Media9->type="image";
+        $Media9->sponsor_id=2;
+        $Media9->archive=false;
+        $Media9->save();   
+        
+        $media00 = new App\Media();
+        $media00->titre="test";
+        $media00->url="\sponsor2.jpg";            
+        $media00->description="lol";
+        $media00->type="image";
+        $media00->sponsor_id=2;
+        $media00->archive=false;
+        $media00->save();  
+        
+        $media01 = new App\Media();
+        $media01->titre="test";
+        $media01->url="\presse1.jpg";            
+        $media01->description="lol";
+        $media01->type="image";
+        $media01->presse_id=1;
+        $media01->archive=false;
+        $media01->save();  
+                
+        $media02 = new App\Media();
+        $media02->titre="test";
+        $media02->url="\presse1.jpg";            
+        $media02->description="lol";
+        $media02->type="image";
+        $media02->presse_id=2;
+        $media02->archive=false;
+        $media02->save();  
+        
+        /*         * * Album ** */   
         $Album1 = new App\Album();
         $Album1->nom="Concours";           
         $Album1->description="lol";
@@ -230,12 +321,33 @@ class ACLSeeder extends Seeder {
         $Album1->save(); 
         
         $Album2 = new App\Album();
-        $Album2->nom="Tests";           
+        $Album2->nom="Tests_medias";           
         $Album2->description="lol";
         $Album2->archive=false;
         $Album2->edition_id=1;
-        $Album2->save();  
-
+        $Album2->save(); 
+        
+        /*         * * Information ** */   
+        $info1 = new App\Information();
+        $info1->nom="PageAccueil_PhraseAccroche";          
+        $info1->texte="L'efficience avant tout";
+        $info1->visible=true;
+        $info1->archive=false;
+        $info1->save(); 
+        
+        $info2 = new App\Information();
+        $info2->nom="EspaceSponsor";           
+        $info2->texte="Soutenez nous en devenant notre partenaire. De multiples avantages vous est offerts en fonction des investissements que vous faites... ";
+        $info2->visible=true;
+        $info2->archive=false;
+        $info2->save(); 
+        
+        $info3 = new App\Information();
+        $info3->nom="EspaceEtudiant";           
+        $info3->texte="L'occasion pour oeuvrer dans un projet d'envergure!";
+        $info3->visible=true;
+        $info3->archive=false;
+        $info3->save(); 
 
 
 //        $article1->edition()->save($edition1);

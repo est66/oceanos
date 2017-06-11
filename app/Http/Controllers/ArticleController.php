@@ -15,7 +15,8 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Article::all()->where('archive', false)->load('media')->load('presse');
+        //return Article::all()->where('archive', false)->load('media')->load('presse');        
+        return Article::all()->where('archive', false)->first()->with('media','presse.media')->get();
     }
 
     /**
@@ -41,7 +42,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Article::find($id)->load('media');
+        return Article::find($id)->first()->with('media','presse.media')->get();
     }
 
     /**
