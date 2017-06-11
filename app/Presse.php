@@ -15,4 +15,10 @@ class Presse extends Model
     {
         return $this->hasOne('App\Media');
     }
+    
+    
+    public function articles()
+    {
+        return $this->hasMany('App\Article');
+    }
 }

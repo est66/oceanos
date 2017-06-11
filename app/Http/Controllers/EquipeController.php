@@ -15,16 +15,7 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Equipe::all()->where('archive', false)->load('personnes');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-        //
+        return Equipe::all()->where('archive', false)->load('personnes')->load('media');
     }
 
     /**
@@ -34,7 +25,13 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        $para = $request->all();
+        // Règles de validations   
+        // if (!Equipe::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
+        $equipe = new Equipe($para);
+        $equipe->save();
+        return response()->json($equipe, Response::HTTP_CREATED);
     }
 
     /**
@@ -44,17 +41,8 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        //
+        return Equipe::find($id)->load('personnes');
+        ;
     }
 
     /**
@@ -65,7 +53,9 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $para = $request->all();
+        Equipe::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -75,14 +65,15 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        Equipe::find($id)->update(['archive' => true]);
+        return response()->json('OK', Response::HTTP_OK);
     }
-
+    //--------------------------------------------------------------------------
     //PERSONNES PAR EDITION
     public function personnesParEquipe($nomEdition, $nomEquipe) {
 
         $personnes = Edition::where('nom', '=', $nomEdition)->first()
-                ->equipes->where('nom', '=', $nomEquipe)->load('personnes');
+                ->equipes->where('nom', '=', $nomEquipe)->load('personnes')->load('media');;
 
         return $personnes;
     }

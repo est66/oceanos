@@ -27,7 +27,8 @@ class EditionController extends Controller {
      */
     public function store(Request $request) {
         $para = $request->all();
-        // Règles de validations //  VALIDATION  if (!Edition::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // Règles de validations //  VALIDATION  
+        if (!Edition::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
         $edition = new Edition($para);
         $edition->save();

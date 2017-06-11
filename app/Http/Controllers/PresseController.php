@@ -11,19 +11,8 @@ class PresseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return Presse::all()->where('archive', false);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function index() {
+        return Presse::all()->where('archive', false)->load('media');
     }
 
     /**
@@ -32,9 +21,14 @@ class PresseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $para = $request->all();
+        // Règles de validations   
+        // if (!Presse::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
+        $presse = new Presse($para);
+        $presse->save();
+        return response()->json($presse, Response::HTTP_CREATED);
     }
 
     /**
@@ -43,20 +37,8 @@ class PresseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function show($id) {
+        return Presse::find($id)->load('media');
     }
 
     /**
@@ -66,9 +48,10 @@ class PresseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $para = $request->all();
+        Presse::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -77,8 +60,8 @@ class PresseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        Presse::find($id)->update(['archive' => true]);      
+        return response()->json('OK', Response::HTTP_OK);
     }
 }

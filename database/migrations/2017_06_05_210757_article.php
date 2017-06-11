@@ -31,7 +31,7 @@ class Article extends Migration
             $table->integer('edition_id');
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
-            $table->integer('presse_id');
+            $table->integer('presse_id')->nullable();;
             $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade'); 
         });
     }

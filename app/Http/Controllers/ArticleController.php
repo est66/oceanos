@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Article;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
-use App\Edition;
 
 class ArticleController extends Controller {
 
@@ -16,13 +15,13 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Article::all()->where('archive', false);
+        return Article::all()->where('archive', false)->load('media')->load('presse');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $resquest
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
@@ -42,7 +41,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Article::find($id);
+        return Article::find($id)->load('media');
     }
 
     /**
@@ -65,7 +64,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Article::find($id)->update(['archive' => true]);      
+        Article::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
     }
 

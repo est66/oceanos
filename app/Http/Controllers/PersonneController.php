@@ -11,19 +11,8 @@ class PersonneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return  Personne::all()->where('archive', false);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function index() {
+        return Personne::all()->where('archive', false)->load('equipes')->load('media');
     }
 
     /**
@@ -32,9 +21,14 @@ class PersonneController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $para = $request->all();
+        // Règles de validations   
+        // if (!Personne::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
+        $personne = new Personne($para);
+        $personne->save();
+        return response()->json($personne, Response::HTTP_CREATED);
     }
 
     /**
@@ -43,20 +37,8 @@ class PersonneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function show($id) {
+        return Personne::find($id)->load('medias');;
     }
 
     /**
@@ -66,9 +48,10 @@ class PersonneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $para = $request->all();
+        Personne::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -77,8 +60,8 @@ class PersonneController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        Personne::find($id)->update(['archive' => true]);      
+        return response()->json('OK', Response::HTTP_OK);
     }
 }

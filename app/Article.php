@@ -36,10 +36,13 @@ class Article extends Model {
         return $this->belongsTo('App\Edition');
     }
     
-    
-            public function medias()
-    {
-        return $this->hasMany('App\Media');
-    }
 
+        public function media() {
+        return $this->hasOne('App\Media');
+    }
+    
+    public function presse()
+    {
+        return $this->belongsTo('App\Presse');
+    }
 }
