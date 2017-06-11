@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Response;
+use App\Edition;
 
 class ArticleController extends Controller {
 
@@ -14,15 +17,6 @@ class ArticleController extends Controller {
      */
     public function index() {
         return Article::all()->where('archive', false);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-        //
     }
 
     /**
@@ -38,7 +32,7 @@ class ArticleController extends Controller {
         // création d'un nouvel objet
         $article = new Article($para);
         $article->save();
-        return response()->json($edition, Response::HTTP_CREATED);
+        return response()->json($article, Response::HTTP_CREATED);
     }
 
     /**
@@ -52,16 +46,6 @@ class ArticleController extends Controller {
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id) {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -69,7 +53,9 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $para = $request->all();
+        Article::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -79,7 +65,8 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        Article::find($id)->update(['archive' => false]);      
+        return response()->json('OK', Response::HTTP_OK);
     }
 
 }

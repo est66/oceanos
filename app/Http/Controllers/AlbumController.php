@@ -4,26 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Album;
-class AlbumController extends Controller
-{
+
+class AlbumController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-    return  Album::all()->where('archive', false);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function index() {
+        return Album::all()->where('archive', false);
     }
 
     /**
@@ -32,9 +22,14 @@ class AlbumController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $para = $request->all();
+        // Règles de validations   
+        // if (!Album::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
+        $album = new Album($para);
+        $album->save();
+        return response()->json($album, Response::HTTP_CREATED);
     }
 
     /**
@@ -43,20 +38,8 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function show($id) {
+        return Album::find($id);
     }
 
     /**
@@ -66,9 +49,10 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $para = $request->all();
+        Album::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -77,8 +61,9 @@ class AlbumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        Album::find($id)->update(['archive' => false]);
+        return response()->json('OK', Response::HTTP_OK);
     }
+
 }

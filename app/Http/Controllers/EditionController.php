@@ -64,9 +64,9 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        $edition = Edition::find($id);
-        $edition->delete();
+        Edition::find($id)->update(['archive' => false]);      
         return response()->json('OK', Response::HTTP_OK);
+        
     }
 
     //FONCTIONS SUPPLEMENTAIRES
@@ -74,20 +74,13 @@ class EditionController extends Controller {
     //ARTICLES PAR EDITION
     public function articlesParEdition($nomEdition) {
         $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
-        return $edition->articles->where('archive', false);
+        return $edition->articles->where('archive', true);
     }
 
     //TEAM PAR EDITION
-    public function equipesParEdition($nomEdition) {
+    public function equipesEdition($nomEdition) {
         $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
         return $edition->equipes->where('archive', false);
     }
 
-        //PERSONNES PAR TEAM PAR EDITION
-    public function personnesParTeam($nomEdition,$nomEquipe) {
-        $edition = Edition::where('nom', '=', $nomEdition)->get()->first()->personnes->where('team', '=', $nomEquipe);    
-       return $edition;
-
-    }
-    
 }

@@ -16,38 +16,38 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
 
 
-//AVEC DROIT ADMIN--
-Route::group(['middleware' => 'auth'], function () {
-//ALBUMS
-    Route::resource('albums', 'AlbumController');
-//ARTICLES
-    Route::resource('articles', 'ArticleController');
-//BUDGETS
-    Route::resource('budgets', 'BudgetController');
-//COUTS
-    Route::resource('couts', 'CoutController');
-//DEVISES
-    Route::resource('devises', 'DeviseController');
-//EDITIONS
-    Route::resource('editions', 'EditionController');
-//EQUIPES
-    Route::resource('equipes', 'EquipeController');
-//INFORMATIONS
-    Route::resource('informations', 'InformationController');
-//MEDIAS
-    Route::resource('medias', 'MediaController');
-//PARAMETRES
-    Route::resource('parametres', 'ParametreController');
-//PERSONNES
-    Route::resource('personnes', 'PersonneController');
-//PRESSES
-    Route::resource('presses', 'PresseController');
-//RESEAUX
-    Route::resource('reseaux', 'ResSocialController');
-//SPONSORS
-    Route::resource('sponsors', 'SponsorController');
-});
-//-->
+////AVEC DROIT ADMIN--
+//Route::group(['middleware' => 'auth'], function () {
+////ALBUMS
+//    Route::resource('albums', 'AlbumController');
+////ARTICLES
+//    Route::resource('articles', 'ArticleController');
+////BUDGETS
+//    Route::resource('budgets', 'BudgetController');
+////COUTS
+//    Route::resource('couts', 'CoutController');
+////DEVISES
+//    Route::resource('devises', 'DeviseController');
+////EDITIONS
+//    Route::resource('editions', 'EditionController');
+////EQUIPES
+//    Route::resource('equipes', 'EquipeController');
+////INFORMATIONS
+//    Route::resource('informations', 'InformationController');
+////MEDIAS
+//    Route::resource('medias', 'MediaController');
+////PARAMETRES
+//    Route::resource('parametres', 'ParametreController');
+////PERSONNES
+//    Route::resource('personnes', 'PersonneController');
+////PRESSES
+//    Route::resource('presses', 'PresseController');
+////RESEAUX
+//    Route::resource('reseaux', 'ResSocialController');
+////SPONSORS
+//    Route::resource('sponsors', 'SponsorController');
+//});
+////-->
 
 
 
@@ -85,9 +85,9 @@ Route::resource('sponsors', 'SponsorController');
 //AUTRES FONCTIONS
 //SELON L'EDITION ----------------
 //ARTICLES-EDITION
-Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesParEdition');
+Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesEdition');
 //EQUIPES-EDITION
-Route::get('editions/{nomEdition}/equipes/', 'EditionController@equipesParEdition');
+Route::get('editions/{nomEdition}/articles/', 'ArticleController@equipesEdition');
 //SPONSORS-EDITION
 // à faire
 Route::get('editions/{nomEdition}/sponsors/', 'SponsorController@sponsorsEdition');
@@ -106,6 +106,9 @@ Route::get('{type}/media/{id}', 'MediaController@media');
 //ALBUM-MEDIAS-ENSEMBLE DES MEDIAS D'UN ALBUMS 
 // à faire
 Route::get('album/medias', 'AlbumController@media');
+
+//UPLOAD MEDIA
+Route::post('media/store', function (Request $request){});
 //---------
 
 
