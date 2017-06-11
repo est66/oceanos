@@ -85,17 +85,17 @@ Route::resource('sponsors', 'SponsorController');
 //AUTRES FONCTIONS
 //SELON L'EDITION ----------------
 //ARTICLES-EDITION
-Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesEdition');
+Route::get('edition/{nomEdition}/articles/', 'EditionController@articlesEdition');
 //EQUIPES-EDITION
-Route::get('editions/{nomEdition}/articles/', 'ArticleController@equipesEdition');
+Route::get('edition/{nomEdition}/articles/', 'ArticleController@equipesEdition');
 //SPONSORS-EDITION
 // à faire
-Route::get('editions/{nomEdition}/sponsors/', 'SponsorController@sponsorsEdition');
+Route::get('edition/{nomEdition}/sponsors/', 'SponsorController@sponsorsEdition');
 //ALBUMS-EDITION
 // à faire
-Route::get('editions/{nomEdition}/album/', 'SponsorController@albumEdition');
+Route::get('edition/{nomEdition}/albums', 'AlbumController@albumEdition');
 //AUTRES - PERSONNES PAR EQUIPES PAR EDITION
-Route::get('editions/{nomEdition}/equipes/{nomEquipe}', 'EquipeController@personnesParEquipe');
+Route::get('edition/{nomEdition}/equipes/{nomEquipe}', 'EquipeController@personnesParEquipe');
 //---------
 
 //SELON MEDIA ----------------
@@ -105,7 +105,7 @@ Route::get('editions/{nomEdition}/equipes/{nomEquipe}', 'EquipeController@person
 Route::get('{type}/media/{id}', 'MediaController@media');
 //ALBUM-MEDIAS-ENSEMBLE DES MEDIAS D'UN ALBUMS 
 // à faire
-Route::get('album/medias', 'AlbumController@media');
+
 
 //UPLOAD MEDIA
 Route::post('media/store', function (Request $request){});

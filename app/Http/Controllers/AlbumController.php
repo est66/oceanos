@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Album;
+use App\Edition;
+use App\Media;
 
 class AlbumController extends Controller {
 
@@ -13,7 +15,7 @@ class AlbumController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Album::all()->where('archive', false);
+        return Album::all()->where('archive', false)->load('medias');;
     }
 
     /**
@@ -39,7 +41,7 @@ class AlbumController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Album::find($id);
+        return Album::find($id)->load('medias');;
     }
 
     /**
@@ -64,6 +66,15 @@ class AlbumController extends Controller {
     public function destroy($id) {
         Album::find($id)->update(['archive' => true]);      
         return response()->json('OK', Response::HTTP_OK);
+    }
+    
+        //ALBUM PAR EDITION
+    public function albumEdition($nomEdition) {
+
+        $personnes = Edition::where('nom', '=', $nomEdition)->first()
+                ->albums/*find($id*/->load('medias');
+
+        return $personnes;
     }
 
 }

@@ -20,7 +20,7 @@ class Media extends Migration
             $table->string('url');            
             $table->text('description');
             $table->string('type');
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->boolean('archive');
             $table->timestamps();
              //CLES ETRANGERES            
@@ -35,13 +35,13 @@ class Media extends Migration
             $table->integer('article_id')->nullable();
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');  
             //CLE ETRANGERE SPONSOR
-            $table->date('sponsor_id')->nullable();
+            $table->integer('sponsor_id')->nullable();
             $table->foreign('sponsor_id')->references('id')->on('sponsors')->onDelete('cascade');  
             //CLE ETRANGERE ALBUM
-            $table->date('album_id')->nullable();
+            $table->integer('album_id')->nullable();
             $table->foreign('album_id')->references('id')->on('albums')->onDelete('cascade');
             //CLE ETRANGERE INFOMRATION
-            $table->date('information_id')->nullable();
+            $table->integer('information_id')->nullable();
             $table->foreign('information_id')->references('id')->on('informations')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
             $table->integer('presse_id')->nullable();

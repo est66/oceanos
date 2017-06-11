@@ -15,7 +15,7 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return  Equipe::all()->where('archive', false);
+        return Equipe::all()->where('archive', false)->load('personnes');
     }
 
     /**
@@ -82,7 +82,8 @@ class EquipeController extends Controller {
     public function personnesParEquipe($nomEdition, $nomEquipe) {
 
         $personnes = Edition::where('nom', '=', $nomEdition)->first()
-                ->equipes->where('nom', '=', $nomEquipe)->first()->personnes;
+                ->equipes->where('nom', '=', $nomEquipe)->load('personnes');
+
         return $personnes;
     }
 

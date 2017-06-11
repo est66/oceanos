@@ -39,7 +39,7 @@ class ACLSeeder extends Seeder {
         $equipe1->archive = false;
         $equipe1->edition_id = 1;
         $equipe1->save();
-        //EQUIPES
+
         $equipe2 = new App\Equipe();
         $equipe2->nom = "TEAM HYDROCONTEST";
         $equipe2->phrase = "TOUS LES MEMBRES DE LA TEAM HYDROCONTEST";
@@ -89,8 +89,7 @@ class ACLSeeder extends Seeder {
         $edition1->archive = false;
         $edition1->actif = true;
         $edition1->save();
-  
-        
+      
                 /*         * * ARTICLEs ** */
         
                 $article1 = new App\Article();
@@ -201,7 +200,6 @@ class ACLSeeder extends Seeder {
         $Media1->url="\salut.jpg";            
         $Media1->description="lol";
         $Media1->type="image";
-        $Media1->position=1;
         $Media1->archive=false;
         $Media1->save();
         
@@ -210,8 +208,8 @@ class ACLSeeder extends Seeder {
         $Media2->url="\salut.mov";            
         $Media2->description="lol";
         $Media2->type="video";
-        $Media2->position=1;
         $Media2->archive=false;
+        $Media2->album_id=1;
         $Media2->save();
 
         $Media3 = new App\Media();
@@ -219,11 +217,24 @@ class ACLSeeder extends Seeder {
         $Media3->url="\salut.mov";            
         $Media3->description="lol";
         $Media3->type="image";
-        $Media3->position=2;
         $Media3->archive=false;
+        $Media3->album_id=1;
         $Media3->save(); 
         
-  
+         /*         * * Album ** */   
+        $Album1 = new App\Album();
+        $Album1->nom="Concours";           
+        $Album1->description="lol";
+        $Album1->archive=false;
+        $Album1->edition_id=1;
+        $Album1->save(); 
+        
+        $Album2 = new App\Album();
+        $Album2->nom="Tests";           
+        $Album2->description="lol";
+        $Album2->archive=false;
+        $Album2->edition_id=1;
+        $Album2->save();  
 
 
 

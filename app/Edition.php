@@ -49,7 +49,7 @@ class Edition extends Model {
     }
 
     public function albums() {
-        return $this->hasMany('App\Albums');
+        return $this->hasMany('App\Album');
     }
 
     public function budgets() {

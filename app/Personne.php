@@ -9,19 +9,19 @@ class Personne extends Model {
     protected $guarded = [
         'id',
     ];
-    
-        public function equipes() 
-    {
-         return $this->belongsToMany('App\Equipe');
+    protected $hidden = [
+        'pivot',
+    ];
+
+    public function equipes() {
+        return $this->belongsToMany('App\Equipe');
     }
-    
-                public function edition()
-    {
+
+    public function edition() {
         return $this->belongsTo('App\Edition');
     }
-    
-          public function media()
-    {
+
+    public function media() {
         return $this->hasOne('App\Media');
     }
 
