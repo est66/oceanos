@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Media;
 class MediaController extends Controller
 {
     /**
@@ -82,4 +82,10 @@ class MediaController extends Controller
     {
         //
     }
+    //ROUTES POUR TOUS LES MEDIAS SELON LE TYPE ET L'ID DE L'OBJET CONCERNE
+      public function media($type, $id) {
+          $media_id = $type.'_id';          
+       return  Media::all()->where($media_id,'=', $id);  
+      }
+    
 }

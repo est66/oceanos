@@ -19,5 +19,8 @@ class Equipe extends Model
     {
         return $this->belongsTo('App\Edition');
     }
-  
+      public function media()
+    {
+        return $this->hasOne('App\Media');
+    }
 }

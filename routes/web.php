@@ -48,29 +48,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('sponsors', 'SponsorController');
 });
 //-->
+
+
+
 //SANS DROITS ADMINS--
-//-->
-////EDITIONS--
-//Route::get('/editions', 'EditionController@index');
-////A METTRE DANS AUTH
-//Route::post('/editions/store', 'EditionController@store');
-////-->
-////
-////EDITIONS--
-//Route::get('/{edition}/', 'EditionController@index');
-////A METTRE DANS AUTH
-//Route::post('/editions/store', 'EditionController@store');
-////-->
-
-
-
-Route::get('/articles', function ($edition) {
-    
-});
-Route::get('/editions/id', function () {
-
-    //USERS
-});
 
 // ALBUMS
 Route::resource('albums', 'AlbumController');
@@ -102,9 +83,34 @@ Route::resource('reseaux', 'ResSocialController');
 Route::resource('sponsors', 'SponsorController');
 
 //AUTRES FONCTIONS
-//ARTICLES PAR EDITION
+//SELON L'EDITION ----------------
+//ARTICLES-EDITION
 Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesParEdition');
-//EQUIPES PAR EDITION
+//EQUIPES-EDITION
 Route::get('editions/{nomEdition}/equipes/', 'EditionController@equipesParEdition');
-//PERSONNES DES EQUIPES PAR EDITION
+//SPONSORS-EDITION
+// à faire
+Route::get('editions/{nomEdition}/sponsors/', 'SponsorController@sponsorsEdition');
+//ALBUMS-EDITION
+// à faire
+Route::get('editions/{nomEdition}/album/', 'SponsorController@albumEdition');
+//AUTRES - PERSONNES PAR EQUIPES PAR EDITION
 Route::get('editions/{nomEdition}/equipes/{nomEquipe}', 'EquipeController@personnesParEquipe');
+//---------
+
+//SELON MEDIA ----------------
+//ROUTES QUI PERMET DE RETROUVER UN MEDIA SELON SON TYPE ET SON ID --> EX : equipe/media/1
+//EQUIPE-MEDIA  
+// à faire
+Route::get('{type}/media/{id}', 'MediaController@media');
+//ALBUM-MEDIAS-ENSEMBLE DES MEDIAS D'UN ALBUMS 
+// à faire
+Route::get('album/medias', 'AlbumController@media');
+//---------
+
+
+//ARTICLE-PRESSE ----------------
+// à faire
+Route::get('presse/media/{id}', 'PresseController@media');
+//---------
+
