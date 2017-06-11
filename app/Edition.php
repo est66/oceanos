@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Edition extends Model
-{
-    protected $guarded  = [
+class Edition extends Model {
+
+    protected $guarded = [
         'id',
     ];
-    
+
     //protected $dateFormat = 'Y-m-d';
 
     public static function isValid($parameters) {
@@ -31,26 +31,29 @@ class Edition extends Model
                 ])->passes();
     }
 
-        public function articles()
-    {
+    public function articles() {
         return $this->hasMany('App\Article');
     }
-    
-            public function equipes()
-    {
+
+    public function equipes() {
         return $this->hasMany('App\Equipe');
     }
-    
-    
-        public function sponsors() 
-    {
-         return $this->belongsToMany('App\Sponsor')
-                 ->withTimestamps();
+
+    public function sponsors() {
+        return $this->belongsToMany('App\Sponsor')
+                        ->withTimestamps();
     }
-    
-    
-        public function personnes()
-    {
+
+    public function personnes() {
         return $this->hasMany('App\Personne');
     }
+
+    public function albums() {
+        return $this->hasMany('App\Albums');
+    }
+
+    public function budgets() {
+        return $this->hasMany('App\Budget');
+    }
+
 }

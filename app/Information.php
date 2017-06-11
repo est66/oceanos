@@ -10,4 +10,9 @@ class Information extends Model {
         'id',
     ];
 
+          public function media()
+    {
+        return $this->hasOne('App\Media');
+    }
+    
 }

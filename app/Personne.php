@@ -14,5 +14,15 @@ class Personne extends Model {
     {
          return $this->belongsToMany('App\Equipe');
     }
+    
+                public function edition()
+    {
+        return $this->belongsTo('App\Edition');
+    }
+    
+          public function media()
+    {
+        return $this->hasOne('App\Media');
+    }
 
 }

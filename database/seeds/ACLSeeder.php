@@ -60,6 +60,7 @@ class ACLSeeder extends Seeder {
         $personne1->description = "Description de la personne";
         $personne1->edition_id = 1;
         $personne1->save();
+        //JOINTURE AVEC PIVOT
         $equipe1->personnes()->save($personne1);
         //------------------------------------
         $personne2 = new App\Personne();
@@ -73,6 +74,7 @@ class ACLSeeder extends Seeder {
         $personne2->description = "Description de la personne";
         $personne2->edition_id = 1;
         $personne2->save();
+        //JOINTURE AVEC PIVOT
         $equipe1->personnes()->save($personne2);
         //------------------------------------
         

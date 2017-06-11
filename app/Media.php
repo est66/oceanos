@@ -12,13 +12,36 @@ protected $table = 'medias';
     public function album() {
         return $this->belongsTo('App\Album');
     }
-    
-    
-      /**
-     * Get the phone record associated with the user.
-     */   
+     
         public function equipe()
     {
         return $this->belongsTo('App\Equipe');
     }
+    
+        public function artilce()
+    {
+        return $this->belongsTo('App\Article');
+    }    
+    
+            public function personne()
+    {
+        return $this->belongsTo('App\Personne');
+    }
+    
+            public function sponsor()
+    {
+        return $this->belongsTo('App\Sponsor');
+    }
+    
+            public function presse()
+    {
+        return $this->belongsTo('App\Presse');
+    }
+    
+            public function information()
+    {
+        return $this->belongsTo('App\Information');
+    }
+    
+
 }

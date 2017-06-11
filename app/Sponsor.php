@@ -16,4 +16,10 @@ class Sponsor extends Model
          return $this->belongsToMany('App\Edition')
                  ->withTimestamps();
     }
+    
+    
+          public function media()
+    {
+        return $this->hasOne('App\Media');
+    }
 }
