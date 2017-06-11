@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Personne;
+use App\Equipe_Personne;
+use App\Equipe;
 
-class PersonneController extends Controller
+class EquipePersonneController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class PersonneController extends Controller
      */
     public function index()
     {
-        return Personne::all();
+        $eps=Equipe_Personne::all();
+
+        return $eps;
     }
 
     /**

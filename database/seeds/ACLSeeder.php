@@ -22,7 +22,9 @@ class ACLSeeder extends Seeder {
         DB::table('informations')->truncate();
         DB::table('parametres')->truncate();
         DB::table('res_socials')->truncate();
-
+        DB::table('equipe_personne')->truncate();
+        
+        
         /*         * * USERS ** */
         $user1 = new App\User();
         $user1->email = 'amdin';
@@ -83,8 +85,37 @@ class ACLSeeder extends Seeder {
         $equipe1 = new App\Equipe();
         $equipe1->nom = "Team HEIG-VD";
         $equipe1->archive = false;
-        $equipe1->edition_id = 1;
-        $equipe1->equipe_id = 0;
+        $equipe1->edition_id = 2;
+        $equipe1->save();
+        
+        /*         * * EQUIPE ** */
+        $equipe1 = new App\Equipe();
+        $equipe1->nom = "Team Communication";
+        $equipe1->archive = false;
+        $equipe1->edition_id = 2;
+        $equipe1->equipe_id = 1;
+        $equipe1->save();
+        
+        /*         * * EQUIPE ** */
+        $equipe1 = new App\Equipe();
+        $equipe1->nom = "Team Ingénieurs";
+        $equipe1->archive = false;
+        $equipe1->edition_id = 2;
+        $equipe1->equipe_id = 1;
+        $equipe1->save();
+        
+        /*         * * EQUIPE_PERSONNE ** */
+        $equipe1 = new App\Equipe_Personne();
+        $equipe1->equipe_id = 2;
+        $equipe1->personne_id = 1;
+        $equipe1->save();
+        $equipe1 = new App\Equipe_Personne();
+        $equipe1->equipe_id = 2;
+        $equipe1->personne_id = 2;
+        $equipe1->save();
+        $equipe1 = new App\Equipe_Personne();
+        $equipe1->equipe_id = 3;
+        $equipe1->personne_id = 3;
         $equipe1->save();
 
         /*         * * EDITION ** */
@@ -233,10 +264,37 @@ class ACLSeeder extends Seeder {
         $Media2->url="\salut.mov";            
         $Media2->description="lol";
         $Media2->type="video";
-        $Media2->position=1;
+        $Media2->position=2;
         $Media2->archive=false;
         $Media2->save();
         
+        
+        $Media3 = new App\Media();
+        $Media3->titre="test";
+        $Media3->url="\equipe.jpg";            
+        $Media3->description="lol";
+        $Media3->type="image";
+        $Media3->equipe_id=1;
+        $Media3->archive=false;
+        $Media3->save();
+        
+        $Media4 = new App\Media();
+        $Media4->titre="test";
+        $Media4->url="\personne1.jpg";            
+        $Media4->description="lol";
+        $Media4->type="image";
+        $Media4->personne_id=1;
+        $Media4->archive=false;
+        $Media4->save();
+        
+        $Media5 = new App\Media();
+        $Media5->titre="test";
+        $Media5->url="\personne2.jpg";            
+        $Media5->description="lol";
+        $Media5->type="image";
+        $Media5->personne_id=2;
+        $Media5->archive=false;
+        $Media5->save();
         
                 
 //        $article1->edition()->save($edition1);

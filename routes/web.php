@@ -32,6 +32,12 @@ Route::post('/editions/store', 'EditionController@store');
 
 
 
+//EDITIONS--
+Route::get('/equipes', 'EquipeController@index');
+Route::get('/personnes', 'PersonneController@index');
+Route::get('/ep', 'EquipePersonneController@index');
+
+
 Route::get('storage/images/sponsors/{filename}', function ($filename) {
     //ICI LE CODE ADMIN    
     redirect('storage/images/sponsors/'.$filename);   

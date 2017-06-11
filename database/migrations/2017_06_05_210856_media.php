@@ -13,14 +13,14 @@ class Media extends Migration
      */
     public function up()
     {
-        Schema::create('medias', function (Blueprint $table) {
+        Schema::create('Medias', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('titre');
             $table->string('url');            
             $table->text('description');
             $table->string('type');
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->boolean('archive');
             $table->timestamps();
              //CLES ETRANGERES            

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Equipe;
 
 class EquipeController extends Controller
 {
@@ -13,7 +14,7 @@ class EquipeController extends Controller
      */
     public function index()
     {
-        //
+        return Equipe::all();
     }
 
     /**
