@@ -256,6 +256,7 @@ class ACLSeeder extends Seeder {
         $Media1->description="lol";
         $Media1->type="image";
         $Media1->position=1;
+        $Media1->album_id=1;
         $Media1->archive=false;
         $Media1->save();
         
@@ -265,6 +266,7 @@ class ACLSeeder extends Seeder {
         $Media2->description="lol";
         $Media2->type="video";
         $Media2->position=2;
+        $Media2->album_id=2;
         $Media2->archive=false;
         $Media2->save();
         
@@ -296,7 +298,69 @@ class ACLSeeder extends Seeder {
         $Media5->archive=false;
         $Media5->save();
         
+        $Media6 = new App\Media();
+        $Media6->titre="test";
+        $Media6->url="\atricle.jpg";            
+        $Media6->description="lol";
+        $Media6->type="image";
+        $Media6->article_id=1;
+        $Media6->archive=false;
+        $Media6->save();
+        
+        $Media7 = new App\Media();
+        $Media7->titre="test";
+        $Media7->url="\atricle2.jpg";            
+        $Media7->description="lol";
+        $Media7->type="image";
+        $Media7->article_id=2;
+        $Media7->archive=false;
+        $Media7->save();
+        
+        $Media8 = new App\Media();
+        $Media8->titre="test";
+        $Media8->url="\sponsor1.jpg";            
+        $Media8->description="lol";
+        $Media8->type="image";
+        $Media8->sponsor_id=1;
+        $Media8->archive=false;
+        $Media8->save();         
+        
+        $Media9 = new App\Media();
+        $Media9->titre="test";
+        $Media9->url="\sponsor2.jpg";            
+        $Media9->description="lol";
+        $Media9->type="image";
+        $Media9->sponsor_id=2;
+        $Media9->archive=false;
+        $Media9->save();   
+        
+        $Media10 = new App\Media();
+        $Media10->titre="test";
+        $Media10->url="\sponsor2.jpg";            
+        $Media10->description="lol";
+        $Media10->type="image";
+        $Media10->sponsor_id=2;
+        $Media10->archive=false;
+        $Media10->save();  
+        
+        $Media11 = new App\Media();
+        $Media11->titre="test";
+        $Media11->url="\presse1.jpg";            
+        $Media11->description="lol";
+        $Media11->type="image";
+        $Media11->presse_id=1;
+        $Media11->archive=false;
+        $Media11->save();  
                 
+        $Media12 = new App\Media();
+        $Media12->titre="test";
+        $Media12->url="\presse1.jpg";            
+        $Media12->description="lol";
+        $Media12->type="image";
+        $Media12->presse_id=2;
+        $Media12->archive=false;
+        $Media12->save();  
+        
 //        $article1->edition()->save($edition1);
 
 
