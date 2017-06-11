@@ -21,7 +21,7 @@ class Media extends Migration
             $table->text('description');
             $table->string('type');
             $table->integer('position')->nullable();
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
              //CLES ETRANGERES            
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID

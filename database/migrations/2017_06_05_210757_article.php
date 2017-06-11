@@ -23,8 +23,8 @@ class Article extends Migration
             $table->datetime('date');
             $table->text('description');
             $table->string('url');
-            $table->boolean('visible');
-            $table->boolean('archive');            
+            $table->boolean('visible')->default(true);
+            $table->boolean('archive')->default(false);           
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION

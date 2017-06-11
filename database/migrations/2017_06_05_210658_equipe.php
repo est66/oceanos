@@ -17,8 +17,8 @@ class Equipe extends Migration
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('nom');
-            $table->string('phrase');
-            $table->boolean('archive');
+            $table->string('phrase')->nullable();
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION

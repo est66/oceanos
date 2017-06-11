@@ -23,6 +23,7 @@ class Personne extends Migration
             $table->string('phrase');
             $table->text('description');
             $table->string('filiere')->nullable();
+            $table->boolean('archive')->default(false);
             $table->timestamps();
              //CLES ETRANGERES
             //CLE ETRANGERE EDITION

@@ -17,7 +17,7 @@ class ReseauSocial extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('url');
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
         });
     }

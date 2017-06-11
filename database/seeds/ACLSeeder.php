@@ -33,62 +33,158 @@ class ACLSeeder extends Seeder {
 
 
         //EQUIPES
+        $equipe00 = new App\Equipe();
+        $equipe00->nom = "Ingenieurs";
+        $equipe00->phrase = "Nous sommes les ingénieurs de Hydrocontest";
+        $equipe00->archive = false;
+        $equipe00->edition_id = 1;
+        $equipe00->save();
+
+        $equipe0 = new App\Equipe();
+        $equipe0->nom = "TEAM HYDROCONTEST";
+        $equipe0->phrase = "TOUS LES MEMBRES DE LA TEAM HYDROCONTEST";
+        $equipe0->archive = false;
+        $equipe0->edition_id = 1;
+        $equipe0->save();
+        
         $equipe1 = new App\Equipe();
-        $equipe1->nom = "Ingenieurs";
-        $equipe1->phrase = "Nous sommes les ingénieurs de Hydrocontest";
+        $equipe1->nom = "Team HEIG-VD";
         $equipe1->archive = false;
         $equipe1->edition_id = 1;
         $equipe1->save();
-
+        
         $equipe2 = new App\Equipe();
-        $equipe2->nom = "TEAM HYDROCONTEST";
-        $equipe2->phrase = "TOUS LES MEMBRES DE LA TEAM HYDROCONTEST";
+        $equipe2->nom = "Team Communication";
         $equipe2->archive = false;
         $equipe2->edition_id = 1;
+        
         $equipe2->save();
+        
+        $equipe3 = new App\Equipe();
+        $equipe3->nom = "Team Ingénieurs";
+        $equipe3->archive = false;
+        $equipe3->edition_id = 1;
+        
+        $equipe3->save();
 
 
         /*         * * PERSONNES ** */
+        $personne00 = new App\Personne();
+        $personne00->nom = "Esteem";
+        $personne00->prenom = "Okoro";
+        $personne00->email = "esteem.okoro@heig-vd.com";
+        $personne00->statut = "Communication";
+        $personne00->phrase = "Je suis étudiant à l'HEIG-VD";
+        $personne00->description = "Description de la personne";
+        $personne00->edition_id = 1;
+        $personne00->save();
+        //JOINTURE AVEC PIVOT
+        $equipe1->personnes()->save($personne00);
+        $equipe2->personnes()->save($personne00);
+        //------------------------------------
+        $personne0 = new App\Personne();
+        $personne0->nom = "Jonathan";
+        $personne0->prenom = "Aeschimann";
+        $personne0->email = "jonathan.aeschimann@heig-vd.com";
+        $personne0->statut = "Communication";
+        $personne0->phrase = "Phrase d'accroche";
+        $personne0->description = "Description de la personne";
+        $personne0->edition_id = 1;
+        $personne0->save();
+        //JOINTURE AVEC PIVOT
+        $equipe1->personnes()->save($personne0);
+        $equipe3->personnes()->save($personne0);
+        //------------------------------------
         $personne1 = new App\Personne();
-        $personne1->nom = "Esteem";
-        $personne1->prenom = "Okoro";
-        $personne1->email = "esteem.okoro@heig-vd.com";
-        $personne1->filiere = "IT";
-        $personne1->statut = "Communication";
-        $personne1->phrase = "Je suis étudiant à l'HEIG-VD";
-        $personne1->description = "Description de la personne";
+        $personne1->nom = "Jonathan";
+        $personne1->prenom = "Aeschimann";
+        $personne1->email ="jonathan.aeschimann@heig-vd.com";
+        $personne1->statut = "Team manager";
+        $personne1->phrase = "L'efficence avant tout!";
+        $personne1->description = "Je suis Ingenieur à la HEIG-VD.";
         $personne1->edition_id = 1;
         $personne1->save();
-        //JOINTURE AVEC PIVOT
         $equipe1->personnes()->save($personne1);
-        //------------------------------------
+        $equipe2->personnes()->save($personne1);
+          
         $personne2 = new App\Personne();
         $personne2->nom = "Jonathan";
-        $personne2->prenom = "Aeschimann";
-        $personne2->email = "jonathan.aeschimann@heig-vd.com";
-        $personne2->filiere = "Media";
-        $personne2->statut = "Communication";
-        $personne2->phrase = "Phrase d'accroche";
-        $personne2->description = "Description de la personne";
+        $personne2->prenom = "Coelho";
+        $personne2->email ="jonathan.coelho@heig-vd.com";
+        $personne2->statut = "Communication manager";
+        $personne2->phrase = "L'efficence avant tout!";
+        $personne2->description = "Je suis Ingenieur à la HEIG-VD.";
         $personne2->edition_id = 1;
         $personne2->save();
-        //JOINTURE AVEC PIVOT
         $equipe1->personnes()->save($personne2);
-        //------------------------------------
+        $equipe3->personnes()->save($personne2);
         
-        /*         * * EDITION ** */
+        $personne3 = new App\Personne();
+        $personne3->nom = "Mathias";
+        $personne3->prenom = "Favre";
+        $personne3->email ="mathias.favre@heig-vd.com";
+        $personne3->statut = "Logistics manager";
+        $personne3->phrase = "L'efficence avant tout!";
+        $personne3->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne3->edition_id = 1;
+        $personne3->save();
+        $equipe1->personnes()->save($personne3);
+        $equipe2->personnes()->save($personne3);
+        
+        $personne4 = new App\Personne();
+        $personne4->nom = "Dani";
+        $personne4->prenom = "Duarte";
+        $personne4->email ="dani.duarte@heig-vd.com";
+        $personne4->statut = "Associé de projet";
+        $personne4->phrase = "L'efficence avant tout!";
+        $personne4->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne4->edition_id = 1;
+        $personne4->save();
+        $equipe1->personnes()->save($personne4);
+        $equipe3->personnes()->save($personne4);
+        
+        $personne5 = new App\Personne();
+        $personne5->nom = "Julien";
+        $personne5->prenom = "Gerber";
+        $personne5->email ="julien.gerber@heig-vd.com";
+        $personne5->statut = "Associé de projet";
+        $personne5->phrase = "L'efficence avant tout!";
+        $personne5->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne5->edition_id = 1;
+        $personne5->save();
+        $equipe1->personnes()->save($personne5);
+        $equipe2->personnes()->save($personne5);
+        
+        
+        
+
+        
+                /*         * * EDITION ** */
         $edition1 = new App\Edition();
-        $edition1->date = "2017-10-10 15:28:22";
-        $edition1->nom = "2017";
-        $edition1->description = "Edition no 1";
-        $edition1->resultats = "Nous sommes arrivés 1er";
-        $edition1->enjeu = "gagner la course";
-        $edition1->nbBateau = "6";
+        $edition1->date = "2016-07-24 15:28:22";
+        $edition1->nom = "2016";
+        $edition1->description = "L'édition précédente, l'HydroContest 2016, a été l'annnée de la première participation de la HEIG-VD à ce concours basé sur l'efficience énérgétique du transport maritime. Ca s'est déroulé, comme les éditions précédentes, aux Pyramiddes de Vidyy, à Lausanne.";
+        $edition1->resultats = "Nous sommes arrivés 3ème au transport léger et 5ème au transport de masse. De plus, nous avons gagné le prix de l'innovation.";
+        $edition1->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
+        $edition1->nbBateau = "2";
         $edition1->lieu = "Lausanne";
         $edition1->test = true;
         $edition1->archive = false;
         $edition1->actif = true;
-        $edition1->save();
+        $edition1->save();        
+                      
+        $edition2 = new App\Edition();
+        $edition2->date = "2017-09-04 15:28:22";
+        $edition2->nom = "2017";
+        $edition2->description = "Pour la première fois de son histoire, l’HydroContest ne se tiendra pas sur les rives du Lac Léman. Cette année, nous avons le plaisir d’annoncer que la compétition se déroulera à Saint-Tropez, du 4 au 10 septembre. La ville de Saint-Tropez, ville d’accueil de prestigieuses compétitions véliques, est entrée en partenariat avec la Fondation Hydros dans le but de promouvoir l’efficience énergétique dans la côte d’Azur.";
+        $edition2->resultats = "";
+        $edition2->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
+        $edition2->nbBateau = "6";
+        $edition2->lieu = "St-Tropez";
+        $edition2->test = true;
+        $edition2->archive = false;
+        $edition2->actif = true;
+        $edition2->save();
       
                 /*         * * ARTICLEs ** */
         

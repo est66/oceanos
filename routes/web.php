@@ -113,7 +113,6 @@ Route::get('{nomEdition}', 'EditionController@chargerEdition');
 Route::post('media/store', function (Request $request){});
 //---------
 
-
 //ARTICLE-PRESSE ----------------
 // à faire
 Route::get('presse/media/{id}', 'PresseController@media');
