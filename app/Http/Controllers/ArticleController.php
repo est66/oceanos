@@ -42,7 +42,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Article::find($id)->first()->with('media','presse.media')->get();
+        return Article::find($id)->first()->with('media','presse.media')->find($id)->get();
     }
 
     /**

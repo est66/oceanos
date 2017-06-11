@@ -15,7 +15,7 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Equipe::all()->where('archive', false)->first()->with('media','personnes.media')->get();
+        return Equipe::all()->first()->with('media','personnes.media')->where('archive', false)->get();
     }
 
     /**
@@ -72,8 +72,9 @@ class EquipeController extends Controller {
     //PERSONNES PAR EDITION
     public function personnesParEquipe($nomEdition, $nomEquipe) {
 
-        $personnes = Edition::where('nom', '=', $nomEdition)->first()
-                ->equipes->where('nom', '=', $nomEquipe)->load('personnes')->load('media');
+        $personnes = Edition::where('nom', '=', $nomEdition)->first()->equipes->first()->with('media','personnes.media')->where('nom', '=', $nomEquipe)->get();
+        //->where('nom', '=', $nomEquipe);
+                //first()->with('media','personnes.media')->where('nom', '=', $nomEquipe)->get();
 
         return $personnes;
     }

@@ -95,7 +95,7 @@ Route::get('edition/{nomEdition}/sponsors/', 'SponsorController@sponsorsEdition'
 // à faire
 Route::get('edition/{nomEdition}/albums', 'AlbumController@albumEdition');
 //AUTRES - PERSONNES PAR EQUIPES PAR EDITION
-Route::get('edition/{nomEdition}/equipes/{nomEquipe}', 'EquipeController@personnesParEquipe');
+Route::get('edition/{nomEdition}/equipe/{nomEquipe}', 'EquipeController@personnesParEquipe');
 //---------
 
 //SELON MEDIA ----------------
