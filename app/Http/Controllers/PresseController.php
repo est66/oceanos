@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Presse;
 class PresseController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class PresseController extends Controller
      */
     public function index()
     {
-        //
+        return Presse::all()->where('archive', false);
     }
 
     /**

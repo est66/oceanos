@@ -107,4 +107,4 @@ Route::get('editions/{nomEdition}/articles/', 'EditionController@articlesParEdit
 //EQUIPES PAR EDITION
 Route::get('editions/{nomEdition}/equipes/', 'EditionController@equipesParEdition');
 //PERSONNES DES EQUIPES PAR EDITION
-Route::get('editions/{nomEdition}/equipes/{nomEquipe}', 'EditionController@personnesParEquipe');
+Route::get('editions/{nomEdition}/equipes/{nomEquipe}', 'EquipeController@personnesParEquipe');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Personne;
 class PersonneController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class PersonneController extends Controller
      */
     public function index()
     {
-        //
+        return  Personne::all()->where('archive', false);
     }
 
     /**

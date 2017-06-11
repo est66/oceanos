@@ -13,7 +13,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Article::all();
+        return Article::all()->where('archive', false);
     }
 
     /**

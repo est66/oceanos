@@ -38,6 +38,7 @@ class ACLSeeder extends Seeder {
         $equipe1->phrase = "Nous sommes les ingénieurs de Hydrocontest";
         $equipe1->archive = false;
         $equipe1->edition_id = 1;
+        $equipe1->equipe_id = 1;
         $equipe1->save();
         //EQUIPES
         $equipe2 = new App\Equipe();
@@ -45,6 +46,7 @@ class ACLSeeder extends Seeder {
         $equipe2->phrase = "TOUS LES MEMBRES DE LA TEAM HYDROCONTEST";
         $equipe2->archive = false;
         $equipe2->edition_id = 1;
+        $equipe2->equipe_id = 0;
         $equipe2->save();
 
 
@@ -52,28 +54,28 @@ class ACLSeeder extends Seeder {
         $personne1 = new App\Personne();
         $personne1->nom = "Esteem";
         $personne1->prenom = "Okoro";
-        $personne1->team = "ing";
+        $personne1->dateDeNaissance = "1992-01-01";
         $personne1->email = "esteem.okoro@heig-vd.com";
         $personne1->filiere = "IT";
         $personne1->statut = "Communication";
         $personne1->phrase = "Je suis étudiant à l'HEIG-VD";
         $personne1->description = "Description de la personne";
-        $personne1->edition_id = 1;
         $personne1->save();
+        //INSERTION DANS L'EQUIPE
         $equipe1->personnes()->save($personne1);
         //------------------------------------
         $personne2 = new App\Personne();
         $personne2->nom = "Jonathan";
         $personne2->prenom = "Aeschimann";
-        $personne2->team = "ing";
+        $personne2->dateDeNaissance = "1990-01-01";
         $personne2->email = "jonathan.aeschimann@heig-vd.com";
         $personne2->filiere = "Media";
         $personne2->statut = "Communication";
         $personne2->phrase = "Phrase d'accroche";
         $personne2->description = "Description de la personne";
-        $personne2->edition_id = 1;
         $personne2->save();
-        $equipe1->personnes()->save($personne2);
+        //INSERTION DANS L'EQUIPE
+        $equipe1->personnes()->save($personne2);  
         //------------------------------------
         
         /*         * * EDITION ** */

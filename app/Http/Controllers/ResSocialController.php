@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\ResSocial;
 class ResSocialController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class ResSocialController extends Controller
      */
     public function index()
     {
-        //
+        return ResSocial::all()->where('archive', false);
     }
 
     /**

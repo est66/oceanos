@@ -13,7 +13,7 @@ class ParametreController extends Controller
      */
     public function index()
     {
-        //
+        return  Parametre::all()->where('archive', false);
     }
 
     /**

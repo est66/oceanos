@@ -47,4 +47,10 @@ class Edition extends Model
          return $this->belongsToMany('App\Sponsor')
                  ->withTimestamps();
     }
+    
+    
+        public function personnes()
+    {
+        return $this->hasMany('App\Personne');
+    }
 }

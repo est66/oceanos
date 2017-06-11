@@ -20,15 +20,12 @@ class Personne extends Migration
             $table->string('prenom');
             $table->string('team')->nullable();
             $table->string('email')->nullable();
+            $table->string('filiere');
             $table->string('statut');
             $table->string('phrase');
             $table->text('description');
-            $table->string('filiere')->nullable();
             $table->timestamps();
              //CLES ETRANGERES
-            //CLE ETRANGERE EDITION
-            $table->integer('edition_id');
-            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
         });
     }
     

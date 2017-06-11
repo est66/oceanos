@@ -13,7 +13,7 @@ class AlbumController extends Controller
      */
     public function index()
     {
-    return Album::all();
+    return  Album::all()->where('archive', false);
     }
 
     /**

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 //A RAJOUTER
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 use App\Edition;
+use App\Equipe;
 
 class EditionController extends Controller {
 
@@ -75,16 +77,17 @@ class EditionController extends Controller {
         return $edition->articles->where('archive', false);
     }
 
-    //EQUIPES PAR EDITION
+    //TEAM PAR EDITION
     public function equipesParEdition($nomEdition) {
         $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
         return $edition->equipes->where('archive', false);
     }
 
-        //PERSONNES PAR EDITION
-    public function personnesParEquipe($nomEdition,$nomEquipe) {
-        $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
-        return $edition->equipes->where('nom','=', $nomEquipe)->personnes;
+        //PERSONNES PAR TEAM PAR EDITION
+    public function personnesParTeam($nomEdition,$nomEquipe) {
+        $edition = Edition::where('nom', '=', $nomEdition)->get()->first()->personnes->where('team', '=', $nomEquipe);    
+       return $edition;
+
     }
     
 }

@@ -13,7 +13,7 @@ class InformationController extends Controller
      */
     public function index()
     {
-        //
+        return  Information::all()->where('archive', false);
     }
 
     /**

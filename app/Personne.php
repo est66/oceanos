@@ -12,8 +12,7 @@ class Personne extends Model {
     
         public function equipes() 
     {
-         return $this->belongsToMany('App\Equipe')
-                 ->withTimestamps();
+         return $this->belongsToMany('App\Equipe');
     }
 
 }

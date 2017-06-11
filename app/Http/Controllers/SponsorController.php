@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Sponsor;
 class SponsorController extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class SponsorController extends Controller
      */
     public function index()
     {
-        //
+        return Sponsor::all()->where('archive', false);
     }
 
     /**

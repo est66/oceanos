@@ -13,6 +13,7 @@ class MediaController extends Controller
      */
     public function index()
     {
+        return  Media::all()->where('archive', false);
         //https://laravel.com/docs/4.2/requests
     }
 
