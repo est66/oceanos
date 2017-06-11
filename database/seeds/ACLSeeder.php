@@ -19,10 +19,12 @@ class ACLSeeder extends Seeder {
         DB::table('medias')->truncate();
         DB::table('editions')->truncate();
         DB::table('albums')->truncate();
+        DB::table('presses')->truncate();
         DB::table('informations')->truncate();
         DB::table('parametres')->truncate();
         DB::table('res_socials')->truncate();
         DB::table('equipe_personne')->truncate();
+        DB::table('edition_sponsor')->truncate();
         
         
         /*         * * USERS ** */
@@ -89,34 +91,49 @@ class ACLSeeder extends Seeder {
         $equipe1->save();
         
         /*         * * EQUIPE ** */
-        $equipe1 = new App\Equipe();
-        $equipe1->nom = "Team Communication";
-        $equipe1->archive = false;
-        $equipe1->edition_id = 2;
-        $equipe1->equipe_id = 1;
-        $equipe1->save();
+        $equipe2 = new App\Equipe();
+        $equipe2->nom = "Team Communication";
+        $equipe2->archive = false;
+        $equipe2->edition_id = 2;
+        $equipe2->equipe_id = 1;
+        $equipe2->save();
         
         /*         * * EQUIPE ** */
-        $equipe1 = new App\Equipe();
-        $equipe1->nom = "Team Ingénieurs";
-        $equipe1->archive = false;
-        $equipe1->edition_id = 2;
-        $equipe1->equipe_id = 1;
-        $equipe1->save();
+        $equipe3 = new App\Equipe();
+        $equipe3->nom = "Team Ingénieurs";
+        $equipe3->archive = false;
+        $equipe3->edition_id = 2;
+        $equipe3->equipe_id = 1;
+        $equipe3->save();
         
         /*         * * EQUIPE_PERSONNE ** */
-        $equipe1 = new App\Equipe_Personne();
-        $equipe1->equipe_id = 2;
-        $equipe1->personne_id = 1;
-        $equipe1->save();
-        $equipe1 = new App\Equipe_Personne();
-        $equipe1->equipe_id = 2;
-        $equipe1->personne_id = 2;
-        $equipe1->save();
-        $equipe1 = new App\Equipe_Personne();
-        $equipe1->equipe_id = 3;
-        $equipe1->personne_id = 3;
-        $equipe1->save();
+        $ep1 = new App\Equipe_Personne();
+        $ep1->equipe_id = 2;
+        $ep1->personne_id = 1;
+        $ep1->save();
+        $ep2 = new App\Equipe_Personne();
+        $ep2->equipe_id = 2;
+        $ep2->personne_id = 2;
+        $ep2->save();
+        $ep3 = new App\Equipe_Personne();
+        $ep3->equipe_id = 3;
+        $ep3->personne_id = 3;
+        $ep3->save();
+        
+        
+                /*         * * EDITION_SPONSOR ** */
+        $es1 = new App\Edition_Sponsor();
+        $es1->edition_id = 2;
+        $es1->sponsor_id = 1;
+        $es1->save();
+        $es2 = new App\Edition_Sponsor();
+        $es2->edition_id = 2;
+        $es2->sponsor_id = 2;
+        $es2->save();
+        $es3 = new App\Edition_Sponsor();
+        $es3->edition_id = 2;
+        $es3->sponsor_id = 3;
+        $es3->save();
 
         /*         * * EDITION ** */
         $edition1 = new App\Edition();
@@ -132,18 +149,18 @@ class ACLSeeder extends Seeder {
         $edition1->actif = true;
         $edition1->save();
         
-        $edition1 = new App\Edition();
-        $edition1->date = "2017-09-04 15:28:22";
-        $edition1->nom = "2017";
-        $edition1->description = "Pour la première fois de son histoire, l’HydroContest ne se tiendra pas sur les rives du Lac Léman. Cette année, nous avons le plaisir d’annoncer que la compétition se déroulera à Saint-Tropez, du 4 au 10 septembre. La ville de Saint-Tropez, ville d’accueil de prestigieuses compétitions véliques, est entrée en partenariat avec la Fondation Hydros dans le but de promouvoir l’efficience énergétique dans la côte d’Azur.";
-        $edition1->resultats = "";
-        $edition1->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
-        $edition1->nbBateau = "6";
-        $edition1->lieu = "St-Tropez";
-        $edition1->test = true;
-        $edition1->archive = false;
-        $edition1->actif = true;
-        $edition1->save();
+        $edition2 = new App\Edition();
+        $edition2->date = "2017-09-04 15:28:22";
+        $edition2->nom = "2017";
+        $edition2->description = "Pour la première fois de son histoire, l’HydroContest ne se tiendra pas sur les rives du Lac Léman. Cette année, nous avons le plaisir d’annoncer que la compétition se déroulera à Saint-Tropez, du 4 au 10 septembre. La ville de Saint-Tropez, ville d’accueil de prestigieuses compétitions véliques, est entrée en partenariat avec la Fondation Hydros dans le but de promouvoir l’efficience énergétique dans la côte d’Azur.";
+        $edition2->resultats = "";
+        $edition2->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
+        $edition2->nbBateau = "6";
+        $edition2->lieu = "St-Tropez";
+        $edition2->test = true;
+        $edition2->archive = false;
+        $edition2->actif = true;
+        $edition2->save();
         /*         * * ARTICLE ** */
         $article1 = new App\Article();
         $article1->titre = "Succès suisse et français lors de l'Hydrocontest";
@@ -360,6 +377,44 @@ class ACLSeeder extends Seeder {
         $Media12->presse_id=2;
         $Media12->archive=false;
         $Media12->save();  
+        
+        /*         * * Album ** */   
+        $Album1 = new App\Album();
+        $Album1->nom="Concours";           
+        $Album1->description="lol";
+        $Album1->archive=false;
+        $Album1->edition_id=2;
+        $Album1->save(); 
+        
+        $Album2 = new App\Album();
+        $Album2->nom="Tests";           
+        $Album2->description="lol";
+        $Album2->archive=false;
+        $Album2->edition_id=2;
+        $Album2->save(); 
+        
+        /*         * * Information ** */   
+        $info1 = new App\Information();
+        $info1->nom="PageAccueil_PhraseAccroche";           
+        $info1->texte="L'efficience avant tout";
+        $info1->visible=true;
+        $info1->archive=false;
+        
+        $info2 = new App\Information();
+        $info2->nom="EspaceSponsor";           
+        $info2->texte="Soutenez nous en devenant notre partenaire. De multiples avantages vous est offerts en fonction des investissements que vous faites... ";
+        $info2->visible=true;
+        $info2->archive=false;
+        
+        $info3 = new App\Information();
+        $info3->nom="EspaceEtudiant";           
+        $info3->texte="L'occasion pour oeuvrer dans un projet d'envergure!";
+        $info3->visible=true;
+        $info3->archive=false;
+        
+        
+        
+        
         
 //        $article1->edition()->save($edition1);
 
