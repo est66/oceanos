@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sponsor;
-class SponsorController extends Controller
-{
+use App\Edition;
+
+class SponsorController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +63,17 @@ class SponsorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Sponsor::find($id)->update(['archive' => true]);      
+        Sponsor::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
     }
+
+    //------------------------------------------------------------------------------
+    /*
+     * Donne tous les articles de l'edition
+     */
+
+    public function sponsorsEdition($nomEdition) {
+        return Edition::where('nom', '=', $nomEdition)->first()->sponsors->where('archive', false)->load('media');
+    }
+
 }

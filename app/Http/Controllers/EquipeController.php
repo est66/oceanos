@@ -15,7 +15,7 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Equipe::all()->first()->with('media','personnes.media')->where('archive', false)->get();
+        return Equipe::all()->first()->with('media', 'personnes.media')->get()->where('archive', false);
     }
 
     /**
@@ -68,13 +68,20 @@ class EquipeController extends Controller {
         Equipe::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
     }
+/*
+ * Donne toutes les equipes de l'edition
+ */
+    public function equipesEdition($nomEdition) {
+        return Edition::where('nom', '=', $nomEdition)->first()->equipes->first()->with('media', 'personnes.media')->get();
+    }
+
     //--------------------------------------------------------------------------
     //PERSONNES PAR EDITION
     public function personnesParEquipe($nomEdition, $nomEquipe) {
 
-        $personnes = Edition::where('nom', '=', $nomEdition)->first()->equipes->first()->with('media','personnes.media')->where('nom', '=', $nomEquipe)->get();
+        $personnes = Edition::where('nom', '=', $nomEdition)->first()->equipes->first()->with('media', 'personnes.media')->where('nom', '=', $nomEquipe)->get();
         //->where('nom', '=', $nomEquipe);
-                //first()->with('media','personnes.media')->where('nom', '=', $nomEquipe)->get();
+        //first()->with('media','personnes.media')->where('nom', '=', $nomEquipe)->get();
 
         return $personnes;
     }

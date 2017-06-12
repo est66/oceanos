@@ -13,7 +13,7 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        //
+       return  Budget::all()->where('archive', false);
     }
 
     /**

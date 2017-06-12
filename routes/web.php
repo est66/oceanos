@@ -84,18 +84,20 @@ Route::resource('sponsors', 'SponsorController');
 
 //AUTRES FONCTIONS
 //SELON L'EDITION ----------------
+////EQUIPES-EDITION
+Route::get('{nomEdition}/equipes', 'EquipeController@equipesEdition');
+////PERSONNES-EDITION
+Route::get('{nomEdition}/personnes', 'PersonneController@personnesEdition');
 //ARTICLES-EDITION
-Route::get('edition/{nomEdition}/articles/', 'EditionController@articlesEdition');
-//EQUIPES-EDITION
-Route::get('edition/{nomEdition}/articles/', 'ArticleController@equipesEdition');
+Route::get('{nomEdition}/articles', 'ArticleController@articlesEdition');
 //SPONSORS-EDITION
-// à faire
-Route::get('edition/{nomEdition}/sponsors/', 'SponsorController@sponsorsEdition');
+Route::get('{nomEdition}/sponsors', 'SponsorController@sponsorsEdition');
 //ALBUMS-EDITION
-// à faire
-Route::get('edition/{nomEdition}/albums', 'AlbumController@albumEdition');
+Route::get('{nomEdition}/albums', 'AlbumController@albumsEdition');
+//---------------------------------
+
 //AUTRES - PERSONNES PAR EQUIPES PAR EDITION
-Route::get('edition/{nomEdition}/equipe/{nomEquipe}', 'EquipeController@personnesParEquipe');
+Route::get('{nomEdition}/equipe/{nomEquipe}', 'EquipeController@personnesParEquipe');
 //---------
 
 //SELON MEDIA ----------------
@@ -114,7 +116,7 @@ Route::post('media/store', function (Request $request){});
 //---------
 
 //ARTICLE-PRESSE ----------------
-// à faire
+// à faire  
 Route::get('presse/media/{id}', 'PresseController@media');
 //---------
 

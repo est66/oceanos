@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Personne;
-class PersonneController extends Controller
-{
+use App\Edition;
+class PersonneController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +39,8 @@ class PersonneController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Personne::find($id)->load('medias');;
+        return Personne::find($id)->load('medias');
+        ;
     }
 
     /**
@@ -61,7 +63,17 @@ class PersonneController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Personne::find($id)->update(['archive' => true]);      
+        Personne::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
     }
+
+//------------------------------------------------------------------------------
+    /*
+     * Donne toutes les personnes de l'edition
+     */
+
+    public function personnesEdition($nomEdition) {
+        return Edition::where('nom', '=', $nomEdition)->first()->personnes->first()->with('media')->get();
+    }
+
 }

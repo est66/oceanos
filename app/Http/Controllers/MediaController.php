@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Media;
-class MediaController extends Controller
-{
+
+class MediaController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -39,7 +39,7 @@ class MediaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Media::find($id)->load('medias');;
+        return Media::find($id)->load('medias');
     }
 
     /**
@@ -62,13 +62,14 @@ class MediaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Media::find($id)->update(['archive' => true]);      
+        Media::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
     }
+
     //ROUTES POUR TOUS LES MEDIAS SELON LE TYPE ET L'ID DE L'OBJET CONCERNE
-      public function media($type, $id) {
-          $media_id = $type.'_id';          
-       return  Media::all()->where($media_id,'=', $id);  
-      }
-    
+    public function media($type, $id) {
+        $media_id = $type . '_id';
+        return Media::all()->where($media_id, '=', $id);
+    }
+
 }

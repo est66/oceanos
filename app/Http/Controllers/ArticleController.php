@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
-use Illuminate\Support\Facades\DB;
+use App\Edition;
 use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends Controller {
@@ -16,7 +16,7 @@ class ArticleController extends Controller {
      */
     public function index() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
-        return Article::all()->where('archive', false)->first()->with('media','presse.media')->get();
+        return Article::all()->first()->with('media', 'presse.media')->get()->where('archive', false);
     }
 
     /**
@@ -42,7 +42,7 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Article::find($id)->first()->with('media','presse.media')->find($id)->get();
+        return Article::all()->first()->with('media', 'presse.media')->get()->find($id);
     }
 
     /**
@@ -67,6 +67,15 @@ class ArticleController extends Controller {
     public function destroy($id) {
         Article::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
+    }
+
+    //------------------------------------------------------------------------------
+    /*
+     * Donne tous les articles de l'edition
+     */
+
+    public function articlesEdition($nomEdition) {
+        return Edition::where('nom', '=', $nomEdition)->first()->articles->first()->with('media', 'presse.media')->get()->where('archive', false);
     }
 
 }

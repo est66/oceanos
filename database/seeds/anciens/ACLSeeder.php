@@ -38,6 +38,34 @@ class ACLSeeder extends Seeder {
         $user2->email = 'test';
         $user2->password = bcrypt('test');
         $user2->save();
+        
+        /*         * * EDITION ** */
+        $edition1 = new App\Edition();
+        $edition1->date = "2016-07-24 15:28:22";
+        $edition1->nom = "2016";
+        $edition1->description = "L'édition précédente, l'HydroContest 2016, a été l'annnée de la première participation de la HEIG-VD à ce concours basé sur l'efficience énérgétique du transport maritime. Ca s'est déroulé, comme les éditions précédentes, aux Pyramiddes de Vidyy, à Lausanne.";
+        $edition1->resultats = "Nous sommes arrivés 3ème au transport léger et 5ème au transport de masse. De plus, nous avons gagné le prix de l'innovation.";
+        $edition1->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
+        $edition1->nbBateau = "2";
+        $edition1->lieu = "Lausanne";
+        $edition1->test = true;
+        $edition1->archive = false;
+        $edition1->actif = true;
+        $edition1->save();
+        
+        $edition2 = new App\Edition();
+        $edition2->date = "2017-09-04 15:28:22";
+        $edition2->nom = "2017";
+        $edition2->description = "Pour la première fois de son histoire, l’HydroContest ne se tiendra pas sur les rives du Lac Léman. Cette année, nous avons le plaisir d’annoncer que la compétition se déroulera à Saint-Tropez, du 4 au 10 septembre. La ville de Saint-Tropez, ville d’accueil de prestigieuses compétitions véliques, est entrée en partenariat avec la Fondation Hydros dans le but de promouvoir l’efficience énergétique dans la côte d’Azur.";
+        $edition2->resultats = "";
+        $edition2->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
+        $edition2->nbBateau = "6";
+        $edition2->lieu = "St-Tropez";
+        $edition2->test = true;
+        $edition2->archive = false;
+        $edition2->actif = true;
+        $edition2->save();
+        
         /*         * * PERSONNES ** */
         $personne1 = new App\Personne();
         $personne1->nom = "Jonathan";
@@ -141,32 +169,7 @@ class ACLSeeder extends Seeder {
         $es3->edition_id = 1;
         $es3->sponsor_id = 3;
         $es3->save();
-        /*         * * EDITION ** */
-        $edition1 = new App\Edition();
-        $edition1->date = "2016-07-24 15:28:22";
-        $edition1->nom = "2016";
-        $edition1->description = "L'édition précédente, l'HydroContest 2016, a été l'annnée de la première participation de la HEIG-VD à ce concours basé sur l'efficience énérgétique du transport maritime. Ca s'est déroulé, comme les éditions précédentes, aux Pyramiddes de Vidyy, à Lausanne.";
-        $edition1->resultats = "Nous sommes arrivés 3ème au transport léger et 5ème au transport de masse. De plus, nous avons gagné le prix de l'innovation.";
-        $edition1->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
-        $edition1->nbBateau = "2";
-        $edition1->lieu = "Lausanne";
-        $edition1->test = true;
-        $edition1->archive = false;
-        $edition1->actif = true;
-        $edition1->save();
         
-        $edition2 = new App\Edition();
-        $edition2->date = "2017-09-04 15:28:22";
-        $edition2->nom = "2017";
-        $edition2->description = "Pour la première fois de son histoire, l’HydroContest ne se tiendra pas sur les rives du Lac Léman. Cette année, nous avons le plaisir d’annoncer que la compétition se déroulera à Saint-Tropez, du 4 au 10 septembre. La ville de Saint-Tropez, ville d’accueil de prestigieuses compétitions véliques, est entrée en partenariat avec la Fondation Hydros dans le but de promouvoir l’efficience énergétique dans la côte d’Azur.";
-        $edition2->resultats = "";
-        $edition2->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
-        $edition2->nbBateau = "6";
-        $edition2->lieu = "St-Tropez";
-        $edition2->test = true;
-        $edition2->archive = false;
-        $edition2->actif = true;
-        $edition2->save();
         /*         * * ARTICLE ** */
         $article1 = new App\Article();
         $article1->titre = "Succès suisse et français lors de l'Hydrocontest";

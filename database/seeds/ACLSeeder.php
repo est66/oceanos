@@ -230,7 +230,8 @@ class ACLSeeder extends Seeder {
         $sponsor1->url = "blalbla";
         $sponsor1->archive = false;
         $sponsor1->save();
-
+        $edition1->sponsors()->save($sponsor1);
+        
         $sponsor2 = new App\Sponsor();
         $sponsor2->nom = "MB-Fins";
         $sponsor2->categorie = "Sponsor Platine";
@@ -238,7 +239,8 @@ class ACLSeeder extends Seeder {
         $sponsor2->url = "blalbla";
         $sponsor2->archive = false;
         $sponsor2->save();
-
+        $edition1->sponsors()->save($sponsor2);
+        
         $sponsor3 = new App\Sponsor();
         $sponsor3->nom = "HEIG-VD";
         $sponsor3->categorie = "Sponsor Or";
@@ -246,7 +248,8 @@ class ACLSeeder extends Seeder {
         $sponsor3->url = "blalbla";
         $sponsor3->archive = false;
         $sponsor3->save();
-
+        $edition1->sponsors()->save($sponsor3);
+        
         /*         * * PRESSE ** */
 
         $Presse1 = new App\Presse();
