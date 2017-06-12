@@ -40,7 +40,7 @@ class EditionController extends Controller {
         // création de l'édition
         $edition = new Edition($para);
         $edition->save();
-        return "EDITION AJOUTE !!";
+        return response()->json($edition->id);
     }
 
     /**

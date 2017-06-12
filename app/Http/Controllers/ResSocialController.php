@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\ResSocial; 
 
 class ResSocialController extends Controller
 {
@@ -13,7 +14,7 @@ class ResSocialController extends Controller
      */
     public function index()
     {
-        //
+         return ResSocial::all();
     }
 
     /**
@@ -34,7 +35,10 @@ class ResSocialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $para = $request->all();
+        $rs = new ResSocial($para);
+        $rs->save();
+        return response()->json($rs->id);
     }
 
     /**

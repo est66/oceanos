@@ -14,6 +14,8 @@ class EquipeController extends Controller
      */
     public function index()
     {
+        //return Equipe::with("personnes")->get();
+        //Equipe::find(2)->personnes()->save(new Personne(['']));
         return Equipe::all();
     }
 
@@ -35,7 +37,11 @@ class EquipeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $para = $request->all();
+        $equipe = new Equipe($para);
+        $equipe->edition_id=$para["edition_id"];
+        $equipe->save();
+        return response()->json($equipe->id);
     }
 
     /**

@@ -144,9 +144,9 @@ class ACLSeeder extends Seeder {
         $edition1->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
         $edition1->nbBateau = "2";
         $edition1->lieu = "Lausanne";
-        $edition1->test = true;
+        $edition1->test = false;
         $edition1->archive = false;
-        $edition1->actif = true;
+        $edition1->actif = false;
         $edition1->save();
         
         $edition2 = new App\Edition();
@@ -157,7 +157,7 @@ class ACLSeeder extends Seeder {
         $edition2->enjeu = "Transporter plus, plus vite, en consommant moins d'énergie";
         $edition2->nbBateau = "6";
         $edition2->lieu = "St-Tropez";
-        $edition2->test = true;
+        $edition2->test = false;
         $edition2->archive = false;
         $edition2->actif = true;
         $edition2->save();

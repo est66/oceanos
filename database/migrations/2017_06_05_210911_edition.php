@@ -15,9 +15,9 @@ class Edition extends Migration {
         Schema::create('editions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->datetime('date');
+            $table->datetime('date')->nullable();
             $table->text('description');
-            $table->text('resultats');
+            $table->text('resultats')->nullable();
             $table->text('enjeu');
             $table->string('nbBateau');
             $table->string('lieu');

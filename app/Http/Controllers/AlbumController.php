@@ -34,7 +34,11 @@ class AlbumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $para = $request->all();
+        $album = new Album($para);
+        $album->edition_id=$para["edition_id"];
+        $album->save();
+        return response()->json($album->id);
     }
 
     /**
@@ -68,7 +72,11 @@ class AlbumController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $para = $request->all();
+        $album =  Album::find($id);
+        $album->edition_id=$para["edition_id"];
+        $album->update($para);
+        return response()->json($album->id);
     }
 
     /**

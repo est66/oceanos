@@ -18,7 +18,7 @@ class Equipe extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('type')->nullable();
-            $table->boolean('archive');
+            $table->boolean('archive')->default(0);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION

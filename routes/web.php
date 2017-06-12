@@ -27,10 +27,24 @@ Route::group(['middleware' => 'auth'], function () {
 //EDITIONS--
 Route::get('/editions', 'EditionController@index');
 //A METTRE DANS AUTH
-Route::post('/editions/store', 'EditionController@store');
+Route::post('/editions', 'EditionController@store');
 //-->
 
+//EQUIPES--
+Route::get('/equipes', 'EquipeController@index');
+//A METTRE DANS AUTH
+Route::post('/equipes', 'EquipeController@store');
+//-->
 
+//ALBUMS--
+Route::resource('albums', 'AlbumController');
+//-->
+
+//ALBUMS--
+Route::get('/rs', 'ResSocialController@index');
+//A METTRE DANS AUTH
+Route::post('/rs', 'ResSocialController@store');
+//-->
 
 //EDITIONS--
 Route::get('/equipes', 'EquipeController@index');
