@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Edition;
-use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends Controller {
 
@@ -81,4 +80,21 @@ class ArticleController extends Controller {
         return Edition::where('nom', '=', $nomEdition)->first()->articles->first()->with('media', 'presse.media')->get()->where('archive', false);
     }
 
+    public function news() {
+        //return Article::all()->where('archive', false)->load('media')->load('presse');        
+        return Article::all()->first()->with('media')->get()->where('archive', false)->where('type', "news");
+    }
+    
+        public function presse() {
+        //return Article::all()->where('archive', false)->load('media')->load('presse');        
+        return Article::all()->first()->with('media', 'presse.media')->get()->where('archive', false)->where('type', "presse");
+    }
+    
+    
+            public function presseParAnnee() {
+        //return Article::all()->where('archive', false)->load('media')->load('presse');        
+        return Article::all()->first()->with('media', 'presse.media')->get()->where('archive', false)->where('type', "presse");
+    }
+
 }
+

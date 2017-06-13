@@ -3,13 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Article extends Model {
 
-    protected $guarded  = [
-        'id', 'edition_id',
+    protected $guarded = [
+        'id'
     ];
-    
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'date',
+    ];
+    protected $appends = ['timestamps'];
+
+    public function getTimestampsAttribute() {
+        return (new Carbon($this->date))->timestamp;
+    }
 
 //    public static function isValid($parameters) {
 //        // validation here
@@ -31,18 +40,16 @@ class Article extends Model {
 //    }
 
 
-        public function edition()
-    {
+    public function edition() {
         return $this->belongsTo('App\Edition');
     }
-    
 
-        public function media() {
+    public function media() {
         return $this->hasOne('App\Media');
     }
-    
-    public function presse()
-    {
+
+    public function presse() {
         return $this->belongsTo('App\Presse');
     }
+
 }

@@ -89,5 +89,12 @@ class EditionController extends Controller {
         //return Edition::all()->first()->with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->where('nom', $nomEdition)->get();  
         return Edition::with('equipes.media', 'equipes.personnes.media', 'articles.media', 'articles.presse.media', 'sponsors.media', 'albums.medias')->where('nom', $nomEdition)->first();
     }
+    
+        public function chargerAcceuil() {
+
+//          return Edition::where('actif', '=', true)->first();
+        //return Edition::all()->first()->with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->where('nom', $nomEdition)->get();  
+        return Edition::where('actif', '=', true)->with('equipes.personnes.media', 'articles.media', 'articles.presse.media', 'sponsors.media')->where('actif', '=', true)->first();
+    }
 
 }

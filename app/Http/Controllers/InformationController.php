@@ -16,7 +16,7 @@ class InformationController extends Controller
      */
     public function index() {
         //return Information::all()->where('archive', false)->load('media')->load('presse');        
-        return Information::all()->first()->get();
+        return Information::with('media')->get();
     }
 
     /**

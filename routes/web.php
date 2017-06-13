@@ -114,10 +114,8 @@ Route::get('{type}/media/{id}', 'MediaController@media');
 // à faire
 
 //CHARGER EDTION
-Route::get('{nomEdition}', 'EditionController@chargerEdition');
-
-//UPLOAD MEDIA
-Route::post('media/store', function (Request $request){});
+Route::get('edition/{nomEdition}','EditionController@chargerEdition');
+Route::get('accueil','EditionController@chargerAcceuil');
 //---------
 
 //ARTICLE-PRESSE ----------------
@@ -139,3 +137,14 @@ Route::post('sponsors/ajouteredition', 'SponsorController@ajouterEdition');
 //DETACHE UN SPONSOR A UNE EDITION SELON equipe_id et personne_id
 Route::post('sponsors/enleveredition', 'SponsorController@enleverEdition');
 //--------------------
+
+
+//ATACHE UN SPONSOR A UNE EDITION SELON sponsor_id et edition_id
+Route::get('news', 'ArticleController@news');
+//DETACHE UN SPONSOR A UNE EDITION SELON equipe_id et personne_id
+Route::get('presse', 'ArticleController@presse');
+
+Route::get('presseannee', 'ArticleController@presseParAnnee');
+//ACCEUIL-------
+//FOURNI TOUTES LES DONNéES POUR LA PAGE D'ACCEUIL
+

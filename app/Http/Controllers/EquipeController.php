@@ -95,24 +95,26 @@ class EquipeController extends Controller {
     //ATTACHE UNE PERSONNE A UNE EQUIPE
     public function ajouterPersonne(Request $request) {
         $equipeId = $request->equipe_id;
-        $personneId = $request->personne_id;  
-        
+        $personneId = $request->personne_id;
+
         $equipe = Equipe::find($equipeId);
-        
+
         $equipe->personnes()->attach($personneId);
-        
+
         return "$equipe->id";
     }
-        //DETACHE UNE PERSONNE A UNE EQUIPE
-        public function enleverPersonne(Request $request) {
+
+    //DETACHE UNE PERSONNE A UNE EQUIPE
+    public function enleverPersonne(Request $request) {
         $equipeId = $request->equipe_id;
-        $personneId = $request->personne_id;  
-        
+        $personneId = $request->personne_id;
+
         $equipe = Equipe::find($equipeId);
-        
+
         $equipe->personnes()->detach($personneId);
-        
+
         return "$equipe->id";
     }
+
     //--------------------------------------------------------------------------
 }
