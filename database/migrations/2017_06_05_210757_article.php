@@ -28,10 +28,10 @@ class Article extends Migration
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->integer('edition_id');
+            $table->integer('edition_id')->nullable();
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
-            $table->integer('presse_id')->nullable();;
+            $table->integer('presse_id')->nullable();
             $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade'); 
         });
     }

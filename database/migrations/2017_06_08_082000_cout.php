@@ -18,8 +18,8 @@ class Cout extends Migration
             $table->increments('id');
              //     
             $table->string('nom');
-            $table->text('description')->nullable();;            
-            $table->integer('montant')->nullable();;
+            $table->text('description')->nullable();           
+            $table->integer('montant')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES

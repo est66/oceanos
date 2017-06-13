@@ -53,11 +53,12 @@ class MediaController extends Controller {
             }
             $media->titre = $titre;
             $media->type = $type;
-            $media->type = $description;
+            $media->description = $description;
             $media->url = $url;
             $media->save();
             return $media;
         }
+        return"fichier manquant";
     }
 
     /**
@@ -87,9 +88,38 @@ class MediaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $para = $request->all();
-        Media::find($id)->update($para);
-        return response()->json('OK', Response::HTTP_OK);
+        if ($request->hasFile('media')) {
+//            $request->file('media');
+//            //$request->media->store('public');
+//            return $request->media->extension();
+            $url = null;
+            $media = new Media();
+            $titre = $request->titre;
+            $description = $request->description;
+            //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
+            $ext = strtolower($request->file('media')->extension());
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg") {
+                $type = "image";
+                $url = $request->file('media')->store('public/images');
+            } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
+                $type = "video";
+                $url = $request->file('media')->store('public/videos');
+            } elseif ($ext == "pdf") {
+                $type = "document";
+                $url = $request->file('media')->store('public/documents');
+            } else {
+                return "format de fichier invalide !";
+            }
+            $media->titre = $titre;
+            $media->type = $type;
+            $media->type = $description;
+            $media->url = $url;
+
+            Media::find($id)->update($media);
+            return response()->json('OK', Response::HTTP_OK);
+        }
+
+        return"fichier manquant";
     }
 
     /**

@@ -31,7 +31,7 @@ class EquipeController extends Controller {
         // création d'un nouvel objet
         $equipe = new Equipe($para);
         $equipe->save();
-        return response()->json($equipe, Response::HTTP_CREATED);
+        return response()->json("OK", Response::HTTP_CREATED);
     }
 
     /**
@@ -68,9 +68,11 @@ class EquipeController extends Controller {
         Equipe::find($id)->update(['archive' => true]);
         return response()->json('OK', Response::HTTP_OK);
     }
-/*
- * Donne toutes les equipes de l'edition
- */
+
+    /*
+     * Donne toutes les equipes de l'edition
+     */
+
     public function equipesEdition($nomEdition) {
         return Edition::where('nom', '=', $nomEdition)->first()->equipes->first()->with('media', 'personnes.media')->get();
     }
@@ -84,6 +86,30 @@ class EquipeController extends Controller {
         //first()->with('media','personnes.media')->where('nom', '=', $nomEquipe)->get();
 
         return $personnes;
+    }
+
+    //--------------------------------------------------------------------------
+    //AJOUTER UNE PERSONNE A UNE EQUIPE
+    public function ajouterPersonne(Request $request) {
+        $equipeId = $request->equipe_id;
+        $personneId = $request->personne_id;  
+        
+        $equipe = Equipe::find($equipeId);
+        
+        $equipe->personnes()->attach($personneId);
+        
+        return "$equipe->id";
+    }
+    
+        public function enleverPersonne(Request $request) {
+        $equipeId = $request->equipe_id;
+        $personneId = $request->personne_id;  
+        
+        $equipe = Equipe::find($equipeId);
+        
+        $equipe->personnes()->detach($personneId);
+        
+        return "$equipe->id";
     }
 
 }

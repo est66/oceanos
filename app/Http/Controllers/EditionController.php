@@ -17,7 +17,7 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Edition::where('archive', false)->orderBy('date','desc')->get();
+        return Edition::where('archive', false)->orderBy('date', 'desc')->get();
     }
 
     /**
@@ -28,7 +28,7 @@ class EditionController extends Controller {
     public function store(Request $request) {
         $para = $request->all();
         // Règles de validations //  VALIDATION  
-        if (!Edition::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+//        if (!Edition::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
         $edition = new Edition($para);
         $edition->save();
@@ -65,9 +65,10 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Edition::find($id)->update(['archive' => false]);      
+        $edition = Edition::find($id);
+        $edition->archive = 1;
+        $edition->update();
         return response()->json('OK', Response::HTTP_OK);
-        
     }
 
     //FONCTIONS SUPPLEMENTAIRES
@@ -83,15 +84,10 @@ class EditionController extends Controller {
         $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
         return $edition->equipes->where('archive', false);
     }
-    
-    
-        public function chargerEdition($nomEdition) {
+
+    public function chargerEdition($nomEdition) {
         //return Edition::all()->first()->with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->where('nom', $nomEdition)->get();  
-        return Edition::with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->where('nom', $nomEdition)->first();  
+        return Edition::with('equipes.media', 'equipes.personnes.media', 'articles.media', 'articles.presse.media', 'sponsors.media', 'albums.medias')->where('nom', $nomEdition)->first();
     }
-    
-  
-    
-    
 
 }

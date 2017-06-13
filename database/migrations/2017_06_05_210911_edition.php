@@ -21,9 +21,9 @@ class Edition extends Migration {
             $table->string('enjeu')->nullable();
             $table->string('nbBateau')->nullable();
             $table->string('lieu')->nullable();
-            $table->boolean('test')->nullable();            
-            $table->boolean('archive')->default(false);;
-            $table->boolean('actif')->default(true);;
+            $table->boolean('test')->default(false);          
+            $table->boolean('archive')->default(false);
+            $table->boolean('actif')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
         });
