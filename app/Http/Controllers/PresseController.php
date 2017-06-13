@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Presse;
 class PresseController extends Controller
@@ -61,7 +62,9 @@ class PresseController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Presse::find($id)->update(['archive' => true]);      
+        $presse = Presse::find($id);
+        $presse->archive = 1;
+        $presse->update();
         return response()->json('OK', Response::HTTP_OK);
     }
 }

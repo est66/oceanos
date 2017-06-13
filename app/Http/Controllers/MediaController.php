@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
@@ -33,7 +34,26 @@ class MediaController extends Controller {
 //            $request->file('media');
 //            //$request->media->store('public');
 //            return $request->media->extension();
+
             $url = null;
+            $media_id = null;
+            $personne_id = null;
+            $article_id = null;
+            $sponsor_id = null;
+            $album_id = null;
+            $information_id = null;
+            $presse_id = null;
+
+            $media_id = $request->equipe_id;
+            $personne_id = $request->personne_id;
+            $article_id = $request->article_id;
+            $sponsor_id = $request->sponsor_id;
+            $album_id = $request->album_id;
+            $information_id = $request->information_id;
+            $presse_id = $request->presse_id;
+
+
+
             $media = new Media();
             $titre = $request->titre;
             $description = $request->description;
@@ -129,7 +149,9 @@ class MediaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Media::find($id)->update(['archive' => true]);
+        $media = Media::find($id);
+        $media->archive = 1;
+        $media->update();
         return response()->json('OK', Response::HTTP_OK);
     }
 

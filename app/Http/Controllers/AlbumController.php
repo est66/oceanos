@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Album;
 use App\Edition;
@@ -65,7 +66,9 @@ class AlbumController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Album::find($id)->update(['archive' => true]);
+        $album = Album::find($id);
+        $album->archive = 1;
+        $album->update();
         return response()->json('OK', Response::HTTP_OK);
     }
 

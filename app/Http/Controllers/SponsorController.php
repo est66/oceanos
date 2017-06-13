@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Sponsor;
 use App\Edition;
@@ -63,7 +64,9 @@ class SponsorController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Sponsor::find($id)->update(['archive' => true]);
+        $sponsor = Sponsor::find($id);
+        $sponsor->archive = 1;
+        $sponsor->update();
         return response()->json('OK', Response::HTTP_OK);
     }
 
@@ -76,4 +79,30 @@ class SponsorController extends Controller {
         return Edition::where('nom', '=', $nomEdition)->first()->sponsors->where('archive', false)->load('media');
     }
 
+    //--------------------------------------------------------------------------
+    //ATTACHE UN SPONSOT A UNE EDITION
+    public function ajouterEdition(Request $request) {
+        $editionId = $request->edition_id;
+        $sponsorId = $request->sponsor_id;
+
+        $edition = Edition::find($editionId);
+
+        $edition->sponsors()->attach($sponsorId);
+
+        return "$edition->id";
+    }
+
+    //DETACHE UN SPONSOT D'UNE EDITION
+    public function enleverEdition(Request $request) {
+        $editionId = $request->edition_id;
+        $sponsorId = $request->sponsor_id;
+
+        $edition = Edition::find($editionId);
+
+        $edition->sponsors()->detach($sponsorId);
+
+        return "$edition->id";
+    }
+
+    //--------------------------------------------------------------------------
 }

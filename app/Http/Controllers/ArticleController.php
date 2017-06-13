@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Edition;
@@ -65,7 +66,9 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Article::find($id)->update(['archive' => true]);
+        $article = Article::find($id);
+        $article->archive = 1;
+        $article->update();
         return response()->json('OK', Response::HTTP_OK);
     }
 

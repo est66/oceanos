@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 use App\Edition;
 use App\Equipe;
 use App\Personne;
@@ -31,7 +32,7 @@ class EquipeController extends Controller {
         // création d'un nouvel objet
         $equipe = new Equipe($para);
         $equipe->save();
-        return response()->json("OK", Response::HTTP_CREATED);
+        return response()->json($equipe->id, Response::HTTP_CREATED);
     }
 
     /**
@@ -65,7 +66,9 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Equipe::find($id)->update(['archive' => true]);
+        $equipe = Equipe::find($id);
+        $equipe->archive = 1;
+        $equipe->update();
         return response()->json('OK', Response::HTTP_OK);
     }
 
@@ -89,7 +92,7 @@ class EquipeController extends Controller {
     }
 
     //--------------------------------------------------------------------------
-    //AJOUTER UNE PERSONNE A UNE EQUIPE
+    //ATTACHE UNE PERSONNE A UNE EQUIPE
     public function ajouterPersonne(Request $request) {
         $equipeId = $request->equipe_id;
         $personneId = $request->personne_id;  
@@ -100,7 +103,7 @@ class EquipeController extends Controller {
         
         return "$equipe->id";
     }
-    
+        //DETACHE UNE PERSONNE A UNE EQUIPE
         public function enleverPersonne(Request $request) {
         $equipeId = $request->equipe_id;
         $personneId = $request->personne_id;  
@@ -111,5 +114,5 @@ class EquipeController extends Controller {
         
         return "$equipe->id";
     }
-
+    //--------------------------------------------------------------------------
 }

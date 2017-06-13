@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Information;
 
@@ -64,8 +65,7 @@ class InformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Information::find($id)->update(['archive' => true]);
-        return response()->json('OK', Response::HTTP_OK);
+//N'EST JAMAIS SUPPRIME OU ARCHIVE !!!! (FIXE SUR L'ENSEMBLE DU SITE)
     }
 
 }

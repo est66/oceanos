@@ -124,8 +124,18 @@ Route::post('media/store', function (Request $request){});
 // à faire  
 Route::get('presse/media/{id}', 'PresseController@media');
 //---------
-//AJOUTE UNE PERSONNE A L EQUIPE SELON equipe_id et personne_id
+
+//EQUIPE PERSONNE---------
+//ATTACHE UNE PERSONNE A L EQUIPE SELON equipe_id et personne_id
 Route::post('equipes/ajouterpersonne', 'EquipeController@ajouterPersonne');
 
-//ENLEVE UNE PERSONNE A L EQUIPE SELON equipe_id et personne_id
+//DETACHE UNE PERSONNE A L EQUIPE SELON equipe_id et personne_id
 Route::post('equipes/enleverpersonne', 'EquipeController@enleverPersonne');
+//--------------------
+
+//SPONSOR EDITION--------
+//ATACHE UN SPONSOR A UNE EDITION SELON sponsor_id et edition_id
+Route::post('sponsors/ajouteredition', 'SponsorController@ajouterEdition');
+//DETACHE UN SPONSOR A UNE EDITION SELON equipe_id et personne_id
+Route::post('sponsors/enleveredition', 'SponsorController@enleverEdition');
+//--------------------
