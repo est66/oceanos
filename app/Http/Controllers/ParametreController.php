@@ -3,38 +3,33 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Parametre;
+class ParametreController extends Controller {
 
-class ParametreController extends Controller
-{
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return  Parametre::all()->where('archive', false);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function index() {
+        //return Parametre::all()->where('archive', false)->load('media')->load('presse');        
+        return Parametre::all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $resquest
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $para = $request->all();
+        // Règles de validations   
+        // if (!Parametre::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
+        $parametre = new Parametre($para);
+        $parametre->save();
+        return response()->json($parametre, Response::HTTP_CREATED);
     }
 
     /**
@@ -43,20 +38,8 @@ class ParametreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+    public function show($id) {
+        return Parametre::find($id)->where();
     }
 
     /**
@@ -66,9 +49,10 @@ class ParametreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        $para = $request->all();
+        Parametre::find($id)->update($para);
+        return response()->json('OK', Response::HTTP_OK);
     }
 
     /**
@@ -77,8 +61,9 @@ class ParametreController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy($id) {
+        Parametre::find($id)->update(['archive' => true]);
+        return response()->json('OK', Response::HTTP_OK);
     }
+
 }

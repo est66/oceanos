@@ -14,8 +14,11 @@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/upload', function () {
+//    return view('upload');
+//});
 
-
+Route::resource('upload', 'UploadController');
 ////AVEC DROIT ADMIN--
 //Route::group(['middleware' => 'auth'], function () {
 ////ALBUMS
@@ -71,6 +74,7 @@ Route::resource('equipes', 'EquipeController');
 Route::resource('informations', 'InformationController');
 //MEDIAS
 Route::resource('medias', 'MediaController');
+Route::post('medias', 'MediaController@store')->name('upload.media');
 //PARAMETRES
 Route::resource('parametres', 'ParametreController');
 //PERSONNES

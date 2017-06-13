@@ -3,13 +3,27 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Edition extends Model {
 
     protected $guarded = [
         'id',
     ];
+    
+    
+        protected $dates = [
+        'created_at',
+        'updated_at',
+        'date',
+    ];
+    
+    protected $appends = ['timestamps'];
 
+    public function getTimestampsAttribute() {
+        return (new Carbon($this->date))->timestamp;
+    }
+    
     //protected $dateFormat = 'Y-m-d';
 
     public static function isValid($parameters) {

@@ -16,10 +16,10 @@ class Sponsor extends Migration
         Schema::create('sponsors', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('nom');
-            $table->string('categorie');
-            $table->text('description');
-            $table->string('url');
+            $table->string('nom')->nullable();;
+            $table->string('categorie')->nullable();;
+            $table->text('description')->nullable();;
+            $table->string('url')->nullable();;
             $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES    

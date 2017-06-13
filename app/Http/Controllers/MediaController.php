@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 use App\Media;
 
 class MediaController extends Controller {
@@ -27,9 +29,44 @@ class MediaController extends Controller {
         // Règles de validations   
         // if (!Media::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
-        $media = new Media($para);
-        $media->save();
-        return response()->json($media, Response::HTTP_CREATED);
+        if ($request->hasFile('media')) {
+//            $request->file('media');
+//            //$request->media->store('public');
+//            return $request->media->extension();
+            $url = null;
+            $media = new Media();
+            $titre = $request->titre;
+            $description = $request->description;
+            //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
+            $ext = strtolower($request->file('media')->extension());
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg") {
+                $type = "image";
+                $url = $request->file('media')->store('public/images');
+            } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
+                $type = "video";
+                $url = $request->file('media')->store('public/videos');
+            } elseif ($ext == "pdf") {
+                $type = "document";
+                $url = $request->file('media')->store('public/documents');
+            } else {
+                return "format de fichier invalide !";
+            }
+            $media->titre = $titre;
+            $media->type = $type;
+            $media->type = $description;
+            $media->url = $url;
+            $media->save();
+            return $media;
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+        return view('upload');
     }
 
     /**

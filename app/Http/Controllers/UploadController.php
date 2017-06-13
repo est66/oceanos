@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Information;
 
-class InformationController extends Controller
-{
+class UploadController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -14,24 +12,36 @@ class InformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        //return Information::all()->where('archive', false)->load('media')->load('presse');        
-        return Information::all()->first()->get();
+        return view('upload');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create() {
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $resquest
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        $para = $request->all();
-        // Règles de validations   
-        // if (!Information::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
-        // création d'un nouvel objet
-        $information = new Information($para);
-        $information->save();
-        return response()->json($information, Response::HTTP_CREATED);
+        //return $request->file('media');
+
+        if ($request->hasFile('media')) {
+
+            $request->file('media');
+
+            //$request->media->store('public');
+            return $request->media->extension();
+        } else {
+            return "aucun(s) fichier(s) selectionné(s)";
+        }
     }
 
     /**
@@ -41,7 +51,17 @@ class InformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Information::find($id)->where();
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id) {
+        //
     }
 
     /**
@@ -52,9 +72,7 @@ class InformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        $para = $request->all();
-        Information::find($id)->update($para);
-        return response()->json('OK', Response::HTTP_OK);
+        //
     }
 
     /**
@@ -64,8 +82,7 @@ class InformationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Information::find($id)->update(['archive' => true]);
-        return response()->json('OK', Response::HTTP_OK);
+        //
     }
 
 }

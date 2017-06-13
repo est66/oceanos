@@ -16,13 +16,13 @@ class Article extends Migration
         Schema::create('articles', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('titre');
-            $table->string('soustitre');
-            $table->string('type');
-            $table->string('auteur');
-            $table->datetime('date');
-            $table->text('description');
-            $table->string('url');
+            $table->string('titre')->nullable();
+            $table->string('soustitre')->nullable();
+            $table->string('type')->nullable();
+            $table->string('auteur')->nullable();
+            $table->timestamp('date')->nullable();
+            $table->text('description')->nullable();
+            $table->string('url')->nullable();
             $table->boolean('visible')->default(true);
             $table->boolean('archive')->default(false);           
             $table->timestamps();

@@ -16,7 +16,7 @@ class Equipe extends Migration
         Schema::create('equipes', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('nom');
+            $table->string('nom')->nullable();
             $table->string('phrase')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();

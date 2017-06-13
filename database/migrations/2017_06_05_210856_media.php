@@ -16,10 +16,10 @@ class Media extends Migration
         Schema::create('medias', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('titre');
-            $table->string('url');            
-            $table->text('description');
-            $table->string('type');
+            $table->string('titre')->nullable();
+            $table->string('url')->nullable();            
+            $table->text('description')->nullable();
+            $table->string('type')->nullable();
             $table->integer('position')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();

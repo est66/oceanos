@@ -16,7 +16,7 @@ class Presse extends Migration
         Schema::create('presses', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');           
-            $table->string('nom');
+            $table->string('nom')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES

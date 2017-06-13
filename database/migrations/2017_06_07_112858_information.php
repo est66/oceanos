@@ -15,9 +15,9 @@ class Information extends Migration
     {
         Schema::create('informations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');           
-            $table->text('texte');
-            $table->boolean('visible');
+            $table->string('nom')->nullable();           
+            $table->text('texte')->nullable();
+            $table->boolean('visible')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();
         });

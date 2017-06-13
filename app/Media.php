@@ -11,7 +11,7 @@ class Media extends Model {
         'id',
     ];
     protected $hidden = [
-        'equipe_id', 'personne_id', 'article_id', 'sponsor_id', 'album_id', 'information_id', 'presse_id',
+            //'equipe_id', 'personne_id', 'article_id', 'sponsor_id', 'album_id', 'information_id', 'presse_id',
     ];
 
     public function album() {
