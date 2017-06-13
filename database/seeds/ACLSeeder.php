@@ -183,8 +183,8 @@ class ACLSeeder extends Seeder {
         $equipe2->personnes()->save($personne12);
         
         $personne13 = new App\Personne();
-        $personne13->prenom = "Kelly";
-        $personne13->nom = "Pala";
+        $personne13->prenom = "Colin";
+        $personne13->nom = "Mottas";
         $personne13->email = "";
         $personne13->statut = "Membre du groupe Sponsor et aide à d'autres groupes";
         $personne13->phrase = "";
@@ -441,7 +441,7 @@ class ACLSeeder extends Seeder {
         
         $media03 = new App\Media();
         $media03->titre = "test";
-        $media03->url = "\couverture.jpg";
+        $media03->url = "\XgTGqwVs4lOFbl5UoQhETBV3NHP5LlcjzvhVTyb5.jpg";
         $media03->description = "image de fond de la page d'accueil";
         $media03->type = "image";
         $media03->information_id = 5;
