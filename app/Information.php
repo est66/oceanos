@@ -5,10 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Information extends Model {
-
-    protected $table = 'Informations';
+    protected $table = 'informations';
     protected $guarded = [
         'id',
     ];
 
+          public function media()
+    {
+        return $this->hasOne('App\Media');
+    }
+    
 }

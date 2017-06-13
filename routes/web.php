@@ -25,32 +25,36 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 //EDITIONS--
-Route::get('/editions', 'EditionController@index');
-//A METTRE DANS AUTH
-Route::post('/editions', 'EditionController@store');
+Route::resource('editions', 'EditionController');
 //-->
 
 //EQUIPES--
-Route::get('/equipes', 'EquipeController@index');
+Route::resource('equipes', 'EquipeController');
+//Route::get('/equipes', 'EquipeController@index');
 //A METTRE DANS AUTH
-Route::post('/equipes', 'EquipeController@store');
+//Route::post('/equipes', 'EquipeController@store');
 //-->
 
 //ALBUMS--
 Route::resource('albums', 'AlbumController');
+
+/*Route::get('/albums', 'AlbumController@index');
+//A METTRE DANS AUTH
+Route::post('/albums', 'AlbumController@store');
+Route::put('/albums/{id}', 'AlbumController@update');*/
 //-->
 
-//ALBUMS--
-Route::get('/rs', 'ResSocialController@index');
-//A METTRE DANS AUTH
-Route::post('/rs', 'ResSocialController@store');
-//-->
+//RESEAUX
+Route::resource('reseaux', 'ResSocialController');
 
 //EDITIONS--
 Route::get('/equipes', 'EquipeController@index');
 Route::get('/personnes', 'PersonneController@index');
 Route::get('/ep', 'EquipePersonneController@index');
 
+
+//PERSONNES--
+Route::resource('personnes', 'PersonneController');
 
 Route::get('storage/images/sponsors/{filename}', function ($filename) {
     //ICI LE CODE ADMIN    

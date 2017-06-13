@@ -18,14 +18,17 @@ class Personne extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
-            $table->date('dateDeNaissance')->nullable();
             $table->string('email')->nullable();
-            $table->string('filiere')->nullable();
             $table->string('statut');
-            $table->longtext('phrase')->nullable();
-            $table->longtext('description');
+            $table->string('phrase');
+            $table->text('description');
+            $table->string('filiere')->nullable();
+            $table->boolean('archive')->default(false);
             $table->timestamps();
              //CLES ETRANGERES
+            //CLE ETRANGERE EDITION
+            $table->integer('edition_id');
+            $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
         });
     }
     

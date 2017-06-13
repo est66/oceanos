@@ -35,6 +35,9 @@ class AlbumController extends Controller
     public function store(Request $request)
     {
         $para = $request->all();
+        if (!Album::isValid($para)) {
+            return response()->json('error', Response::HTTP_BAD_REQUEST);
+        }
         $album = new Album($para);
         $album->edition_id=$para["edition_id"];
         $album->save();
@@ -87,6 +90,10 @@ class AlbumController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $album = Album::find($id);
+        $name = $album->nom;
+        $album->archive = 1;
+        $album->update();
+        return response()->json("album ".$name."  supprimé");
     }
 }

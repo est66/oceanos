@@ -17,7 +17,7 @@ class Presse extends Migration
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');           
             $table->string('nom');
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
 

@@ -35,7 +35,14 @@ class PersonneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $para = $request->all();
+        $personne = new Personne($para);
+        /*$jointure = new EquipePersonne();
+        $jointure->equipe_id = $para->equipe_id;
+        $jointure->personne_id = $personne->id;
+        $jointure->save();*/
+        $personne->save();
+        return response()->json($personne->id);
     }
 
     /**

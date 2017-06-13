@@ -13,7 +13,7 @@ class Media extends Migration
      */
     public function up()
     {
-        Schema::create('Medias', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('titre');
@@ -21,7 +21,7 @@ class Media extends Migration
             $table->text('description');
             $table->string('type');
             $table->integer('position')->nullable();
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
              //CLES ETRANGERES            
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT EST REMPLACE PAR ID
@@ -45,7 +45,7 @@ class Media extends Migration
             $table->foreign('information_id')->references('id')->on('informations')->onDelete('cascade');
             //CLE ETRANGERE PRESSE
             $table->integer('presse_id')->nullable();
-            $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade'); 
+            $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade');
         });
     }
 

@@ -63,7 +63,7 @@ class EquipeController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -75,7 +75,11 @@ class EquipeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $para = $request->all();
+        $equipe =  Equipe::find($id);
+        $equipe->edition_id=$para["edition_id"];
+        $equipe->update($para);
+        return response()->json($equipe->id);
     }
 
     /**
@@ -86,6 +90,12 @@ class EquipeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $equipe = Equipe::find($id);
+        $name = $equipe->nom;
+        $equipe->archive = 1;
+        $equipe->update();
+        return response()->json("equipe ".$name."  supprimé");
     }
+    
+    
 }

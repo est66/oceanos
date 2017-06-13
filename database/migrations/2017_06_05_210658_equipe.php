@@ -17,17 +17,17 @@ class Equipe extends Migration
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
             $table->string('nom');
-            $table->string('type')->nullable();
-            $table->boolean('archive')->default(0);
+            $table->string('phrase')->nullable();
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
             $table->integer('edition_id');
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
-            //CLE ETRANGERE EQUIPE
-            $table->integer('equipe_id')->nullable();
-            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');   
-        });
+//            //CLE ETRANGERE EQUIPE
+//            $table->integer('equipe_id')->nullable();
+//            $table->foreign('equipe_id')->references('id')->on('equipes')->onDelete('cascade');   
+        });  
     }
 
     /**

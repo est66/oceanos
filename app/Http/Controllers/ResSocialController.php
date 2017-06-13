@@ -37,6 +37,7 @@ class ResSocialController extends Controller
     {
         $para = $request->all();
         $rs = new ResSocial($para);
+        $rs->edition_id=$para["edition_id"];
         $rs->save();
         return response()->json($rs->id);
     }
@@ -72,7 +73,11 @@ class ResSocialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $para = $request->all();
+        $rs =  ResSocial::find($id);
+        $rs->edition_id=$para["edition_id"];
+        $rs->update($para);
+        return response()->json($rs->id);
     }
 
     /**
@@ -83,6 +88,6 @@ class ResSocialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Ne peut pas être supprimer
     }
 }

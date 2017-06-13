@@ -20,7 +20,7 @@ class Cout extends Migration
             $table->string('nom');
             $table->text('description');            
             $table->integer('montant');
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE BUDGET

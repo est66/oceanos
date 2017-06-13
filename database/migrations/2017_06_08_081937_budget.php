@@ -20,7 +20,7 @@ class Budget extends Migration
             $table->integer('montant_recolte');
             $table->boolean('montant_manquant_visible');
             $table->boolean('grapg_visible');
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EQUIPE

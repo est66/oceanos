@@ -20,7 +20,7 @@ class Sponsor extends Migration
             $table->string('categorie');
             $table->text('description');
             $table->string('url');
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES    
         });

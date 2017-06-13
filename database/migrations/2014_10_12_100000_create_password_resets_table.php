@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ReseauSocial extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class ReseauSocial extends Migration
      */
     public function up()
     {
-        Schema::create('res_socials', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nom');
-            $table->string('url');
-            $table->boolean('archive')->default(false);
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class ReseauSocial extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('res_socials');
+        Schema::dropIfExists('password_resets');
     }
 }

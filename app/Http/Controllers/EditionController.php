@@ -71,7 +71,10 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
-        //
+        $para = $request->all();
+        $edition =  Edition::find($id);
+        $edition->update($para);
+        return response()->json($edition->id);
     }
 
     /**
@@ -81,7 +84,11 @@ class EditionController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        //
+        $edition = Edition::find($id);
+    
+        $edition->archive = 1;
+        $edition->update();
+        return response()->json("ok");
     }
 
 }
