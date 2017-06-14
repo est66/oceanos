@@ -16,13 +16,13 @@ class Equipe extends Migration
         Schema::create('equipes', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('nom');
+            $table->string('nom')->nullable();
             $table->string('phrase')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->integer('edition_id');
+            $table->integer('edition_id')->nullable();
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
 //            //CLE ETRANGERE EQUIPE
 //            $table->integer('equipe_id')->nullable();

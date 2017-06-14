@@ -645,7 +645,7 @@ class ACLSeeder extends Seeder {
         
         $media13 = new App\Media();
         $media13->titre = "";
-        $media13->url = "yverdon.jpg";
+        $media13->url = "yverdon.png";
         $media13->description = "";
         $media13->type = "image";
         $media13->sponsor_id = 1;
@@ -653,7 +653,7 @@ class ACLSeeder extends Seeder {
         
         $media14 = new App\Media();
         $media14->titre = "";
-        $media14->url = "mb.jpg";
+        $media14->url = "mb.png";
         $media14->description = "";
         $media14->type = "image";
         $media14->sponsor_id = 2;
@@ -661,7 +661,7 @@ class ACLSeeder extends Seeder {
         
         $media15 = new App\Media();
         $media15->titre = "";
-        $media15->url = "heig.jpg";
+        $media15->url = "heig.png";
         $media15->description = "";
         $media15->type = "image";
         $media15->sponsor_id = 3;
@@ -669,7 +669,7 @@ class ACLSeeder extends Seeder {
         
         $media16 = new App\Media();
         $media16->titre = "";
-        $media16->url = "rg.jpg";
+        $media16->url = "rg.png";
         $media16->description = "";
         $media16->type = "image";
         $media16->sponsor_id = 4;
@@ -680,7 +680,7 @@ class ACLSeeder extends Seeder {
         
         $media17 = new App\Media();
         $media17->titre = "";
-        $media17->url = "20.jpg";
+        $media17->url = "20.png";
         $media17->description = "";
         $media17->type = "image";
         $media17->presse_id = 1;
@@ -688,7 +688,7 @@ class ACLSeeder extends Seeder {
         
         $media18 = new App\Media();
         $media18->titre = "";
-        $media18->url = "24.jpg";
+        $media18->url = "24.png";
         $media18->description = "";
         $media18->type = "image";
         $media18->presse_id = 2;
@@ -696,7 +696,7 @@ class ACLSeeder extends Seeder {
         
         $media19 = new App\Media();
         $media19->titre = "";
-        $media19->url = "reg.jpg";
+        $media19->url = "reg.gif";
         $media19->description = "";
         $media19->type = "image";
         $media19->presse_id = 3;
@@ -706,7 +706,7 @@ class ACLSeeder extends Seeder {
         
         $media17 = new App\Media();
         $media17->titre = "";
-        $media17->url = "f.jpg";
+        $media17->url = "f.png";
         $media17->description = "";
         $media17->type = "image";
         //$media17->reseau_id = 1;
@@ -722,7 +722,7 @@ class ACLSeeder extends Seeder {
         
         $media19 = new App\Media();
         $media19->titre = "";
-        $media19->url = "y.jpg";
+        $media19->url = "y.png";
         $media19->description = "";
         $media19->type = "image";
         //$media19->reseau_id = 3;
@@ -734,7 +734,7 @@ class ACLSeeder extends Seeder {
         $Album1 = new App\Album();
         $Album1->nom = "Edition 2016 à Vidy";
         $Album1->description = "";
-        $Album1->album_id = 1;
+        $Album1->edition_id = 1;
         $Album1->save();
 
         $Album2 = new App\Album();

@@ -15,15 +15,15 @@ class Edition extends Migration {
         Schema::create('editions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->datetime('date');
-            $table->text('description');
-            $table->string('resultats');
-            $table->string('enjeu');
-            $table->string('nbBateau');
-            $table->string('lieu');
-            $table->boolean('test');            
-            $table->boolean('archive');
-            $table->boolean('actif');
+            $table->timestamp('date')->nullable();
+            $table->text('description')->nullable();
+            $table->string('resultats')->nullable();
+            $table->string('enjeu')->nullable();
+            $table->string('nbBateau')->nullable();
+            $table->string('lieu')->nullable();
+            $table->boolean('test')->default(false);          
+            $table->boolean('archive')->default(false);
+            $table->boolean('actif')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
         });

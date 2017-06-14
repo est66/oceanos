@@ -14,10 +14,10 @@ class Album extends Migration {
     public function up() {
         Schema::create('albums', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
-            $table->text('description');
+            $table->string('nom')->nullable();
+            $table->text('description')->nullable();
             $table->integer('position')->nullable();
-            $table->boolean('archive');
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION

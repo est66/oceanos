@@ -18,8 +18,8 @@ class Budget extends Migration
             $table->increments('id');           
             $table->string('nom');            
             $table->integer('montant_recolte');
-            $table->boolean('montant_manquant_visible');
-            $table->boolean('grapg_visible');
+            $table->boolean('montant_manquant_visible')->default(true);;;
+            $table->boolean('graph_visible')->default(true);;
             $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES

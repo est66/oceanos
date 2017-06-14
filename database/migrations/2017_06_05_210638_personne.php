@@ -16,18 +16,18 @@ class Personne extends Migration
         Schema::create('personnes', function (Blueprint $table) {
             //PAR SOUCIS DE SIMPLIFICATION, L'IDENTIFIANT HYBRIDE EST REMPLACE PAR ID
             $table->increments('id');
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('nom')->nullable();
+            $table->string('prenom')->nullable();
             $table->string('email')->nullable();
-            $table->string('statut');
-            $table->string('phrase');
-            $table->text('description');
+            $table->string('statut')->nullable();
+            $table->string('phrase')->nullable();
+            $table->text('description')->nullable();
             $table->string('filiere')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();
              //CLES ETRANGERES
             //CLE ETRANGERE EDITION
-            $table->integer('edition_id');
+            $table->integer('edition_id')->nullable();
             $table->foreign('edition_id')->references('id')->on('editions')->onDelete('cascade');  
         });
     }

@@ -15,8 +15,8 @@ class ReseauSocial extends Migration
     {
         Schema::create('res_socials', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom');
-            $table->string('url');
+            $table->string('nom')->nullable();
+            $table->string('url')->nullable();
             $table->boolean('archive')->default(false);
             $table->timestamps();
         });
