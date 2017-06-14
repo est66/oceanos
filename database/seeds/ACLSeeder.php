@@ -37,18 +37,21 @@ class ACLSeeder extends Seeder {
 
         $equipe0 = new App\Equipe();
         $equipe0->nom = "Team Ingénieurs";
+        $equipe0->phrase = "L'équipe qui s'occupe de concevoir les bâteaux";
         $equipe0->edition_id = 1;
         $equipe0->save();
         
-        $equipe1 = new App\Equipe();
-        $equipe1->nom = "Team Communication";
-        $equipe1->edition_id = 2;
-        $equipe1->save();
-
         $equipe2 = new App\Equipe();
-        $equipe2->nom = "Team Ingénieurs";
+        $equipe2->nom = "Team Communication";
+        $equipe2->phrase = "L'équipe qui s'occupe de la communication";
         $equipe2->edition_id = 2;
         $equipe2->save();
+
+        $equipe1 = new App\Equipe();
+        $equipe1->nom = "Team Ingénieurs";
+        $equipe1->phrase = "L'équipe qui s'occupe de concevoir les bâteaux";
+        $equipe1->edition_id = 2;
+        $equipe1->save();
 
 
         /*         * * PERSONNES ** */
@@ -58,7 +61,11 @@ class ACLSeeder extends Seeder {
         $personne1->email = "jonathan.aeschimann@heig-vd.com";
         $personne1->statut = "Team manager";
         $personne1->phrase = "Manager une équipe, c'est avant tout connaître les compétences de chaques personnes qui la compose";
-        $personne1->description = "Je suis un étudiant à la HEIG-VD en 2ème année";
+        $personne1->description = "J’ai 26 ans et je suis actuellement étudiant microtechnicien à l’HEIG-VD. Aimant croquer la vie à pleines dents, je pratique une foule d’activités lors de mon temps libre et m’intéresse à tous les domaines que la nature et les technologies nous apportent. Le monde naval me passionne, et l’un de mes grands rêves est un tour du monde en voilier autonome hauturier.
+Ce concours me permet d’apporter mon soutien et mes compétences au développement de nouvelles techniques et technologies dans le domaine de l’efficience, l’énergie et le nautisme. Le bateau a toujours accompagné l’homme dans son histoire et son temps est loin d’être révolu.
+Ayant suivi le team « HEIG-Yverdon les Bains, Énergies », je me suis proposé rapidement comme membre de l’équipe 2017. Leur motivation et leur travail m’ont contaminé dès les premiers contacts.
+Mon expérience dans le monde du travail amènera du professionnalisme et de l’organisation au sein du team. Le management ne m’est pas inconnu et la constitution de cette équipe motivée en est la preuve.
+";
         $personne1->edition_id = 2;
         $personne1->save();
         $equipe1->personnes()->save($personne1);
@@ -68,7 +75,12 @@ class ACLSeeder extends Seeder {
         $personne2->nom = "Coelho";
         $personne2->email = "jonathan.coelho@heig-vd.com";
         $personne2->statut = "Communication manager";
-        $personne2->phrase = "Communiquer, une notion importante dans un projet";
+        $personne2->phrase = "Interlocuteur au service de la communication de l’équipe avec les médias.
+
+J’ai 23 ans et je suis en 2ème année en microtechniques. Je suis sensible à une gestion intelligente de nos ressources. Je m’intéresse beaucoup à l’aéronautique et aux courses nautiques.
+ 
+J’ai fait un apprentissage de laborantin en physique et je suis rentré à l’HEIG-VD pour approfondir mes connaissances en mécaniques, en électronique et en physique. Faisant du sport, j’aime donc la compétition. Participer à l’HYDROcontest est pour moi le meilleur moyen d’apprendre et de participer à un championnat. De plus ce projet touche mes centres d’intérêts ce qui en fait le sujet de travail et d’étude le plus enrichissant.
+";
         $personne2->description = "Je suis un étudiant à la HEIG-VD en 2ème année";
         $personne2->edition_id = 2;
         $personne2->save();
@@ -80,7 +92,9 @@ class ACLSeeder extends Seeder {
         $personne3->email = "mathias.favre@heig-vd.com";
         $personne3->statut = "Logistics manager";
         $personne3->phrase = "";
-        $personne3->description = "";
+        $personne3->description = "J'ai 23 ans et je suis étudiant en 2ème année de microtechniques. Bricoleur depuis mon plus jeune âge, je suis attiré par tous types de travaux manuels. J'ai également un intérêt particulier pour le domaine de la robotique, ce qui m'a poussé à entreprendre un apprentissage d'automaticien. Toujours à la recherche de nouveaux acquis et ne connaissant que peu le domaine maritime, ce projet m'intéresse au plus haut point.
+Depuis le début de mes études à l'école d'ingénieur, je m'attends à devoir réaliser des projets avec un suivi complet allant de la création à la réalisation de ces derniers. J'ai pourtant été déçu sur ce point jusqu'à ce jour. J'ai déjà eu l'occasion de réaliser de petits projets au cours des années qui ont précédé mon entrée à la HEIG-VD mais ceci toujours de manière individuelle. Je suis donc particulièrement motivé par l'HYDROcontest car cela me permettra de mettre en pratique les connaissances acquises jusque-là et de développer mes capacités à réaliser un travail de groupe.
+";
         $personne3->edition_id = 2;
         $personne3->save();
         $equipe1->personnes()->save($personne3);
@@ -412,17 +426,41 @@ class ACLSeeder extends Seeder {
         $article2->type = "presse";
         $article2->auteur = "";
         $article2->date = "2016-07-31 20:58:00";
-        $article2->description = "";
+        $article2->description = "Les hautes écoles suisses et françaises ont dominé l'édition 2016 de l'HydroContest à Lausanne. Cette compétition met aux prises des étudiants qui doivent imaginer, concevoir, créer et piloter un bateau innovant. La «Long Distance Race» a été remportée par la Haute Ecole d'Ingénierie et d'Architecture (HEIA) de Fribourg.";
         $article2->url = "http://www.24heures.ch/vaud-regions/ecoles-suisses-francaises-primees-hydrocontest/story/25414798";
         $article2->edition_id = 1;
         $article2->presse_id = 2;
         $article2->save();
         
+        $article6 = new App\Article();
+        $article6->titre = "testt";
+        $article6->soustitre = "Lausanne Les hautes écoles suisses et françaises ont dominé l'édition 2016 de l'HydroContest à Lausanne.";
+        $article6->type = "presse";
+        $article6->auteur = "";
+        $article6->date = "2016-07-31 20:58:00";
+        $article6->description = "Les hautes écoles suisses et françaises ont dominé l'édition 2016 de l'HydroContest à Lausanne. Cette compétition met aux prises des étudiants qui doivent imaginer, concevoir, créer et piloter un bateau innovant. La «Long Distance Race» a été remportée par la Haute Ecole d'Ingénierie et d'Architecture (HEIA) de Fribourg.";
+        $article6->url = "http://www.24heures.ch/vaud-regions/ecoles-suisses-francaises-primees-hydrocontest/story/25414798";
+        $article6->edition_id = 1;
+        $article6->presse_id = 2;
+        $article6->save();
+        
+        $article7 = new App\Article();
+        $article7->titre = "testt";
+        $article7->soustitre = "Lausanne Les hautes écoles suisses et françaises ont dominé l'édition 2016 de l'HydroContest à Lausanne.";
+        $article7->type = "presse";
+        $article7->auteur = "";
+        $article7->date = "2016-07-31 20:58:00";
+        $article7->description = "Les hautes écoles suisses et françaises ont dominé l'édition 2016 de l'HydroContest à Lausanne. Cette compétition met aux prises des étudiants qui doivent imaginer, concevoir, créer et piloter un bateau innovant. La «Long Distance Race» a été remportée par la Haute Ecole d'Ingénierie et d'Architecture (HEIA) de Fribourg.";
+        $article7->url = "http://www.24heures.ch/vaud-regions/ecoles-suisses-francaises-primees-hydrocontest/story/25414798";
+        $article7->edition_id = 2;
+        $article7->presse_id = 2;
+        $article7->save();
+        
         //-------------news 2017------------------
         
         $article3 = new App\Article();
         $article3->titre = "Un événement au sein de notre école";
-        $article3->soustitre = "";
+        $article3->soustitre = "Le moyen de comprendre en quoi consiste ce concours";
         $article3->type = "news";
         $article3->auteur = "Team communication";
         $article3->date = "2017-05-10 15:28:22";
@@ -432,9 +470,9 @@ class ACLSeeder extends Seeder {
 
         $article4 = new App\Article();
         $article4->titre = "Une team communication pour nous soutenir cette année";
-        $article4->soustitre = "";
+        $article4->soustitre = "Un boost pour la communication de l'équipe";
         $article4->type = "news";
-        $article4->auteur = "";
+        $article4->auteur = "admin";
         $article4->date = "2017-04-10 20:58:00";
         $article4->description = "";
         $article4->edition_id = 2;
@@ -444,13 +482,15 @@ class ACLSeeder extends Seeder {
         
         $article5 = new App\Article();
         $article5->titre = "On est apparu dans le 20 minutes et le 24 heures!";
-        $article5->soustitre = "";
+        $article5->soustitre = "Article parlant nous mentionnant";
         $article5->type = "news";
-        $article5->auteur = "";
+        $article5->auteur = "admin";
         $article5->date = "2016-10-10 15:28:22";
         $article5->description = "Allez découvrir les articles qui ont été écrit à propos de l'événement sous la catégorie presse de notre site";
         $article5->edition_id = 1;
         $article5->save();
+        
+
         
         
         
@@ -641,6 +681,22 @@ class ACLSeeder extends Seeder {
         $media12->article_id = 3;
         $media12->save();  
         
+        
+        $media121 = new App\Media();
+        $media121->titre = "";
+        $media121->url = "24pd.pdf";
+        $media121->description = "";
+        $media121->type = "document";
+        $media121->article_id = 2;
+        $media121->save();  
+        
+        $media122 = new App\Media();
+        $media122->titre = "";
+        $media122->url = "20pd.pdf";
+        $media122->description = "";
+        $media122->type = "document";
+        $media122->article_id = 1;
+        $media122->save();  
         //-----------sponsors--------------
         
         $media13 = new App\Media();
@@ -739,7 +795,7 @@ class ACLSeeder extends Seeder {
 
         $Album2 = new App\Album();
         $Album2->nom = "Stand hydrocontest";
-        $Album2->description = "";
+        $Album2->description = "Ce stand a été ms en place pour promouvoir l'équipe participant au concours Hydrocontest ainsi que de faire connaître le concours auprès des étudiants.";
         $Album2->edition_id = 2;
         $Album2->save();
         
@@ -752,17 +808,23 @@ class ACLSeeder extends Seeder {
         /*         * * Information ** */
         $info1 = new App\Information();
         $info1->nom = "PHRASEACCROCHE";
-        $info1->texte = "L'efficience avant tout";
+        $info1->texte = "Transporter plus, plus vite, en consommant moins d'énergie";
         $info1->save();
 
         $info2 = new App\Information();
         $info2->nom = "EspaceSponsor";
-        $info2->texte = "Soutenez nous en devenant notre partenaire. De multiples avantages vous est offerts en fonction des investissements que vous faites... ";
+        $info2->texte = "Nous soutenir, c'est participer au monde de demain."
+                . "Nous sommes une équipe déterminée et motivée. En recevant un soutien financier de votre part, nous aurons la possibilité de participer à cette compétition et mettrons toute notre énergie et nos meilleures idées à concevoir et réaliser un bateau susceptible de remporter cette compétition. Nous collaborerons ainsi également à la recherche et au développement des technologies de demain afin de faire un usage plus intelligent et plus économique de l'énergie.";
         $info2->save();
 
         $info3 = new App\Information();
         $info3->nom = "EspaceEtudiant";
-        $info3->texte = "L'occasion pour oeuvrer dans un projet d'envergure!";
+        $info3->texte = "La Fondation Hydros a le plaisir d’annoncer l’ouverture des inscriptions pour l’Hydrocontest 2017, qui se tiendra le mois de juillet prochain. Les équipes candidates sont appelées à prendre connaissance du nouveau règlement officiel et à soumettre leurs dossiers complets avant le 31 janvier 2017.
+Après l’énorme succès de la troisième édition, qui a accueillie 24 équipes du monde entier, l’HydroContest sera organisé sur les rives du Lac Léman en été 2017.
+Suite aux différents feedbacks reçus lors de l’édition précédente, cette quatrième édition sera pimentée par quelques nouveautés : l’addition de deux prix (Prix Design et Prix Tech Talk), ainsi que la limitation dans les batteries, pour être plus en ligne avec le crédo de la Fondation : « Transportez plus, plus vite, en consommant moins d'énergie”.
+Les deux nouveaux prix viennent compléter la liste de trophées hors-course, le premier misant sur l’esthétique des bateaux et le deuxième sur la capacité des étudiants à présenter leurs projets de façon optimale possible lors des Tech Talks. Les formulaires de pré-inscription sont disponibles sur l’Espace Teams du site www.hydrocontest.org. Le règlement détaillé et l’ensemble des modifications sont à retrouver dans la section Official Notice Board.
+Les anciens et futurs participants sont invités à rejoindre le groupe dédié Hydrocontest Community sur Facebook afin que chacun puisse profiter des échanges entre membres de la communauté et avec les organisateurs.
+Un groupe LinkedIn a été inauguré récemment pour les Alumni de l’HydroContest, où les anciens participants peuvent rester en contact et partager leurs projets avec la communauté HydroContest.";
         $info3->save();
         
         $info4 = new App\Information();
