@@ -32,7 +32,7 @@ class ArticleController extends Controller {
         // création d'un nouvel objet
         $article = new Article($para);
         $article->save();
-        return response()->json($article, Response::HTTP_CREATED);
+        return response()->json($article->id, Response::HTTP_CREATED);
     }
 
     /**

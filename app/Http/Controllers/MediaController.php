@@ -108,36 +108,44 @@ class MediaController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id) {
+        $para = $request->all();
+        $media = Media::find($id);
+        // Règles de validations   
+        // if (!Media::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
+        // création d'un nouvel objet
+        if ($request->hasFile('media')) {
 
-//            $request->file('media');
-//            //$request->media->store('public');
-//            return $request->media->extension();
 
-        
-        $url = null;
-        $titre = $request->titre;
-        $description = $request->description;
-        //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
-        $ext = strtolower($request->file('media')->extension());
-        if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg") {
-            $type = "image";
-            $url = $request->file('media')->store('public/images');
-        } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
-            $type = "video";
-            $url = $request->file('media')->store('public/videos');
-        } elseif ($ext == "pdf") {
-            $type = "document";
-            $url = $request->file('media')->store('public/documents');
-        } else {
-            return "format de fichier invalide !";
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg") {
+                $type = "image";
+                $url = $request->file('media')->store('public/images');
+                $media->url = $url;
+                $media->type = $type;
+            } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
+                $type = "video";
+                $url = $request->file('media')->store('public/videos');
+                $media->url = $url;
+                $media->type = $type;
+            } elseif ($ext == "pdf") {
+                $type = "document";
+                $media->url = $url;
+                $media->type = $type;
+                $url = $request->file('media')->store('public/documents');
+            } else {
+                return "format de fichier invalide !";
+            }
         }
-        $media->titre = $titre;
-        $media->type = $type;
-        $media->type = $description;
-        $media->url = $url;
-
-        Media::find($id)->update($media);
-        return response()->json('OK', Response::HTTP_OK);
+        $media->equipe_id = $request->equipe_id;
+        $media->personne_id = $request->personne_id;
+        $media->article_id = $request->article_id;
+        $media->sponsor_id = $request->sponsor_id;
+        $media->album_id = $request->album_id;
+        $media->information_id = $request->information_id;
+        $media->presse_id = $request->presse_id;
+        $media->titre = $request->titre;
+        $media->description = $request->description;
+        $media->update();
+        return $media;
     }
 
     /**

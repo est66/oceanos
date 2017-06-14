@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 //Route::get('/upload', function () {
 //    return view('upload');
 //});
-Route::get('upload', function(){
+Route::get('upload', function() {
     return view('upload');
 });
 ////AVEC DROIT ADMIN--
@@ -52,11 +52,7 @@ Route::get('upload', function(){
 //    Route::resource('sponsors', 'SponsorController');
 //});
 ////-->
-
-
-
 //SANS DROITS ADMINS--
-
 // ALBUMS
 Route::resource('albums', 'AlbumController');
 // ARTICLES
@@ -100,11 +96,9 @@ Route::get('{nomEdition}/sponsors', 'SponsorController@sponsorsEdition');
 //ALBUMS-EDITION
 Route::get('{nomEdition}/albums', 'AlbumController@albumsEdition');
 //---------------------------------
-
 //AUTRES - PERSONNES PAR EQUIPES PAR EDITION
 Route::get('{nomEdition}/equipe/{nomEquipe}', 'EquipeController@personnesParEquipe');
 //---------
-
 //SELON MEDIA ----------------
 //ROUTES QUI PERMET DE RETROUVER UN MEDIA SELON SON TYPE ET SON ID --> EX : equipe/media/1
 //EQUIPE-MEDIA  
@@ -112,39 +106,56 @@ Route::get('{nomEdition}/equipe/{nomEquipe}', 'EquipeController@personnesParEqui
 Route::get('{type}/media/{id}', 'MediaController@media');
 //ALBUM-MEDIAS-ENSEMBLE DES MEDIAS D'UN ALBUMS 
 // à faire
-
 //CHARGER EDTION
-Route::get('edition/{nomEdition}','EditionController@chargerEdition');
-Route::get('accueil','EditionController@chargerAcceuil');
+Route::get('edition/{nomEdition}', 'EditionController@chargerEdition');
+// PAGE ACCUEIL
+Route::get('accueil', 'EditionController@chargerAcceuil');
+// PAGE EQUIPE
+Route::get('equipe', 'EditionController@chargerEquipeEditionEnCours');
+// PAGE EDITION PRECEDENTE
+Route::get('editionprecedente', 'EditionController@editionPrecedente');
+//-----------------------
+// PAGE ESPACE SPONSOR
+// à faire
+Route::get('espacesponsor', 'EditionController@espaceSponsor');
+// PAGE EQUIPE ETUDIANT
+// à faire
+Route::get('espaceetudiant', 'EditionController@espaceEtudiant');
+// PAGE CONTACT
+// à faire
+Route::get('contact', 'EditionController@editionPrecedente');
 //---------
-
+//
+//DESACTIVE TOUTES LES EDTIONS A PART CELLE DONNEE
+Route::get('edition/activer/{id}', 'EditionController@activerEdition');
 //ARTICLE-PRESSE ----------------
 // à faire  
 Route::get('presse/media/{id}', 'PresseController@media');
 //---------
-
 //EQUIPE PERSONNE---------
 //ATTACHE UNE PERSONNE A L EQUIPE SELON equipe_id et personne_id
 Route::post('equipes/ajouterpersonne', 'EquipeController@ajouterPersonne');
 
 //DETACHE UNE PERSONNE A L EQUIPE SELON equipe_id et personne_id
 Route::post('equipes/enleverpersonne', 'EquipeController@enleverPersonne');
-//--------------------
 
+//--------------------
 //SPONSOR EDITION--------
 //ATACHE UN SPONSOR A UNE EDITION SELON sponsor_id et edition_id
 Route::post('sponsors/ajouteredition', 'SponsorController@ajouterEdition');
 //DETACHE UN SPONSOR A UNE EDITION SELON equipe_id et personne_id
 Route::post('sponsors/enleveredition', 'SponsorController@enleverEdition');
 //--------------------
-
-
 //ATACHE UN SPONSOR A UNE EDITION SELON sponsor_id et edition_id
 Route::get('news', 'ArticleController@news');
 //DETACHE UN SPONSOR A UNE EDITION SELON equipe_id et personne_id
 Route::get('presse', 'ArticleController@presse');
 
 Route::get('presseannee', 'ArticleController@presseParAnnee');
-//ACCEUIL-------
-//FOURNI TOUTES LES DONNéES POUR LA PAGE D'ACCEUIL
+
+
+
+
+//REDIRECTION SI AUCUNES ROUTES DISPONBLES
+//Route::get('{all}', 'HomeController@index')->name('home');
 

@@ -32,7 +32,7 @@ class AlbumController extends Controller {
         // création d'un nouvel objet
         $album = new Album($para);
         $album->save();
-        return response()->json($album, Response::HTTP_CREATED);
+        return response()->json($album->id, Response::HTTP_CREATED);
     }
 
     /**
@@ -43,7 +43,6 @@ class AlbumController extends Controller {
      */
     public function show($id) {
         return Album::find($id)->load('medias');
-        ;
     }
 
     /**

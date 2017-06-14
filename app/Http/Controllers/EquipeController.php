@@ -101,7 +101,7 @@ class EquipeController extends Controller {
 
         $equipe->personnes()->attach($personneId);
 
-        return "$equipe->id";
+        return response()->json($equipe->id, Response::HTTP_CREATED);
     }
 
     //DETACHE UNE PERSONNE A UNE EQUIPE

@@ -31,6 +31,142 @@ class ACLSeeder extends Seeder {
         $user1->save();
 
 
+        //EQUIPES
+        //EQUIPES
+        $equipe1 = new App\Equipe();
+        $equipe1->nom = "Team Communication";
+        $equipe00->phrase = "Nous sommes les ingénieurs de Hydrocontest";
+        $equipe1->archive = false;
+        $equipe1->edition_id = 2;
+        $equipe1->save();
+
+        $equipe2 = new App\Equipe();
+        $equipe2->nom = "Team Ingénieurs";
+        $equipe00->phrase = "Nous sommes la communication de Hydrocontest";
+        $equipe2->archive = false;
+        $equipe2->edition_id = 2;
+        $equipe2->save();
+
+        $equipe00 = new App\Equipe();
+        $equipe00->nom = "Ingenieurs";
+        $equipe00->phrase = "Nous sommes les ingénieurs de Hydrocontest";
+        $equipe00->archive = false;
+        $equipe00->edition_id = 1;
+        $equipe00->save();
+
+        $equipe0 = new App\Equipe();
+        $equipe0->nom = "TEAM HYDROCONTEST";
+        $equipe0->phrase = "TOUS LES MEMBRES DE LA TEAM HYDROCONTEST";
+        $equipe0->archive = false;
+        $equipe0->edition_id = 1;
+        $equipe0->save();
+
+        $equipe1 = new App\Equipe();
+        $equipe1->nom = "Team HEIG-VD";
+        $equipe1->archive = false;
+        $equipe1->edition_id = 1;
+        $equipe1->save();
+
+        $equipe2 = new App\Equipe();
+        $equipe2->nom = "Team Communication";
+        $equipe2->archive = false;
+        $equipe2->edition_id = 1;
+        $equipe2->save();
+
+        $equipe3 = new App\Equipe();
+        $equipe3->nom = "Team Ingénieurs";
+        $equipe3->archive = false;
+        $equipe3->edition_id = 1;
+        $equipe3->save();
+
+
+        /*         * * PERSONNES ** */
+        $personne00 = new App\Personne();
+        $personne00->nom = "Esteem";
+        $personne00->prenom = "Okoro";
+        $personne00->email = "esteem.okoro@heig-vd.com";
+        $personne00->statut = "Communication";
+        $personne00->phrase = "Je suis étudiant à l'HEIG-VD";
+        $personne00->description = "Description de la personne";
+        $personne00->edition_id = 1;
+        $personne00->save();
+        //JOINTURE AVEC PIVOT
+        $equipe1->personnes()->save($personne00);
+        $equipe2->personnes()->save($personne00);
+        //------------------------------------
+        $personne0 = new App\Personne();
+        $personne0->nom = "Jonathan";
+        $personne0->prenom = "Aeschimann";
+        $personne0->email = "jonathan.aeschimann@heig-vd.com";
+        $personne0->statut = "Communication";
+        $personne0->phrase = "Phrase d'accroche";
+        $personne0->description = "Description de la personne";
+        $personne0->edition_id = 1;
+        $personne0->save();
+        //JOINTURE AVEC PIVOT
+        $equipe1->personnes()->save($personne0);
+        $equipe3->personnes()->save($personne0);
+        //------------------------------------
+        $personne1 = new App\Personne();
+        $personne1->nom = "Jonathan";
+        $personne1->prenom = "Aeschimann";
+        $personne1->email = "jonathan.aeschimann@heig-vd.com";
+        $personne1->statut = "Team manager";
+        $personne1->phrase = "L'efficence avant tout!";
+        $personne1->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne1->edition_id = 1;
+        $personne1->save();
+        $equipe1->personnes()->save($personne1);
+        $equipe2->personnes()->save($personne1);
+
+        $personne2 = new App\Personne();
+        $personne2->nom = "Jonathan";
+        $personne2->prenom = "Coelho";
+        $personne2->email = "jonathan.coelho@heig-vd.com";
+        $personne2->statut = "Communication manager";
+        $personne2->phrase = "L'efficence avant tout!";
+        $personne2->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne2->edition_id = 1;
+        $personne2->save();
+        $equipe1->personnes()->save($personne2);
+        $equipe3->personnes()->save($personne2);
+
+        $personne3 = new App\Personne();
+        $personne3->nom = "Mathias";
+        $personne3->prenom = "Favre";
+        $personne3->email = "mathias.favre@heig-vd.com";
+        $personne3->statut = "Logistics manager";
+        $personne3->phrase = "L'efficence avant tout!";
+        $personne3->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne3->edition_id = 1;
+        $personne3->save();
+        $equipe1->personnes()->save($personne3);
+        $equipe2->personnes()->save($personne3);
+
+        $personne4 = new App\Personne();
+        $personne4->nom = "Dani";
+        $personne4->prenom = "Duarte";
+        $personne4->email = "dani.duarte@heig-vd.com";
+        $personne4->statut = "Associé de projet";
+        $personne4->phrase = "L'efficence avant tout!";
+        $personne4->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne4->edition_id = 1;
+        $personne4->save();
+        $equipe1->personnes()->save($personne4);
+        $equipe3->personnes()->save($personne4);
+
+        $personne5 = new App\Personne();
+        $personne5->nom = "Julien";
+        $personne5->prenom = "Gerber";
+        $personne5->email = "julien.gerber@heig-vd.com";
+        $personne5->statut = "Associé de projet";
+        $personne5->phrase = "L'efficence avant tout!";
+        $personne5->description = "Je suis Ingenieur à la HEIG-VD.";
+        $personne5->edition_id = 1;
+        $personne5->save();
+        $equipe1->personnes()->save($personne5);
+        $equipe2->personnes()->save($personne5);
+
         /*         * * EDITION ** */
         $edition1 = new App\Edition();
         $edition1->date = "2016-07-24 15:28:22";
@@ -58,166 +194,6 @@ class ACLSeeder extends Seeder {
         $edition2->actif = true;
         $edition2->save();
 
-
-        //EQUIPES
-        $equipe1 = new App\Equipe();
-        $equipe1->nom = "Team Communication";
-        $equipe1->phrase = "Nous sommes les ingénieurs de Hydrocontest";
-        $equipe1->archive = false;
-        $equipe1->edition_id = 2;
-        $equipe1->save();
-
-        $equipe2 = new App\Equipe();
-        $equipe2->nom = "Team Ingénieurs";
-        $equipe2->phrase = "Nous sommes la communication de Hydrocontest";
-        $equipe2->archive = false;
-        $equipe2->edition_id = 2;
-        $equipe2->save();
-
-        /*         * * PERSONNES ** */
-        
-        $personne1 = new App\Personne();
-        $personne1->prenom = "Jonathan";
-        $personne1->nom = "Aeschimann";
-        $personne1->email = "jonathan.aeschimann@heig-vd.com";
-        $personne1->statut = "Team manager";
-        $personne1->phrase = "Manager une équipe, c'est avant tout connaître les compétences de chaques personnes qui la compose";
-        $personne1->description = "Je suis un étudiant à la HEIG-VD en 2ème année";
-        $personne1->edition_id = 2;
-        $personne1->save();
-        $equipe1->personnes()->save($personne1);
-        
-        $personne2 = new App\Personne();
-        $personne2->prenom = "Jonathan";
-        $personne2->nom = "Coelho";
-        $personne2->email = "jonathan.coelho@heig-vd.com";
-        $personne2->statut = "Communication manager";
-        $personne2->phrase = "Communiquer, une notion importante dans un projet";
-        $personne2->description = "Je suis un étudiant à la HEIG-VD en 2ème année";
-        $personne2->edition_id = 2;
-        $personne2->save();
-        $equipe1->personnes()->save($personne2);
-        $personne3 = new App\Personne();
-        $personne3->prenom = "Mathias";
-        $personne3->nom = "Favre";
-        $personne3->email = "mathias.favre@heig-vd.com";
-        $personne3->statut = "Logistics manager";
-        $personne3->phrase = "";
-        $personne3->description = "";
-        $personne3->edition_id = 2;
-        $personne3->save();
-        $equipe1->personnes()->save($personne3);
-        $personne4 = new App\Personne();
-        $personne4->prenom = "Dani";
-        $personne4->nom = "Duarte";
-        $personne4->email = "dani.duarte@heig-vd.com";
-        $personne4->statut = "Associé de projet";
-        $personne4->phrase = "";
-        $personne4->description = "Je suis Ingenieur à la HEIG-VD.";
-        $personne4->edition_id = 1;
-        $personne4->save();
-        $equipe1->personnes()->save($personne4);
-        $personne5 = new App\Personne();
-        $personne5->prenom = "Julien";
-        $personne5->nom = "Gerber";
-        $personne5->email = "julien.gerber@heig-vd.com";
-        $personne5->statut = "Associé de projet";
-        $personne5->phrase = "";
-        $personne5->description = "";
-        $personne5->edition_id = 1;
-        $personne5->save();
-        $equipe1->personnes()->save($personne5);
-
-        $personne6 = new App\Personne();
-        $personne6->prenom = "David";
-        $personne6->nom = "Bolomey";
-        $personne6->email = "david.bolomey@heig-vd.com";
-        $personne6->statut = "Associé de projet";
-        $personne6->phrase = "";
-        $personne6->description = "";
-        $personne6->edition_id = 1;
-        $personne6->save();
-        $equipe1->personnes()->save($personne6);
-
-        $personne7 = new App\Personne();
-        $personne7->prenom = "Romain ";
-        $personne7->nom = "Paridant de Cauwere";
-        $personne7->email = "romain.paridandecauwere@heig-vd.com";
-        $personne7->statut = "External Provider";
-        $personne7->phrase = "";
-        $personne7->description = "";
-        $personne7->edition_id = 1;
-        $personne7->save();
-        $equipe1->personnes()->save($personne7);
-
-        $personne8 = new App\Personne();
-        $personne8->prenom = "Laurent ";
-        $personne8->nom = "Gravier";
-        $personne8->email = "laurent.gravier@heig-vd.com";
-        $personne8->statut = "Chercheur superviseur";
-        $personne8->phrase = "";
-        $personne8->description = "";
-        $personne8->edition_id = 1;
-        $personne8->save();
-        $equipe1->personnes()->save($personne8);
-
-        //---------------------------------------equipeComm
-        $personne9 = new App\Personne();
-        $personne9->prenom = "Joséphine";
-        $personne9->nom = "Chabin";
-        $personne9->email = "";
-        $personne9->statut = "Cheffe du goupe Design";
-        $personne9->phrase = "";
-        $personne9->description = "";
-        $personne9->edition_id = 1;
-        $personne9->save();
-        $equipe2->personnes()->save($personne9);
-
-        $personne10 = new App\Personne();
-        $personne10->prenom = "Cédric";
-        $personne10->nom = "Schär";
-        $personne10->email = "";
-        $personne10->statut = "Chef du groupe CommExterne et membre du groupe sponsor";
-        $personne10->phrase = "";
-        $personne10->description = "";
-        $personne10->edition_id = 1;
-        $personne10->save();
-        $equipe2->personnes()->save($personne10);
-
-        $personne11 = new App\Personne();
-        $personne11->prenom = "Kéren";
-        $personne11->nom = "Bagnoud";
-        $personne11->email = "";
-        $personne11->statut = "Membre du groupe Sponsor";
-        $personne11->phrase = "";
-        $personne11->description = "";
-        $personne11->edition_id = 1;
-        $personne11->save();
-        $equipe2->personnes()->save($personne11);
-
-        $personne12 = new App\Personne();
-        $personne12->prenom = "Kelly";
-        $personne12->nom = "Pala";
-        $personne12->email = "";
-        $personne12->statut = "Membre du groupe Sponsor et aide à d'autres groupes";
-        $personne12->phrase = "";
-        $personne12->description = "";
-        $personne12->edition_id = 1;
-        $personne12->save();
-        $equipe2->personnes()->save($personne12);
-
-        $personne13 = new App\Personne();
-        $personne13->prenom = "Colin";
-        $personne13->nom = "Mottas";
-        $personne13->email = "";
-        $personne13->statut = "Membre du groupe Sponsor et aide à d'autres groupes";
-        $personne13->phrase = "";
-        $personne13->description = "";
-        $personne13->edition_id = 1;
-        $personne13->save();
-        $equipe2->personnes()->save($personne13);
-
-
         /*         * * ARTICLE ** */
         $article1 = new App\Article();
         $article1->titre = "Succès suisse et français lors de l'Hydrocontest";
@@ -232,6 +208,7 @@ class ACLSeeder extends Seeder {
         $article1->edition_id = 1;
         $article1->presse_id = 1;
         $article1->save();
+
         $article2 = new App\Article();
         $article2->titre = str_random(10);
         $article2->soustitre = str_random(10);
@@ -245,6 +222,7 @@ class ACLSeeder extends Seeder {
         $article2->edition_id = 1;
         $article2->presse_id = 1;
         $article2->save();
+
         $article3 = new App\Article();
         $article3->titre = str_random(10);
         $article3->soustitre = str_random(10);
@@ -258,7 +236,6 @@ class ACLSeeder extends Seeder {
         $article3->edition_id = 1;
         $article3->presse_id = 0;
         $article3->save();
-
 
         /*         * * SPONSORS ** */
         $sponsor1 = new App\Sponsor();
@@ -289,27 +266,34 @@ class ACLSeeder extends Seeder {
         $edition1->sponsors()->save($sponsor3);
 
         /*         * * PRESSE ** */
+
         $Presse1 = new App\Presse();
         $Presse1->nom = "20 Minutes";
+        $Presse1->archive = false;
         $Presse1->save();
 
         $Presse2 = new App\Presse();
         $Presse2->nom = "24 Heures";
+        $Presse2->archive = false;
         $Presse2->save();
 
         $Presse3 = new App\Presse();
         $Presse3->nom = "La Region";
+        $Presse3->archive = false;
         $Presse3->save();
+
         /*         * * Reseaux Sociaux ** */
 
         $ResSoc1 = new App\ResSocial();
         $ResSoc1->nom = "Facebook";
         $ResSoc1->url = "facebook.com";
+        $ResSoc1->archive = false;
         $ResSoc1->save();
 
         $ResSoc2 = new App\ResSocial();
         $ResSoc2->nom = "Instagram";
         $ResSoc2->url = "instagram.com";
+        $ResSoc2->archive = false;
         $ResSoc2->save();
 
         /*         * * Media ** */
@@ -320,6 +304,7 @@ class ACLSeeder extends Seeder {
         $media0->type = "image";
         $media0->archive = false;
         $media0->save();
+
         $Media1 = new App\Media();
         $Media1->titre = "test";
         $Media1->url = "\salut.mov";
@@ -328,6 +313,7 @@ class ACLSeeder extends Seeder {
         $Media1->archive = false;
         $Media1->album_id = 1;
         $Media1->save();
+
         $Media2 = new App\Media();
         $Media2->titre = "test";
         $Media2->url = "\salut.mov";
@@ -336,6 +322,7 @@ class ACLSeeder extends Seeder {
         $Media2->archive = false;
         $Media2->album_id = 1;
         $Media2->save();
+
         $Media3 = new App\Media();
         $Media3->titre = "test";
         $Media3->url = "\equipe.jpg";
@@ -344,6 +331,7 @@ class ACLSeeder extends Seeder {
         $Media3->equipe_id = 1;
         $Media3->archive = false;
         $Media3->save();
+
         $Media4 = new App\Media();
         $Media4->titre = "test";
         $Media4->url = "\personne1.jpg";
@@ -352,6 +340,7 @@ class ACLSeeder extends Seeder {
         $Media4->personne_id = 1;
         $Media4->archive = false;
         $Media4->save();
+
         $Media5 = new App\Media();
         $Media5->titre = "test";
         $Media5->url = "\personne2.jpg";
@@ -360,6 +349,7 @@ class ACLSeeder extends Seeder {
         $Media5->personne_id = 2;
         $Media5->archive = false;
         $Media5->save();
+
         $Media6 = new App\Media();
         $Media6->titre = "test";
         $Media6->url = "\atricle.jpg";
@@ -368,6 +358,7 @@ class ACLSeeder extends Seeder {
         $Media6->article_id = 1;
         $Media6->archive = false;
         $Media6->save();
+
         $Media7 = new App\Media();
         $Media7->titre = "test";
         $Media7->url = "\atricle2.jpg";
@@ -376,6 +367,7 @@ class ACLSeeder extends Seeder {
         $Media7->article_id = 2;
         $Media7->archive = false;
         $Media7->save();
+
         $Media8 = new App\Media();
         $Media8->titre = "test";
         $Media8->url = "\sponsor1.jpg";
@@ -384,6 +376,7 @@ class ACLSeeder extends Seeder {
         $Media8->sponsor_id = 1;
         $Media8->archive = false;
         $Media8->save();
+
         $Media9 = new App\Media();
         $Media9->titre = "test";
         $Media9->url = "\sponsor2.jpg";
@@ -392,25 +385,25 @@ class ACLSeeder extends Seeder {
         $Media9->sponsor_id = 2;
         $Media9->archive = false;
         $Media9->save();
-        
-        $mmedia00 = new App\Media();
-        $mmedia00->titre = "test";
-        $mmedia00->url = "\sponsor2.jpg";
-        $mmedia00->description = "lol";
-        $mmedia00->type = "image";
-        $mmedia00->sponsor_id = 2;
-        $mmedia00->archive = false;
-        $mmedia00->save();
-        
-        $mmedia01 = new App\Media();
-        $mmedia01->titre = "test";
-        $mmedia01->url = "\presse1.jpg";
-        $mmedia01->description = "lol";
-        $mmedia01->type = "image";
-        $mmedia01->presse_id = 1;
-        $mmedia01->archive = false;
-        $mmedia01->save();
-        
+
+        $media00 = new App\Media();
+        $media00->titre = "test";
+        $media00->url = "\sponsor2.jpg";
+        $media00->description = "lol";
+        $media00->type = "image";
+        $media00->sponsor_id = 2;
+        $media00->archive = false;
+        $media00->save();
+
+        $media01 = new App\Media();
+        $media01->titre = "test";
+        $media01->url = "\presse1.jpg";
+        $media01->description = "lol";
+        $media01->type = "image";
+        $media01->presse_id = 1;
+        $media01->archive = false;
+        $media01->save();
+
         $media02 = new App\Media();
         $media02->titre = "test";
         $media02->url = "\presse1.jpg";
@@ -420,14 +413,6 @@ class ACLSeeder extends Seeder {
         $media02->archive = false;
         $media02->save();
 
-        $media03 = new App\Media();
-        $media03->titre = "test";
-        $media03->url = "\XgTGqwVs4lOFbl5UoQhETBV3NHP5LlcjzvhVTyb5.jpg";
-        $media03->description = "image de fond de la page d'accueil";
-        $media03->type = "image";
-        $media03->information_id = 5;
-        $media03->archive = false;
-        $media03->save();
         /*         * * Album ** */
         $Album1 = new App\Album();
         $Album1->nom = "Concours";
@@ -435,12 +420,14 @@ class ACLSeeder extends Seeder {
         $Album1->archive = false;
         $Album1->edition_id = 1;
         $Album1->save();
+
         $Album2 = new App\Album();
         $Album2->nom = "Tests_medias";
         $Album2->description = "lol";
         $Album2->archive = false;
         $Album2->edition_id = 1;
         $Album2->save();
+
         /*         * * Information ** */
         $info1 = new App\Information();
         $info1->nom = "PageAccueil_PhraseAccroche";
@@ -448,26 +435,20 @@ class ACLSeeder extends Seeder {
         $info1->visible = true;
         $info1->archive = false;
         $info1->save();
-        
+
         $info2 = new App\Information();
         $info2->nom = "EspaceSponsor";
         $info2->texte = "Soutenez nous en devenant notre partenaire. De multiples avantages vous est offerts en fonction des investissements que vous faites... ";
         $info2->visible = true;
         $info2->archive = false;
         $info2->save();
+
         $info3 = new App\Information();
         $info3->nom = "EspaceEtudiant";
         $info3->texte = "L'occasion pour oeuvrer dans un projet d'envergure!";
         $info3->visible = true;
         $info3->archive = false;
         $info3->save();
-
-        $info4 = new App\Information();
-        $info4->nom = "ImageFondAccueil";
-        $info4->texte = "image de fond pour l'accueil";
-        $info4->visible = true;
-        $info4->archive = false;
-        $info4->save();
     }
 
 }

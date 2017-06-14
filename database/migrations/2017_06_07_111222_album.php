@@ -17,7 +17,7 @@ class Album extends Migration {
             $table->string('nom')->nullable();
             $table->text('description')->nullable();
             $table->integer('position')->nullable();
-            $table->boolean('archive')->default(false);;
+            $table->boolean('archive')->default(false);
             $table->timestamps();
             //CLES ETRANGERES
             //CLE ETRANGERE EDITION
