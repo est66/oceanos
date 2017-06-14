@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use App\Media;
+use App\Information;
 
 class MediaController extends Controller {
 
@@ -27,22 +28,21 @@ class MediaController extends Controller {
      */
     public function store(Request $request) {
         $para = $request->all();
+
+        $nomDeDomain = Information::find(6)->texte;
+
+
         // Règles de validations   
         // if (!Media::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
-        // création d'un nouvel objet
+        // création d'un nouvel objet        
+
+
         if ($request->hasFile('media')) {
 //            $request->file('media');
 //            //$request->media->store('public');
 //            return $request->media->extension();
 
-            $url = null;
-            $media_id = null;
-            $personne_id = null;
-            $article_id = null;
-            $sponsor_id = null;
-            $album_id = null;
-            $information_id = null;
-            $presse_id = null;
+
 
             $media_id = $request->equipe_id;
             $personne_id = $request->personne_id;
@@ -52,22 +52,25 @@ class MediaController extends Controller {
             $information_id = $request->information_id;
             $presse_id = $request->presse_id;
 
-
+            $fileName = $request->media->hashName();
 
             $media = new Media();
             $titre = $request->titre;
             $description = $request->description;
             //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
             $ext = strtolower($request->file('media')->extension());
-            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg") {
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "gif") {
                 $type = "image";
-                $url = $request->file('media')->store('public/images');
+                $request->file('media')->store('public/images');
+                $url = $nomDeDomain . '/storage/images/' . $fileName;
             } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
                 $type = "video";
-                $url = $request->file('media')->store('public/videos');
+                $request->file('media')->store('public/videos');
+                $url = $nomDeDomain . '/storage/videos/' . $fileName;
             } elseif ($ext == "pdf") {
                 $type = "document";
-                $url = $request->file('media')->store('public/documents');
+                $request->file('media')->store('public/documents');
+                $url = $nomDeDomain . '/storage/documents/' . $fileName;
             } else {
                 return "format de fichier invalide !";
             }
@@ -110,13 +113,14 @@ class MediaController extends Controller {
     public function update(Request $request, $id) {
         $para = $request->all();
         $media = Media::find($id);
+
         // Règles de validations   
         // if (!Media::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
         if ($request->hasFile('media')) {
 
 
-            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg") {
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg") {
                 $type = "image";
                 $url = $request->file('media')->store('public/images');
                 $media->url = $url;

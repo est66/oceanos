@@ -82,18 +82,18 @@ class ArticleController extends Controller {
 
     public function news() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
-        return Article::all()->first()->with('media')->get()->where('archive', false)->where('type', "news");
+        return Article::all()->first()->with('media')->where('archive', false)->where('type', "news")->get();
     }
     
         public function presse() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
-        return Article::all()->first()->with('media', 'presse.media')->get()->where('archive', false)->where('type', "presse");
+        return Article::all()->first()->with('media', 'presse.media')->where('archive', false)->where('type', "presse")->get();
     }
     
     
             public function presseParAnnee() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
-        return Article::all()->first()->with('media', 'presse.media')->get()->where('archive', false)->where('type', "presse");
+        return Article::all()->first()->with('media', 'presse.media')->where('archive', false)->where('type', "presse")->get();
     }
 
 }

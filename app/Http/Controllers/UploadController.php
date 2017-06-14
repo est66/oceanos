@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Information;
 
 class UploadController extends Controller {
 
@@ -31,17 +32,49 @@ class UploadController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //return $request->file('media');
+
+
+        $nomDeDomain = "Information::find(6)->texte;";
 
         if ($request->hasFile('media')) {
 
-            $request->file('media');
 
-            //$request->media->store('public');
-            return $request->media->extension();
-        } else {
-            return "aucun(s) fichier(s) selectionné(s)";
+
+
+            $media_id = $request->equipe_id;
+            $personne_id = $request->personne_id;
+            $article_id = $request->article_id;
+            $sponsor_id = $request->sponsor_id;
+            $album_id = $request->album_id;
+            $information_id = $request->information_id;
+            $presse_id = $request->presse_id;
+
+            $fileName = $request->media->getClientOriginalName();
+
+            
+            $titre = $request->titre;
+            $description = $request->description;
+            //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
+            $ext = strtolower($request->file('media')->extension());
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "jpg"|| $ext == "gif") {
+                $type = "image";
+                $request->file('media')->storeAs('public/images',$fileName);
+                $url = $nomDeDomain . '/storage/images/' . $fileName;
+            } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
+                $type = "video";
+                $request->file('media')->storeAs('public/videos');
+                $url = $nomDeDomain . '/storage/videos/' . $fileName;
+            } elseif ($ext == "pdf") {
+                $type = "document";
+                $request->file('media')->storeAs('public/documents');
+                $url = $nomDeDomain . '/storage/documents/' . $fileName;
+            } else {
+                return "format de fichier invalide !";
+            }
+
+            return 'fichié '.$fileName.' uploadé !';
         }
+        return"fichier manquant";
     }
 
     /**

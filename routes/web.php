@@ -71,7 +71,7 @@ Route::resource('equipes', 'EquipeController');
 Route::resource('informations', 'InformationController');
 //MEDIAS
 Route::resource('medias', 'MediaController');
-Route::post('medias', 'MediaController@store')->name('upload.media');
+Route::post('medias', 'UploadController@store')->name('upload.media');
 //PARAMETRES
 Route::resource('parametres', 'ParametreController');
 //PERSONNES

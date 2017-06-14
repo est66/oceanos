@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Personne;
 use App\Edition;
+
 class PersonneController extends Controller {
 
     /**
@@ -30,7 +31,7 @@ class PersonneController extends Controller {
         // création d'un nouvel objet
         $personne = new Personne($para);
         $personne->save();
-        return response()->json($personne, Response::HTTP_CREATED);
+        return response()->json($personne->id, Response::HTTP_CREATED);
     }
 
     /**
@@ -40,8 +41,7 @@ class PersonneController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        return Personne::find($id)->load('medias');
-        ;
+        return Personne::find($id)->load('media');
     }
 
     /**

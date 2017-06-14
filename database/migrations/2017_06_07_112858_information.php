@@ -17,7 +17,7 @@ class Information extends Migration
             $table->increments('id');
             $table->string('nom')->nullable();           
             $table->text('texte')->nullable();
-            $table->boolean('visible')->nullable();
+            $table->boolean('visible')->default(false);
             $table->boolean('archive')->default(false);
             $table->timestamps();
         });
