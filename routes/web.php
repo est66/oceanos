@@ -14,12 +14,107 @@
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'HomeController@index')->name('home');
-//Route::get('/upload', function () {
+
+//Route::get('admin/{someword}', function() {
 //    return view('upload');
 //});
-Route::get('upload', function() {
-    return view('upload');
+
+Route::get('admin/edition', function() {
+    return File::get(base_path() . '/admin/index.html');
 });
+
+
+Route::get('admin/accueil', function() {
+    return File::get(base_path() . '/admin/accueil.html');
+});
+
+
+Route::get('admin/equipe', function() {
+    return File::get(base_path() . '/admin/equipe.html');
+});
+
+
+Route::get('admin/reseaux', function() {
+    return File::get(base_path() . '/admin/reseauxSociaux.html');
+});
+
+Route::get('admin/espacesponsor', function() {
+    return File::get(base_path() . '/admin/espaceSponsor.html');
+});
+
+Route::get('admin/espaceetudiant', function() {
+    return File::get(base_path() . '/admin/espaceEtudiant.html');
+});
+
+Route::get('admin/contact', function() {
+    return File::get(base_path() . '/admin/contact.html');
+});
+
+Route::get('admin/apparence', function() {
+    return File::get(base_path() . '/admin/apparence.html');
+});
+Route::get('admin/media', function() {
+    return File::get(base_path() . '/admin/media.html');
+});
+
+Route::get('admin/presse', function() {
+    return File::get(base_path() . '/admin/presse.html');
+});
+
+Route::get('admin/actualite', function() {
+    return File::get(base_path() . '/admin/actualite.html');
+});
+Route::get('admin/sponsor', function() {
+    return File::get(base_path() . '/admin/sponsor.html');
+});
+
+
+
+//Route::group(['middleware' => 'auth'], function () {
+//
+//    Route::get('admin/edition', function() {
+//        return File::get(base_path() . '/admin/accueil.html');
+//    });
+////        Route::get('admin/edition', function() {
+////        return view('upload');
+////    });
+//    Route::get('admin/accueil.html', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/sponsor', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/actualite', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/presse', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/media', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/contact', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/espacesponsor', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/espaceetudiant', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/reseaux', function() {
+//        return view('upload');
+//    });
+//    Route::get('admin/apparence', function() {
+//        return view('upload');
+//    });
+//});
+
+
+
+//Route::get('upload', function() {
+//    return view('upload');
+//});
 ////AVEC DROIT ADMIN--
 //Route::group(['middleware' => 'auth'], function () {
 ////ALBUMS
@@ -71,7 +166,7 @@ Route::resource('equipes', 'EquipeController');
 Route::resource('informations', 'InformationController');
 //MEDIAS
 Route::resource('medias', 'MediaController');
-Route::post('medias', 'UploadController@store')->name('upload.media');
+//Route::post('medias', 'UploadController@store')->name('upload.media');
 //PARAMETRES
 Route::resource('parametres', 'ParametreController');
 //PERSONNES

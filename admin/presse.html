@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Team HEIG-VD - Page Admin</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Styles -->
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/buttons.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <!-- JavaScript -->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/underscore-min.js"></script>
+    <script src="../js/custom.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1><a href="http://pingouin.heig-vd.ch/oceanos/admin/edition">Team HEIG-VD - Page Admin</a></h1>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="navbar navbar-inverse" role="banner">
+                        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                                    <ul class="dropdown-menu animated fadeInUp">
+                                        <li><a href="profile.html">Profile</a></li>
+                                        <li><a href="login.html">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidebar content-box" style="display: block;">
+                    <ul class="nav">
+                        <!-- Main menu -->
+                        <li ><a href="http://pingouin.heig-vd.ch/oceanos/admin/edition"><i class="glyphicon glyphicon-star"></i> Édition</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/accueil"><i class="glyphicon glyphicon-home"></i> Accueil</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/equipe"><i class="glyphicon glyphicon-user"></i> Équipe</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/sponsor"><i class="glyphicon glyphicon-usd"></i> Sponsor</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/actualite"><i class="glyphicon glyphicon-list-alt"></i> Actualité</a></li>
+                        <li class="current"><a href="http://pingouin.heig-vd.ch/oceanos/admin/presse"><i class="glyphicon glyphicon-pencil"></i> Presse</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/media"><i class="glyphicon glyphicon-film"></i> Média</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/contact"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/espacesponsor"><i class="glyphicon glyphicon-info-sign"></i> Espace Sponsor</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/espaceetudiant"><i class="glyphicon glyphicon-info-sign"></i> Espace Étudiant</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/reseaux"><i class="glyphicon glyphicon-thumbs-up"></i> Réseaux Sociaux</a></li>
+                        <li><a href="http://pingouin.heig-vd.ch/oceanos/admin/apparence"><i class="glyphicon glyphicon-eye-open"></i> Apparence</a></li>
+                    </ul>
+                    <a href="#">Accès au site web</a>
+                    <button id="saveModif">Enregistrer</button>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="row" id="presse">
+                    <div class="col-md-12">
+                        <div class="content-box-large">
+                            <div class="panel-heading">
+                                <div class="panel-title">Presse</div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-md-2">
+                                    <div class="content-box-large text-center">
+                                        <a href="#" data-rel="reload"><i class="glyphicon glyphicon-plus"></i></a>
+                                    </div>
+                                </div>
+
+                               <div id="articlesPresse">
+                                <div class="col-md-2 articlePresse_template">
+                                    <div class="content-box-large text-center">
+                                        <figure>
+                                            <img class="imgArticlePresse" src="" alt="Image article" height="100" width="100">
+                                            <figcaption class="titreArticlePresse"></figcaption>
+                                        </figure>
+                                        <div class="panel-options">
+                                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a href="#" data-rel="reload"><i class="glyphicon glyphicon-remove"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="copy text-center">
+                Copyright 2017 <a href='#'>Website</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

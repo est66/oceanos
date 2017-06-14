@@ -38,13 +38,8 @@ class MediaController extends Controller {
 
 
         if ($request->hasFile('media')) {
-//            $request->file('media');
-//            //$request->media->store('public');
-//            return $request->media->extension();
 
-
-
-            $media_id = $request->equipe_id;
+            $equipe_id = $request->equipe_id;
             $personne_id = $request->personne_id;
             $article_id = $request->article_id;
             $sponsor_id = $request->sponsor_id;
@@ -74,12 +69,22 @@ class MediaController extends Controller {
             } else {
                 return "format de fichier invalide !";
             }
+
+            $media->equipe_id = $equipe_id;
+            $media->personne_id = $personne_id;
+            $media->article_id = $article_id;
+            $media->sponsor_id = $sponsor_id;
+            $media->album_id = $album_id;
+            $media->information_id = $information_id;
+            $media->presse_id = $presse_id;
+
+
             $media->titre = $titre;
             $media->type = $type;
             $media->description = $description;
             $media->url = $url;
             $media->save();
-            return $media;
+            return response()->json($media, Response::HTTP_CREATED);
         }
         return"fichier manquant";
     }

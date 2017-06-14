@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Team HEIG-VD - Page Admin</title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Styles -->
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/buttons.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- JavaScript -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/commBD.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <h1><a href="index.html">Team HEIG-VD - Page Admin</a></h1>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="navbar navbar-inverse" role="banner">
+                        <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                                    <ul class="dropdown-menu animated fadeInUp">
+                                        <li><a href="profile.html">Profile</a></li>
+                                        <li><a href="login.html">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidebar content-box" style="display: block;">
+                    <ul class="nav">
+                        <!-- Main menu -->
+                        <li><a href="index.html"><i class="glyphicon glyphicon-star"></i> Édition</a></li>
+                        <li><a href="accueil.html"><i class="glyphicon glyphicon-home"></i> Accueil</a></li>
+                        <li class="current"><a href="equipe.html"><i class="glyphicon glyphicon-user"></i> Équipe</a></li>
+                        <li><a href="sponsor.html"><i class="glyphicon glyphicon-usd"></i> Sponsor</a></li>
+                        <li><a href="actualite.html"><i class="glyphicon glyphicon-list-alt"></i> Actualité</a></li>
+                        <li><a href="presse.html"><i class="glyphicon glyphicon-pencil"></i> Presse</a></li>
+                        <li><a href="media.html"><i class="glyphicon glyphicon-film"></i> Média</a></li>
+                        <li><a href="contact.html"><i class="glyphicon glyphicon-envelope"></i> Contact</a></li>
+                        <li><a href="espaceSponsor.html"><i class="glyphicon glyphicon-info-sign"></i> Espace Sponsor</a></li>
+                        <li><a href="espaceEtudiant.html"><i class="glyphicon glyphicon-info-sign"></i> Espace Étudiant</a></li>
+                        <li><a href="reseauxSociaux.html"><i class="glyphicon glyphicon-thumbs-up"></i> Réseaux Sociaux</a></li>
+                        <li><a href="apparence.html"><i class="glyphicon glyphicon-eye-open"></i> Apparence</a></li>
+                    </ul>
+                    <a href="#">Accès au site web</a>
+                    <button id="saveModif">Enregistrer</button>
+                </div>
+            </div>
+
+            <div class="col-md-10" id="equipe">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content-box-large">
+                            <div class="panel-heading">
+                                <div class="panel-title">Équipe</div>
+                            </div>
+                            <div class="panel-body">
+                                <div id="nomNouvelleEquipe">
+                                    <label for="nouveauNom">Nouvelle équipe
+                                        <input type="text" id="nouveauNom" name="nouveauNom">
+                                    </label>
+                                    <a href="#" data-width="900" data-height="600" data-rel="ajouterEquipe" class="poplight"><i class="glyphicon glyphicon-plus"></i></a>
+                                </div>
+                                <div id="equipes">
+                                    <div class="equipe_template" idEquipe="">
+                                        <div class="team">
+                                            <div class="panel-heading team_template">
+                                                <div class="panel-title nomEquipe"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel-options">
+                                            <a href="#" data-width="900" data-height="600" data-rel="modifierEquipe" class="poplight"><i class="glyphicon glyphicon-pencil"></i></a>
+                                            <a href="#" class="supprimerEquipe"><i class="glyphicon glyphicon-remove"></i></a>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="col-md-2">
+                                                <div class="content-box-large text-center">
+                                                    <a href="#" data-width="900" data-height="600" data-rel="ajouterMembre" class="poplight"><i class="glyphicon glyphicon-plus"></i></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="membres">
+                                                <div class="col-md-2 membre_template" idMembre="">
+                                                    <div class="content-box-large text-center">
+                                                        <figure>
+                                                            <img class="photoMembre" src="" alt="Photo membre" height="100" width="100">
+                                                            <figcaption class="nomMembre"></figcaption>
+                                                        </figure>
+                                                        <div class="panel-options">
+                                                            <a href="#" data-width="900" data-height="600" data-rel="modifierMembre" class="poplight"><i class="glyphicon glyphicon-pencil"></i></a>
+                                                            <a href="#" class="supprimerMembre"><i class="glyphicon glyphicon-remove"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ajouterEquipe" class="popup_block">
+                <div class="col-md-12">
+                    <div class="content-box-large">
+                        <label for="nom_Equipe">Nom de l'équipe
+                            <input type="text" name="nom_Equipe" id="nom_Equipe">
+                        </label>
+                        <label for="phraseIntro">Phrase d'intro de l'équipe
+                            <textarea name="phraseIntro" id="phraseIntro" cols="70" rows="10"></textarea>
+                        </label>
+                        <button class="btnValider">Valider</button>
+                    </div>
+                </div>
+            </div>
+            <div id="modifierEquipe" class="popup_block" idEquipe="">
+                <div class="col-md-12">
+                    <div class="content-box-large">
+                        <label for="nom_Equipe">Nom de l'équipe
+                            <input type="text" name="nom_Equipe" id="modifNomEquipe">
+                        </label>
+                        <label for="phraseIntro">Phrase d'intro de l'équipe
+                            <textarea name="phraseIntro" id="modifPhraseIntro" cols="70" rows="10"></textarea>
+                        </label>
+                        <button class="btnValider">Valider</button>
+                    </div>
+                </div>
+            </div>
+            <div id="ajouterMembre" class="popup_block" idEquipe="">
+                <div class="col-md-12">
+                    <div class="content-box-large">
+                    <!--<div class="panel-body">
+                            <div class="col-md-2">
+                                <div class="content-box-large text-center">
+                                    <a href="#" data-width="900" data-rel="ajouterMembre" class="poplight"><i class="glyphicon glyphicon-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>-->
+                        <label for="nom_Membre">Nom
+                            <input type="text" name="nom_Membre" id="nom_Membre">
+                        </label>
+                        <label for="prenom_Membre">Prénom
+                            <input type="text" name="prenom_Membre" id="prenom_Membre">
+                        </label>
+                        <label for="statut_Membre">Statut
+                            <input type="text" name="statut_Membre" id="statut_Membre">
+                        </label>
+                        <label for="description_Membre">Description
+                            <textarea name="description_Membre" id="description_Membre" cols="70" rows="10"></textarea>
+                        </label>
+                        <label for="photo_Membre">Photo</label>
+                        <img id="photo_Membre_Apercu" src="" alt="Photo membre" height="100" width="100">
+                        <input type="file" name="media" id="photo_Membre" accept="image/*">
+                        <button class="btnValider">Valider</button>
+                    </div>
+                </div>
+            </div>
+            <div id="modifierMembre" class="popup_block" idMembre="">
+                <div class="col-md-12">
+                    <div class="content-box-large">
+                    <!--<div class="panel-body">
+                            <div class="col-md-2">
+                                <div class="content-box-large text-center">
+                                    <a href="#" data-width="900" data-rel="ajouterMembre" class="poplight"><i class="glyphicon glyphicon-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>-->
+                        <label for="modifNomMembre">Nom
+                            <input type="text" name="modifNomMembre" id="modifNomMembre">
+                        </label>
+                        <label for="modifPrenomMembre">Prénom
+                            <input type="text" name="modifPrenomMembre" id="modifPrenomMembre">
+                        </label>
+                        <label for="modifStatutMembre">Statut
+                            <input type="text" name="modifStatutMembre" id="modifStatutMembre">
+                        </label>
+                        <label for="modifDescriptionMembre">Description
+                            <textarea name="modifDescriptionMembre" id="modifDescriptionMembre" cols="70" rows="10"></textarea>
+                        </label>
+                        <label for="photo_Membre">Photo</label>
+                        <img id="modif_Photo_Membre_Apercu" src="" alt="Photo membre" height="100" width="100">
+                        <input type="file" name="media" id="photo_Membre" accept="image/*">
+                        <button class="btnValider">Valider</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="copy text-center">
+                Copyright 2017 <a href='#'>Website</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

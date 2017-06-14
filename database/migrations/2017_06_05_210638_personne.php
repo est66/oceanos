@@ -20,7 +20,7 @@ class Personne extends Migration
             $table->string('prenom')->nullable();
             $table->string('email')->nullable();
             $table->string('statut')->nullable();
-            $table->string('phrase')->nullable();
+            $table->text('phrase')->nullable();
             $table->text('description')->nullable();
             $table->string('filiere')->nullable();
             $table->boolean('archive')->default(false);
