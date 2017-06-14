@@ -638,7 +638,7 @@ class ACLSeeder extends Seeder {
         $media12->url = "art.jpg";
         $media12->description = "";
         $media12->type = "image";
-        $media12->article_id = 2;
+        $media12->article_id = 3;
         $media12->save();  
         
         //-----------sponsors--------------
