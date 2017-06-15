@@ -620,7 +620,7 @@ Les deux nouveaux prix viennent compléter la liste de trophées hors-course, le
 
         //-----------Personnes--------------
 
-        for ($i = 1; $i <= 26; $i++) {
+        for ($i = 1; $i <= 29; $i++) {
             $media10 = new App\Media();
             $media10->titre = "";
             $media10->url = "http://pingouin.heig-vd.ch/oceanos/storage/images/john.jpg";

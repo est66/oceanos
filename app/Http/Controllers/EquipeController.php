@@ -16,7 +16,7 @@ class EquipeController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return Equipe::all()->first()->with('media', 'personnes.media')->get()->where('archive', false);
+        return Equipe::with('media', 'personnes.media')->get()->where('archive', false);
     }
 
     /**
@@ -30,7 +30,13 @@ class EquipeController extends Controller {
         // Règles de validations   
         // if (!Equipe::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
+        // 
+        //CREATION DE L'OBJET
         $equipe = new Equipe($para);
+        //LIAISON A L'EDITION EN COURS
+        $edition_id = Edition::where('actif', true)->first()->id;
+        $equipe->edition_id = $edition_id;
+        //SAUVEGARDE
         $equipe->save();
         return response()->json($equipe->id, Response::HTTP_CREATED);
     }

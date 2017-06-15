@@ -10,17 +10,22 @@
   | to using a Closure or controller method. Build something great!
   |
  */
+
+Route::get('/', function() {
+    return redirect('hydrocontest/accueil.html');
+});
 //FONCTION ADMIN
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index')->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 //Route::get('admin/{someword}', function() {
 //    return view('upload');
 //});
 
 Route::get('admin/edition', function() {
-    return File::get(base_path() . '/admin/index.html');
+    return File::get(base_path() . '/admin/edition.html');
 });
 
 
@@ -70,45 +75,11 @@ Route::get('admin/sponsor', function() {
 
 
 
-//Route::group(['middleware' => 'auth'], function () {
-//
-//    Route::get('admin/edition', function() {
-//        return File::get(base_path() . '/admin/accueil.html');
-//    });
-////        Route::get('admin/edition', function() {
-////        return view('upload');
-////    });
-//    Route::get('admin/accueil.html', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/sponsor', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/actualite', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/presse', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/media', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/contact', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/espacesponsor', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/espaceetudiant', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/reseaux', function() {
-//        return view('upload');
-//    });
-//    Route::get('admin/apparence', function() {
-//        return view('upload');
-//    });
-//});
+Route::group(['middleware' => 'auth'], function () {
+
+ //ICI LES ROUTES DE L'ADMIN
+ 
+});
 
 
 

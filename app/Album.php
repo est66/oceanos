@@ -23,11 +23,11 @@ class Album extends Model {
     }
 
     public function edition() {
-        return $this->belongsTo('App\Edition');
+        return $this->belongsTo('App\Edition')->where('archive',false);;
     }
 
     public function medias() {
-        return $this->hasMany('App\Media');
+        return $this->hasMany('App\Media')->where('archive',false);;
     }
 
 }

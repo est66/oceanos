@@ -13,13 +13,13 @@ class Sponsor extends Model
         
             public function editions() 
     {
-         return $this->belongsToMany('App\Edition')
+         return $this->belongsToMany('App\Edition')->where('archive',false)
                  ->withTimestamps();
     }
     
     
           public function media()
     {
-        return $this->hasOne('App\Media');
+        return $this->hasOne('App\Media')->where('archive',false);;
     }
 }

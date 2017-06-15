@@ -11,158 +11,103 @@ use App\Information;
 
 class MediaController extends Controller {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+//REND L'ENSEMBLE DES MEDIAS
     public function index() {
         return Media::all()->where('archive', false);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+//ENREGISTRE UN NOUVEAU MEDIA ET LE TRIE SELON SON EXTENSION
     public function store(Request $request) {
-        $para = $request->all();
-
+        //PREND EN VARAIBLE LE NOM DE DOMAINE POUR FORMER L'URL DU MEDIA
         $nomDeDomain = Information::find(6)->texte;
-
-
-        // Règles de validations   
-        // if (!Media::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
-        // création d'un nouvel objet        
-
-
+        //REGLES DE VALIDATION       
         if ($request->hasFile('media')) {
-
-            $equipe_id = $request->equipe_id;
-            $personne_id = $request->personne_id;
-            $article_id = $request->article_id;
-            $sponsor_id = $request->sponsor_id;
-            $album_id = $request->album_id;
-            $information_id = $request->information_id;
-            $presse_id = $request->presse_id;
-
+            //PREND DES INFORMATIONS DU MEDIA
             $fileName = $request->media->hashName();
+            $clientFileName = $request->media->getClientOriginalName();
+            $fileOne = pathinfo($clientFileName, PATHINFO_FILENAME);
 
-            $media = new Media();
-            $titre = $request->titre;
-            $description = $request->description;
             //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
             $ext = strtolower($request->file('media')->extension());
+            $url = null;
+            $type = null;
             if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "gif") {
                 $type = "image";
-                $request->file('media')->store('public/images');
-                $url = $nomDeDomain . '/storage/images/' . $fileName;
+                $request->file('media')->storeAs('public/images', $fileOne . '-' . $fileName);
+                $url = $nomDeDomain . '/storage/images/' . $fileOne . '-' . $fileName;
             } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
                 $type = "video";
-                $request->file('media')->store('public/videos');
-                $url = $nomDeDomain . '/storage/videos/' . $fileName;
+                $request->file('media')->storeAs('public/videos', $fileOne . '-' . $fileName);
+                $url = $nomDeDomain . '/storage/videos/' . $fileOne . $fileName;
             } elseif ($ext == "pdf") {
                 $type = "document";
-                $request->file('media')->store('public/documents');
-                $url = $nomDeDomain . '/storage/documents/' . $fileName;
+                $request->file('media')->storeAs('public/documents', $fileOne . $fileName);
+                $url = $nomDeDomain . '/storage/documents/' . $fileOne . '-' . $fileName;
             } else {
                 return "format de fichier invalide !";
             }
-
-            $media->equipe_id = $equipe_id;
-            $media->personne_id = $personne_id;
-            $media->article_id = $article_id;
-            $media->sponsor_id = $sponsor_id;
-            $media->album_id = $album_id;
-            $media->information_id = $information_id;
-            $media->presse_id = $presse_id;
-
-
-            $media->titre = $titre;
-            $media->type = $type;
-            $media->description = $description;
-            $media->url = $url;
+            //SAUVEGARDE DU MEDIA
+            $para = $request->offsetUnset('media');
+            $para['url'] = $url;
+            $para['type'] = $type;
+            $media = new Media($para);
             $media->save();
             return response()->json($media, Response::HTTP_CREATED);
         }
         return"fichier manquant";
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-        return view('upload');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+//REND UN MEDIA PARTICULIER SELON SON ID
     public function show($id) {
-        return Media::find($id)->load('medias');
+        return Media::find($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+// MODIFIE LE MEDIA
     public function update(Request $request, $id) {
-        $para = $request->all();
-        $media = Media::find($id);
-
-        // Règles de validations   
-        // if (!Media::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
-        // création d'un nouvel objet
+        //PREND EN VARAIBLE LE NOM DE DOMAINE POUR FORMER L'URL DU MEDIA
+        $nomDeDomain = Information::find(6)->texte;
+        //REGLES DE VALIDATION       
         if ($request->hasFile('media')) {
+            //PREND DES INFORMATIONS DU MEDIA
+            $fileName = $request->media->hashName();
+            $clientFileName = $request->media->getClientOriginalName();
+            $fileOne = pathinfo($clientFileName, PATHINFO_FILENAME);
 
-
-            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg") {
+            //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
+            $ext = strtolower($request->file('media')->extension());
+            $url = null;
+            $type = null;
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "gif") {
                 $type = "image";
-                $url = $request->file('media')->store('public/images');
-                $media->url = $url;
-                $media->type = $type;
+                $request->file('media')->storeAs('public/images', $fileOne . '-' . $fileName);
+                $url = $nomDeDomain . '/storage/images/' . $fileOne . '-' . $fileName;
             } elseif ($ext == "mov" || $ext == "mp4" || $ext == "webm") {
                 $type = "video";
-                $url = $request->file('media')->store('public/videos');
-                $media->url = $url;
-                $media->type = $type;
+                $request->file('media')->storeAs('public/videos', $fileOne . '-' . $fileName);
+                $url = $nomDeDomain . '/storage/videos/' . $fileOne . $fileName;
             } elseif ($ext == "pdf") {
                 $type = "document";
-                $media->url = $url;
-                $media->type = $type;
-                $url = $request->file('media')->store('public/documents');
+                $request->file('media')->storeAs('public/documents', $fileOne . $fileName);
+                $url = $nomDeDomain . '/storage/documents/' . $fileOne . '-' . $fileName;
             } else {
                 return "format de fichier invalide !";
             }
+            //SAUVEGARDE DU MEDIA
+            $para = $request->offsetUnset('media');
+            $para['url'] = $url;
+            $para['type'] = $type;
+            $media = update($para);
+            return response()->json($media, Response::HTTP_CREATED);
+        } else {
+            //SAUVEGARDE DU MEDIA
+            $para = $request->offsetUnset('media');
+            $para = $request->offsetUnset('url');
+            $para = $request->offsetUnset('type');
+            $media = update($para);
+            return response()->json($media, Response::HTTP_CREATED);
         }
-        $media->equipe_id = $request->equipe_id;
-        $media->personne_id = $request->personne_id;
-        $media->article_id = $request->article_id;
-        $media->sponsor_id = $request->sponsor_id;
-        $media->album_id = $request->album_id;
-        $media->information_id = $request->information_id;
-        $media->presse_id = $request->presse_id;
-        $media->titre = $request->titre;
-        $media->description = $request->description;
-        $media->update();
-        return $media;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id) {
         $media = Media::find($id);
         $media->archive = 1;

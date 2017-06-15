@@ -14,15 +14,15 @@ class Personne extends Model {
     ];
 
     public function equipes() {
-        return $this->belongsToMany('App\Equipe');
+        return $this->belongsToMany('App\Equipe')->where('archive',false);
     }
 
     public function edition() {
-        return $this->belongsTo('App\Edition');
+        return $this->belongsTo('App\Edition')->where('archive',false);
     }
 
     public function media() {
-        return $this->hasOne('App\Media');
+        return $this->hasOne('App\Media')->where('archive',false);
     }
 
 }

@@ -26,11 +26,17 @@ class ArticleController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        //RECUPERATION DES DONNEES
         $para = $request->all();
-        // Règles de validations   
+        // REGLES DE VALIDATION  
         // if (!Article::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
+        //CREATION DE L'OBJET
         $article = new Article($para);
+        //LIAISON A L'EDITION EN COURS
+        $edition_id = Edition::where('actif', true)->first()->id;
+        $article->edition_id = $edition_id;
+        //SAUVEGARDE
         $article->save();
         return response()->json($article->id, Response::HTTP_CREATED);
     }
@@ -84,17 +90,15 @@ class ArticleController extends Controller {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
         return Article::all()->first()->with('media')->where('archive', false)->where('type', "news")->get();
     }
-    
-        public function presse() {
+
+    public function presse() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
         return Article::all()->first()->with('media', 'presse.media')->where('archive', false)->where('type', "presse")->get();
     }
-    
-    
-            public function presseParAnnee() {
+
+    public function presseParAnnee() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
         return Article::all()->first()->with('media', 'presse.media')->where('archive', false)->where('type', "presse")->get();
     }
 
 }
-

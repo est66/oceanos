@@ -25,11 +25,17 @@ class PersonneController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+        //RECUPERATION DES DONNEES
         $para = $request->all();
-        // Règles de validations   
+        // REGLES DE VALIDATION  
         // if (!Personne::isValid($para)) {return response()->json('error', Response::HTTP_BAD_REQUEST);}   
         // création d'un nouvel objet
+        //CREATION DE L'OBJET
         $personne = new Personne($para);
+        //LIAISON A L'EDITION EN COURS
+        $edition_id = Edition::where('actif', true)->first()->id;
+        $personne->edition_id = $edition_id;
+        //SAUVEGARDE
         $personne->save();
         return response()->json($personne->id, Response::HTTP_CREATED);
     }

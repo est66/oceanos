@@ -11,11 +11,11 @@ class Equipe extends Model {
     ];
 
     public function personnes() {
-        return $this->belongsToMany('App\Personne');
+        return $this->belongsToMany('App\Personne')->where('archive',false);
     }
 
     public function edition() {
-        return $this->belongsTo('App\Edition');
+        return $this->belongsTo('App\Edition')->where('archive',false);;
     }
 
     public function media() {

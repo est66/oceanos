@@ -50,7 +50,7 @@ class Edition extends Model {
     }
 
     public function equipes() {
-        return $this->hasMany('App\Equipe');
+        return $this->hasMany('App\Equipe')->where('archive',false);
     }
 
     public function sponsors() {
@@ -59,15 +59,15 @@ class Edition extends Model {
     }
 
     public function personnes() {
-        return $this->hasMany('App\Personne');
+        return $this->hasMany('App\Personne')->where('archive',false);
     }
 
     public function albums() {
-        return $this->hasMany('App\Album');
+        return $this->hasMany('App\Album')->where('archive',false);;
     }
 
     public function budgets() {
-        return $this->hasMany('App\Budget');
+        return $this->hasMany('App\Budget')->where('archive',false);;
     }
 
 }

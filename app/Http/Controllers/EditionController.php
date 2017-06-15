@@ -83,11 +83,13 @@ class EditionController extends Controller {
         $edition = Edition::where('nom', '=', $nomEdition)->get()->first();
         return $edition->equipes->where('archive', false);
     }
+
 //CHARGE L'EDITION VOULU
     public function chargerEdition($nomEdition) {
         //return Edition::all()->first()->with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->where('nom', $nomEdition)->get();  
         return Edition::with('equipes.media', 'equipes.personnes.media', 'articles.media', 'articles.presse.media', 'sponsors.media', 'albums.medias')->where('nom', $nomEdition)->first();
     }
+
 //PERMET DE CHARGER TOUTS LES ELEMENTS DE LA PAGE D'ACCUEIL
     public function chargerAcceuil() {
 
@@ -95,11 +97,13 @@ class EditionController extends Controller {
         //return Edition::all()->first()->with('equipes.media','equipes.personnes.media','articles.media','articles.presse.media','sponsors.media','albums.medias')->where('nom', $nomEdition)->get();  
         return Edition::where('actif', '=', true)->with('equipes.personnes.media', 'articles.media', 'articles.presse.media', 'sponsors.media')->where('actif', '=', true)->first();
     }
+
 //CHARGE L'ENSEMBLE DES ELLEMENTS DE L'EDITION EN COURS
     public function chargerEquipeEditionEnCours() {
 
-        return Edition::where('actif', '=', true)->with('equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', '=', true)->first();
+        return Edition::with('equipes.media','equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', true)->get();
     }
+
 //CHARGE L'ENSEMBLE DES ELLEMENTS DES EDITIOSN PRECEDENTES
     public function editionPrecedente() {
         return Edition::where('actif', '=', false)->with('equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', '=', false)->first();
@@ -107,21 +111,21 @@ class EditionController extends Controller {
 
 //PERMET D'ACTIVER UNE EDITION ET DESACTIVER TOUTES LES AUTRES
     public function activerEdition($id) {
-        
-        $exist = $editions = Edition::find($id);
-        if($exist!=null){
-        
-        $editions = Edition::all();
 
-        foreach ($editions as $edition) {
-            $edition->actif = false;
-            $edition->update();
+        $exist = $editions = Edition::find($id);
+        if ($exist != null) {
+
+            $editions = Edition::all();
+
+            foreach ($editions as $edition) {
+                $edition->actif = false;
+                $edition->update();
+            }
+            $edition2 = Edition::find($id);
+            $edition2->actif = true;
+            $edition2->update();
+            return "edition activée !";
         }
-        $edition2 = Edition::find($id);
-        $edition2->actif = true;
-        $edition2->update();
-        return "edition activée !";
-    }
     }
 
 }
