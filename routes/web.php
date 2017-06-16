@@ -10,7 +10,9 @@
   | to using a Closure or controller method. Build something great!
   |
  */
-
+Route::get('/admin', function() {
+    return redirect('/admin/accueil');
+});
 Route::get('/', function() {
     return redirect('hydrocontest/accueil.html');
 });
@@ -23,6 +25,12 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //Route::get('admin/{someword}', function() {
 //    return view('upload');
 //});
+
+
+
+
+//FONCTIONS ET PAGES ACCESIBLES SEULEMENT POUR LES ADMINS
+Route::group(['middleware' => 'auth'], function () {
 
 Route::get('admin/edition', function() {
     return File::get(base_path() . '/admin/edition.html');
@@ -73,11 +81,6 @@ Route::get('admin/sponsor', function() {
     return File::get(base_path() . '/admin/sponsor.html');
 });
 
-
-
-Route::group(['middleware' => 'auth'], function () {
-
- //ICI LES ROUTES DE L'ADMIN
  
 });
 
@@ -136,8 +139,13 @@ Route::resource('equipes', 'EquipeController');
 //INFORMATIONS
 Route::resource('informations', 'InformationController');
 //MEDIAS
+
 Route::resource('medias', 'MediaController');
-//Route::post('medias', 'UploadController@store')->name('upload.media');
+//permet d'uploader une image dans l'esapce de stockage puis redonne un lien
+Route::get('upload/image/create', function() {
+    return view('upload');
+});
+Route::post('upload/image', 'MediaController@uploadImage')->name('upload.media');
 //PARAMETRES
 Route::resource('parametres', 'ParametreController');
 //PERSONNES
@@ -218,8 +226,6 @@ Route::get('news', 'ArticleController@news');
 Route::get('presse', 'ArticleController@presse');
 
 Route::get('presseannee', 'ArticleController@presseParAnnee');
-
-
 
 
 //REDIRECTION SI AUCUNES ROUTES DISPONBLES

@@ -15,7 +15,7 @@ class ResSocialController extends Controller {
      */
     public function index() {
         //return ResSocial::all()->where('archive', false)->load('media')->load('presse');        
-        return ResSocial::all();
+        return ResSocial::with('media')->get();
     }
 
     /**

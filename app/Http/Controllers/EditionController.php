@@ -101,12 +101,12 @@ class EditionController extends Controller {
 //CHARGE L'ENSEMBLE DES ELLEMENTS DE L'EDITION EN COURS
     public function chargerEquipeEditionEnCours() {
 
-        return Edition::with('equipes.media','equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', true)->get();
+        return Edition::with('equipes.media', 'equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', true)->first();
     }
 
 //CHARGE L'ENSEMBLE DES ELLEMENTS DES EDITIOSN PRECEDENTES
     public function editionPrecedente() {
-        return Edition::where('actif', '=', false)->with('equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', '=', false)->first();
+        return Edition::where('actif', '=', false)->with('equipes.media', 'equipes.personnes.media', 'sponsors.media', 'albums.medias')->where('actif', '=', false)->get();
     }
 
 //PERMET D'ACTIVER UNE EDITION ET DESACTIVER TOUTES LES AUTRES

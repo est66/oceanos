@@ -16,7 +16,7 @@ class ArticleController extends Controller {
      */
     public function index() {
         //return Article::all()->where('archive', false)->load('media')->load('presse');        
-        return Article::all()->first()->with('media', 'presse.media')->get()->where('archive', false);
+        return Article::all()->first()->with('media', 'presse.media')->where('archive', false)->get();
     }
 
     /**

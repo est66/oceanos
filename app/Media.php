@@ -25,6 +25,10 @@ class Media extends Model {
     public function artilce() {
         return $this->belongsTo('App\Article');
     }
+    
+        public function reseaux() {
+        return $this->belongsTo('App\ResSocial');
+    }
 
     public function personne() {
         return $this->belongsTo('App\Personne');

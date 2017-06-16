@@ -121,4 +121,29 @@ class MediaController extends Controller {
         return Media::all()->where($media_id, '=', $id);
     }
 
+    public function uploadImage(Request $request) {
+        //PREND EN VARAIBLE LE NOM DE DOMAINE POUR FORMER L'URL DU MEDIA
+        $nomDeDomain = Information::find(6)->texte;
+        //REGLES DE VALIDATION       
+        if ($request->hasFile('media')) {
+            //PREND DES INFORMATIONS DU MEDIA
+            $fileName = $request->media->hashName();
+            $clientFileName = $request->media->getClientOriginalName();
+            $fileOne = pathinfo($clientFileName, PATHINFO_FILENAME);
+
+            //DEFINITION DU TYPE DE FICHIER SELON L'EXTENSION
+            $ext = strtolower($request->file('media')->extension());
+            $url = null;
+            if ($ext == "png" || $ext == "jpg" || $ext == "jpeg" || $ext == "gif") {                
+                $request->file('media')->storeAs('public/images', $fileOne . '-' . $fileName);
+                $url = $nomDeDomain . '/storage/images/' . $fileOne . '-' . $fileName;
+            } else {
+                return "format de fichier invalide !";
+            }
+
+            return $url;
+        }
+        return"fichier manquant";
+    }
+
 }
