@@ -47,7 +47,7 @@ class Media extends Migration {
             $table->foreign('presse_id')->references('id')->on('presses')->onDelete('cascade');
             //CLE ETRANGERE RESEAUX SOCIAUX
             $table->integer('res_social_id')->nullable();
-            $table->foreign('res_social_id')->references('id')->on('res_social')->onDelete('cascade');
+            $table->foreign('res_social_id')->references('id')->on('res_socials')->onDelete('cascade');
         });
     }
 
