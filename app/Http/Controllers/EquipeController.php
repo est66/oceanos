@@ -8,6 +8,12 @@ use App\Edition;
 use App\Equipe;
 use App\Personne;
 
+
+
+/*
+ * Les équipes regroupent un ensemble de personne
+
+ */
 class EquipeController extends Controller {
 
     /**

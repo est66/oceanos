@@ -6,7 +6,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Edition;
+/*
+ * Les articles sont de type news et presses. 
+ * Ils fourniment du contenu textuel et visuel à propos de l’actualité.
 
+ */
 class ArticleController extends Controller {
 
     /**

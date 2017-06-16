@@ -9,6 +9,11 @@ use Illuminate\Http\File;
 use App\Media;
 use App\Information;
 
+/*
+ * Les médias sont de type vidéos, images et documents. 
+ * Ils alimente l’ensemble des classes en ressource stocker dans l’espace de fichier du serveur (Storage)
+
+ */
 class MediaController extends Controller {
 
 //REND L'ENSEMBLE DES MEDIAS

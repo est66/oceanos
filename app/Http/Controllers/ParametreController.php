@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Parametre;
+/*
+ * Les paramètres du site concerne l’attribution de feuille de style ou code javascript  
+ * qui permettent de modifier les fonctionnalités du site
+
+ */
 class ParametreController extends Controller {
 
     /**
@@ -56,12 +61,6 @@ class ParametreController extends Controller {
         return response()->json('OK', Response::HTTP_OK);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id) {
 //N'EST JAMAIS SUPPRIME !!!
     }

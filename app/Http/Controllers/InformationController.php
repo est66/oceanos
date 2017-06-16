@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Information;
+/*
+ * Les informations statiques sont des sections du site qui peuvent être modifier l’utilisateurs
 
+ */
 class InformationController extends Controller
 {
 

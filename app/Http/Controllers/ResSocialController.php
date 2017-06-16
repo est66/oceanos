@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\ResSocial;
+/*
+ * Lien vers les réseaux sociaux
 
+ */
 class ResSocialController extends Controller {
 
     /**

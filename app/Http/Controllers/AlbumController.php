@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Album;
 use App\Edition;
 
+/*
+ * Les albums permettent de regrouper des médias vidéos, images et documents PDF
 
+ */
 class AlbumController extends Controller {
-
 //DONNE LES ALBUMS NON ARCHIVES
     public function index() {
         return Album::all()->where('archive', false)->load('medias');

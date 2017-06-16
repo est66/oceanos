@@ -197,7 +197,7 @@ Route::get('espacesponsor', 'EditionController@espaceSponsor');
 Route::get('espaceetudiant', 'EditionController@espaceEtudiant');
 // PAGE CONTACT
 // à faire
-Route::get('contact', 'EditionController@editionPrecedente');
+Route::get('contact', 'EditionController@editionC');
 //---------
 //
 //DESACTIVE TOUTES LES EDTIONS A PART CELLE DONNEE

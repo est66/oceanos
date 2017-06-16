@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Presse;
+/*
+ * La presse est un média externe auquel un article peut faire référence (ex:  20 minutes, 24heures)
+
+ */
 class PresseController extends Controller
 {
     /**

@@ -6,7 +6,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Personne;
 use App\Edition;
+/*
+ * Les personnes sont les membres qui participent à Hydrocontest. 
+ * Ils sont tous lier a une équipe de type ingénieur ou autre.
 
+ */
 class PersonneController extends Controller {
 
     /**

@@ -6,7 +6,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
 use App\Sponsor;
 use App\Edition;
+/*
+ * Classe qui reprend l’ensemble des sponsors de l'édition
 
+ */
 class SponsorController extends Controller {
 
     /**

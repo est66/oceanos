@@ -9,6 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 use App\Edition;
 use App\Equipe;
 
+/*
+ * Cette classe permet de lier tout les éléments du site qui sont lier a une 
+ * Edition. 
+ * L'Edition se déroule chaque année et contient donc des médias, 
+ * des articles, des équipes, des personnes, des sponsors set des albums
+
+ */
+
 class EditionController extends Controller {
 
     /**
